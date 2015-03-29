@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>Mumble.NET</id>
+    <version>$version$</version>
+    <title>Mumble.NET - C# Mumble VoIP client library</title>
+    <authors>Matt Perry</authors>
+    <owners>Matt Perry</owners>
+    <licenseUrl>https://github.com/perrym5/Mumble.NET/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/perrym5/Mumble.NET/</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>C# library for interacting with Mumble VoIP servers.</description>
+    <tags>Mumble .NET VoIP Library</tags>
+    <dependencies>
+        <dependency id="SimpleInjector" version="2.7.3" />
+    </dependencies>
+  </metadata>
+  <files>
+      <file target="lib/net45" src="$OutputPath$Mumble.NET\Mumble.Net.???" />
+  </files>
+</package>

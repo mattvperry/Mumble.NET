@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildProjectDirectory), build.props))\build.props" />
+
+    <!-- Projects to Build -->
+    <ItemGroup>
+        <ProjectReference Include="$(ProjectRoot)src\Mumble.NET.sln" />
+        <ProjectReference Include="$(ProjectRoot)nuget\Mumble.NET.nuproj" />
+    </ItemGroup>
+
+    <Target Name="Compile" DependsOnTargets="Version">
+        <MSBuild Projects="@(ProjectReference)" BuildInParallel="$(BuildInParallel)"/>
+    </Target>
+
+    <Target Name="Clean">
+        <DeleteTree Directories="obj\**;bin\**" />
+    </Target>
+
+    <Target Name="Build">
+        <CallTarget Targets="Compile" />
+    </Target>
+
+    <Target Name="Rebuild" DependsOnTargets="Clean">
+        <CallTarget Targets="Compile" />
+    </Target>
+
+    <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildProjectDirectory), build.targets))\build.targets" />
+</Project>

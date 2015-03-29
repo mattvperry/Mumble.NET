@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildProjectDirectory), build.props))\build.props" />
+
+	<ItemGroup>
+        <ProjectReference Include="$(ProjectRoot)src\Mumble.NET\Mumble.NET.csproj" />
+	</ItemGroup>
+
+	<Target Name="Rebuild" DependsOnTargets="Clean;Build" />
+
+	<Target Name="Clean">
+		<MSBuild
+			Projects="@(ProjectReference)"
+			Targets="Clean"
+			BuildInParallel="$(BuildInParallel)"
+			/>
+	</Target>
+
+	<Target Name="Build" DependsOnTargets="GetBuildVersion">
+		<MSBuild
+			Projects="@(ProjectReference)"
+			Targets="Build"
+			BuildInParallel="$(BuildInParallel)"
+			/>
+
+		<ItemGroup>
+            <NuGetProperties Include="Version=$(Version)" />
+			<NuGetProperties Include="OutputPath=$(ProjectRoot)bin\$(Configuration)\" />
+			<NuGetProperties Include="IntermediatePath=$(ProjectRoot)obj\" />
+		</ItemGroup>
+
+		<ItemGroup>
+			<NuGetSpecifications Include="Mumble.NET.nuspec">
+				<Symbols>false</Symbols>
+				<Properties>@(NuGetProperties)</Properties>
+                <Version>$(Version)</Version>
+				<OutputDirectory>$(ProjectRoot)bin\$(Configuration)\</OutputDirectory>
+			</NuGetSpecifications>
+		</ItemGroup>
+
+		<NuGetPack
+			File="%(NuGetSpecifications.Identity)"
+			Properties="%(NuGetSpecifications.Properties)"
+			Version="%(NuGetSpecifications.Version)"
+			OutputDirectory="%(NuGetSpecifications.OutputDirectory)"
+			Symbols="%(NuGetSpecifications.Symbols)"
+			ToolPath="$(NugetPack)NuGet.CommandLine.2.8.3\tools\"
+			/>
+	</Target>
+
+	<Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildProjectDirectory), build.targets))\build.targets" />
+</Project>

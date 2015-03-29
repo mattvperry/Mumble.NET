@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+	<PropertyGroup>
+		<MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+	</PropertyGroup>
+
+	<Import Project="$(NugetPack)StyleCop.MSBuild.4.7.49.1\build\StyleCop.MSBuild.Targets"/>
+
+    <Target Name="GetBuildVersion">
+        <ReadLinesFromFile File="$(ProjectRoot)version.txt">
+            <Output TaskParameter="Lines" PropertyName="Version" />
+        </ReadLinesFromFile>
+    </Target>
+
+    <Target Name="Version" DependsOnTargets="GetBuildVersion">
+        <Time>
+            <Output TaskParameter="Year" PropertyName="Year" />
+        </Time>
+
+        <Message Text="Version: $(Version)"/>
+
+        <Attrib Files="$(ProjectRoot)GlobalAssemblyInfo.cs" ReadOnly="False" />
+
+        <AssemblyInfo CodeLanguage="CS"
+            OutputFile="$(ProjectRoot)GlobalAssemblyInfo.cs"
+            GenerateClass="true"
+            AssemblyCopyright="Copyright © $(Year). All rights reserved."
+            AssemblyConfiguration="$(Configuration)"
+            AssemblyVersion="$(Version)"
+            AssemblyFileVersion="$(Version)"
+            AssemblyInformationalVersion="$(Version)" />
+    </Target>
+
+	<PropertyGroup>
+		<DocumentationFile Condition=" '$(NonShipping)' != 'true' and '$(NoDocumentationFile)' != 'true' ">$(OutputPath)$(AssemblyName).xml</DocumentationFile>
+	</PropertyGroup>
+</Project>
