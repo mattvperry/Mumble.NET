@@ -38,4 +38,4 @@ From the root of the repository:
 
 If you are making a pull request, please do a command line build first. StyleCop and FXCop warnings are run with command line builds.
 
-[1] https://github.com/perrym5/Mumble.NET
+ [1]: https://github.com/perrym5/Mumble.NET
