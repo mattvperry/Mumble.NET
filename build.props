@@ -19,6 +19,7 @@
 
         <!-- Only commandline builds should break when StyleCop warnings exist. -->
         <StyleCopTreatErrorsAsWarnings Condition=" '$(StyleCopTreatErrorsAsWarnings)' == '' and '$(BuildingInsideVisualStudio)' != 'true' ">false</StyleCopTreatErrorsAsWarnings>
+        <StyleCopOverrideSettingsFile>$(ProjectRoot)Settings.StyleCop</StyleCopOverrideSettingsFile>
 
         <RunCodeAnalysis Condition=" '$(BuildingInsideVisualStudio)' != 'true' ">true</RunCodeAnalysis>
         <CodeAnalysisRuleSet>$(ProjectRoot)CodeAnalysis.ruleset</CodeAnalysisRuleSet>

@@ -19,6 +19,12 @@
     <Reference Include="$(NugetPack)SimpleInjector.2.7.3\lib\net45\SimpleInjector.Diagnostics.dll">
       <Name>SimpleInjector.Diagnostics</Name>
     </Reference>
+    <Reference Include="$(NugetPack)Google.ProtocolBuffers.2.4.1.555\lib\net40\Google.ProtocolBuffers.dll">
+      <Name>Google.ProtocolBuffers</Name>
+    </Reference>
+    <Reference Include="$(NugetPack)Google.ProtocolBuffers.2.4.1.555\lib\net40\Google.ProtocolBuffers.Serialization.dll">
+      <Name>Google.ProtocolBuffers.Serialization</Name>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -28,13 +34,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="Messages\Messages.Designer.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Messages\Mumble.proto" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="protobuf.targets" />
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildProjectDirectory), build.targets))\build.targets" />
 </Project>
