@@ -6,7 +6,7 @@ using pb = global::Google.ProtocolBuffers;
 using pbc = global::Google.ProtocolBuffers.Collections;
 using pbd = global::Google.ProtocolBuffers.Descriptors;
 using scg = global::System.Collections.Generic;
-namespace Mumble.NET {
+namespace Mumble.Messages {
   
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
   [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
@@ -19,69 +19,69 @@ namespace Mumble.NET {
     #endregion
     #region Static variables
     internal static pbd::MessageDescriptor internal__static_MumbleProto_Version__Descriptor;
-    internal static pb::FieldAccess.FieldAccessorTable<global::Mumble.NET.Version, global::Mumble.NET.Version.Builder> internal__static_MumbleProto_Version__FieldAccessorTable;
+    internal static pb::FieldAccess.FieldAccessorTable<global::Mumble.Messages.Version, global::Mumble.Messages.Version.Builder> internal__static_MumbleProto_Version__FieldAccessorTable;
     internal static pbd::MessageDescriptor internal__static_MumbleProto_UDPTunnel__Descriptor;
-    internal static pb::FieldAccess.FieldAccessorTable<global::Mumble.NET.UDPTunnel, global::Mumble.NET.UDPTunnel.Builder> internal__static_MumbleProto_UDPTunnel__FieldAccessorTable;
+    internal static pb::FieldAccess.FieldAccessorTable<global::Mumble.Messages.UDPTunnel, global::Mumble.Messages.UDPTunnel.Builder> internal__static_MumbleProto_UDPTunnel__FieldAccessorTable;
     internal static pbd::MessageDescriptor internal__static_MumbleProto_Authenticate__Descriptor;
-    internal static pb::FieldAccess.FieldAccessorTable<global::Mumble.NET.Authenticate, global::Mumble.NET.Authenticate.Builder> internal__static_MumbleProto_Authenticate__FieldAccessorTable;
+    internal static pb::FieldAccess.FieldAccessorTable<global::Mumble.Messages.Authenticate, global::Mumble.Messages.Authenticate.Builder> internal__static_MumbleProto_Authenticate__FieldAccessorTable;
     internal static pbd::MessageDescriptor internal__static_MumbleProto_Ping__Descriptor;
-    internal static pb::FieldAccess.FieldAccessorTable<global::Mumble.NET.Ping, global::Mumble.NET.Ping.Builder> internal__static_MumbleProto_Ping__FieldAccessorTable;
+    internal static pb::FieldAccess.FieldAccessorTable<global::Mumble.Messages.Ping, global::Mumble.Messages.Ping.Builder> internal__static_MumbleProto_Ping__FieldAccessorTable;
     internal static pbd::MessageDescriptor internal__static_MumbleProto_Reject__Descriptor;
-    internal static pb::FieldAccess.FieldAccessorTable<global::Mumble.NET.Reject, global::Mumble.NET.Reject.Builder> internal__static_MumbleProto_Reject__FieldAccessorTable;
+    internal static pb::FieldAccess.FieldAccessorTable<global::Mumble.Messages.Reject, global::Mumble.Messages.Reject.Builder> internal__static_MumbleProto_Reject__FieldAccessorTable;
     internal static pbd::MessageDescriptor internal__static_MumbleProto_ServerSync__Descriptor;
-    internal static pb::FieldAccess.FieldAccessorTable<global::Mumble.NET.ServerSync, global::Mumble.NET.ServerSync.Builder> internal__static_MumbleProto_ServerSync__FieldAccessorTable;
+    internal static pb::FieldAccess.FieldAccessorTable<global::Mumble.Messages.ServerSync, global::Mumble.Messages.ServerSync.Builder> internal__static_MumbleProto_ServerSync__FieldAccessorTable;
     internal static pbd::MessageDescriptor internal__static_MumbleProto_ChannelRemove__Descriptor;
-    internal static pb::FieldAccess.FieldAccessorTable<global::Mumble.NET.ChannelRemove, global::Mumble.NET.ChannelRemove.Builder> internal__static_MumbleProto_ChannelRemove__FieldAccessorTable;
+    internal static pb::FieldAccess.FieldAccessorTable<global::Mumble.Messages.ChannelRemove, global::Mumble.Messages.ChannelRemove.Builder> internal__static_MumbleProto_ChannelRemove__FieldAccessorTable;
     internal static pbd::MessageDescriptor internal__static_MumbleProto_ChannelState__Descriptor;
-    internal static pb::FieldAccess.FieldAccessorTable<global::Mumble.NET.ChannelState, global::Mumble.NET.ChannelState.Builder> internal__static_MumbleProto_ChannelState__FieldAccessorTable;
+    internal static pb::FieldAccess.FieldAccessorTable<global::Mumble.Messages.ChannelState, global::Mumble.Messages.ChannelState.Builder> internal__static_MumbleProto_ChannelState__FieldAccessorTable;
     internal static pbd::MessageDescriptor internal__static_MumbleProto_UserRemove__Descriptor;
-    internal static pb::FieldAccess.FieldAccessorTable<global::Mumble.NET.UserRemove, global::Mumble.NET.UserRemove.Builder> internal__static_MumbleProto_UserRemove__FieldAccessorTable;
+    internal static pb::FieldAccess.FieldAccessorTable<global::Mumble.Messages.UserRemove, global::Mumble.Messages.UserRemove.Builder> internal__static_MumbleProto_UserRemove__FieldAccessorTable;
     internal static pbd::MessageDescriptor internal__static_MumbleProto_UserState__Descriptor;
-    internal static pb::FieldAccess.FieldAccessorTable<global::Mumble.NET.UserState, global::Mumble.NET.UserState.Builder> internal__static_MumbleProto_UserState__FieldAccessorTable;
+    internal static pb::FieldAccess.FieldAccessorTable<global::Mumble.Messages.UserState, global::Mumble.Messages.UserState.Builder> internal__static_MumbleProto_UserState__FieldAccessorTable;
     internal static pbd::MessageDescriptor internal__static_MumbleProto_BanList__Descriptor;
-    internal static pb::FieldAccess.FieldAccessorTable<global::Mumble.NET.BanList, global::Mumble.NET.BanList.Builder> internal__static_MumbleProto_BanList__FieldAccessorTable;
+    internal static pb::FieldAccess.FieldAccessorTable<global::Mumble.Messages.BanList, global::Mumble.Messages.BanList.Builder> internal__static_MumbleProto_BanList__FieldAccessorTable;
     internal static pbd::MessageDescriptor internal__static_MumbleProto_BanList_BanEntry__Descriptor;
-    internal static pb::FieldAccess.FieldAccessorTable<global::Mumble.NET.BanList.Types.BanEntry, global::Mumble.NET.BanList.Types.BanEntry.Builder> internal__static_MumbleProto_BanList_BanEntry__FieldAccessorTable;
+    internal static pb::FieldAccess.FieldAccessorTable<global::Mumble.Messages.BanList.Types.BanEntry, global::Mumble.Messages.BanList.Types.BanEntry.Builder> internal__static_MumbleProto_BanList_BanEntry__FieldAccessorTable;
     internal static pbd::MessageDescriptor internal__static_MumbleProto_TextMessage__Descriptor;
-    internal static pb::FieldAccess.FieldAccessorTable<global::Mumble.NET.TextMessage, global::Mumble.NET.TextMessage.Builder> internal__static_MumbleProto_TextMessage__FieldAccessorTable;
+    internal static pb::FieldAccess.FieldAccessorTable<global::Mumble.Messages.TextMessage, global::Mumble.Messages.TextMessage.Builder> internal__static_MumbleProto_TextMessage__FieldAccessorTable;
     internal static pbd::MessageDescriptor internal__static_MumbleProto_PermissionDenied__Descriptor;
-    internal static pb::FieldAccess.FieldAccessorTable<global::Mumble.NET.PermissionDenied, global::Mumble.NET.PermissionDenied.Builder> internal__static_MumbleProto_PermissionDenied__FieldAccessorTable;
+    internal static pb::FieldAccess.FieldAccessorTable<global::Mumble.Messages.PermissionDenied, global::Mumble.Messages.PermissionDenied.Builder> internal__static_MumbleProto_PermissionDenied__FieldAccessorTable;
     internal static pbd::MessageDescriptor internal__static_MumbleProto_ACL__Descriptor;
-    internal static pb::FieldAccess.FieldAccessorTable<global::Mumble.NET.ACL, global::Mumble.NET.ACL.Builder> internal__static_MumbleProto_ACL__FieldAccessorTable;
+    internal static pb::FieldAccess.FieldAccessorTable<global::Mumble.Messages.ACL, global::Mumble.Messages.ACL.Builder> internal__static_MumbleProto_ACL__FieldAccessorTable;
     internal static pbd::MessageDescriptor internal__static_MumbleProto_ACL_ChanGroup__Descriptor;
-    internal static pb::FieldAccess.FieldAccessorTable<global::Mumble.NET.ACL.Types.ChanGroup, global::Mumble.NET.ACL.Types.ChanGroup.Builder> internal__static_MumbleProto_ACL_ChanGroup__FieldAccessorTable;
+    internal static pb::FieldAccess.FieldAccessorTable<global::Mumble.Messages.ACL.Types.ChanGroup, global::Mumble.Messages.ACL.Types.ChanGroup.Builder> internal__static_MumbleProto_ACL_ChanGroup__FieldAccessorTable;
     internal static pbd::MessageDescriptor internal__static_MumbleProto_ACL_ChanACL__Descriptor;
-    internal static pb::FieldAccess.FieldAccessorTable<global::Mumble.NET.ACL.Types.ChanACL, global::Mumble.NET.ACL.Types.ChanACL.Builder> internal__static_MumbleProto_ACL_ChanACL__FieldAccessorTable;
+    internal static pb::FieldAccess.FieldAccessorTable<global::Mumble.Messages.ACL.Types.ChanACL, global::Mumble.Messages.ACL.Types.ChanACL.Builder> internal__static_MumbleProto_ACL_ChanACL__FieldAccessorTable;
     internal static pbd::MessageDescriptor internal__static_MumbleProto_QueryUsers__Descriptor;
-    internal static pb::FieldAccess.FieldAccessorTable<global::Mumble.NET.QueryUsers, global::Mumble.NET.QueryUsers.Builder> internal__static_MumbleProto_QueryUsers__FieldAccessorTable;
+    internal static pb::FieldAccess.FieldAccessorTable<global::Mumble.Messages.QueryUsers, global::Mumble.Messages.QueryUsers.Builder> internal__static_MumbleProto_QueryUsers__FieldAccessorTable;
     internal static pbd::MessageDescriptor internal__static_MumbleProto_CryptSetup__Descriptor;
-    internal static pb::FieldAccess.FieldAccessorTable<global::Mumble.NET.CryptSetup, global::Mumble.NET.CryptSetup.Builder> internal__static_MumbleProto_CryptSetup__FieldAccessorTable;
+    internal static pb::FieldAccess.FieldAccessorTable<global::Mumble.Messages.CryptSetup, global::Mumble.Messages.CryptSetup.Builder> internal__static_MumbleProto_CryptSetup__FieldAccessorTable;
     internal static pbd::MessageDescriptor internal__static_MumbleProto_ContextActionModify__Descriptor;
-    internal static pb::FieldAccess.FieldAccessorTable<global::Mumble.NET.ContextActionModify, global::Mumble.NET.ContextActionModify.Builder> internal__static_MumbleProto_ContextActionModify__FieldAccessorTable;
+    internal static pb::FieldAccess.FieldAccessorTable<global::Mumble.Messages.ContextActionModify, global::Mumble.Messages.ContextActionModify.Builder> internal__static_MumbleProto_ContextActionModify__FieldAccessorTable;
     internal static pbd::MessageDescriptor internal__static_MumbleProto_ContextAction__Descriptor;
-    internal static pb::FieldAccess.FieldAccessorTable<global::Mumble.NET.ContextAction, global::Mumble.NET.ContextAction.Builder> internal__static_MumbleProto_ContextAction__FieldAccessorTable;
+    internal static pb::FieldAccess.FieldAccessorTable<global::Mumble.Messages.ContextAction, global::Mumble.Messages.ContextAction.Builder> internal__static_MumbleProto_ContextAction__FieldAccessorTable;
     internal static pbd::MessageDescriptor internal__static_MumbleProto_UserList__Descriptor;
-    internal static pb::FieldAccess.FieldAccessorTable<global::Mumble.NET.UserList, global::Mumble.NET.UserList.Builder> internal__static_MumbleProto_UserList__FieldAccessorTable;
+    internal static pb::FieldAccess.FieldAccessorTable<global::Mumble.Messages.UserList, global::Mumble.Messages.UserList.Builder> internal__static_MumbleProto_UserList__FieldAccessorTable;
     internal static pbd::MessageDescriptor internal__static_MumbleProto_UserList_User__Descriptor;
-    internal static pb::FieldAccess.FieldAccessorTable<global::Mumble.NET.UserList.Types.User, global::Mumble.NET.UserList.Types.User.Builder> internal__static_MumbleProto_UserList_User__FieldAccessorTable;
+    internal static pb::FieldAccess.FieldAccessorTable<global::Mumble.Messages.UserList.Types.User, global::Mumble.Messages.UserList.Types.User.Builder> internal__static_MumbleProto_UserList_User__FieldAccessorTable;
     internal static pbd::MessageDescriptor internal__static_MumbleProto_VoiceTarget__Descriptor;
-    internal static pb::FieldAccess.FieldAccessorTable<global::Mumble.NET.VoiceTarget, global::Mumble.NET.VoiceTarget.Builder> internal__static_MumbleProto_VoiceTarget__FieldAccessorTable;
+    internal static pb::FieldAccess.FieldAccessorTable<global::Mumble.Messages.VoiceTarget, global::Mumble.Messages.VoiceTarget.Builder> internal__static_MumbleProto_VoiceTarget__FieldAccessorTable;
     internal static pbd::MessageDescriptor internal__static_MumbleProto_VoiceTarget_Target__Descriptor;
-    internal static pb::FieldAccess.FieldAccessorTable<global::Mumble.NET.VoiceTarget.Types.Target, global::Mumble.NET.VoiceTarget.Types.Target.Builder> internal__static_MumbleProto_VoiceTarget_Target__FieldAccessorTable;
+    internal static pb::FieldAccess.FieldAccessorTable<global::Mumble.Messages.VoiceTarget.Types.Target, global::Mumble.Messages.VoiceTarget.Types.Target.Builder> internal__static_MumbleProto_VoiceTarget_Target__FieldAccessorTable;
     internal static pbd::MessageDescriptor internal__static_MumbleProto_PermissionQuery__Descriptor;
-    internal static pb::FieldAccess.FieldAccessorTable<global::Mumble.NET.PermissionQuery, global::Mumble.NET.PermissionQuery.Builder> internal__static_MumbleProto_PermissionQuery__FieldAccessorTable;
+    internal static pb::FieldAccess.FieldAccessorTable<global::Mumble.Messages.PermissionQuery, global::Mumble.Messages.PermissionQuery.Builder> internal__static_MumbleProto_PermissionQuery__FieldAccessorTable;
     internal static pbd::MessageDescriptor internal__static_MumbleProto_CodecVersion__Descriptor;
-    internal static pb::FieldAccess.FieldAccessorTable<global::Mumble.NET.CodecVersion, global::Mumble.NET.CodecVersion.Builder> internal__static_MumbleProto_CodecVersion__FieldAccessorTable;
+    internal static pb::FieldAccess.FieldAccessorTable<global::Mumble.Messages.CodecVersion, global::Mumble.Messages.CodecVersion.Builder> internal__static_MumbleProto_CodecVersion__FieldAccessorTable;
     internal static pbd::MessageDescriptor internal__static_MumbleProto_UserStats__Descriptor;
-    internal static pb::FieldAccess.FieldAccessorTable<global::Mumble.NET.UserStats, global::Mumble.NET.UserStats.Builder> internal__static_MumbleProto_UserStats__FieldAccessorTable;
+    internal static pb::FieldAccess.FieldAccessorTable<global::Mumble.Messages.UserStats, global::Mumble.Messages.UserStats.Builder> internal__static_MumbleProto_UserStats__FieldAccessorTable;
     internal static pbd::MessageDescriptor internal__static_MumbleProto_UserStats_Stats__Descriptor;
-    internal static pb::FieldAccess.FieldAccessorTable<global::Mumble.NET.UserStats.Types.Stats, global::Mumble.NET.UserStats.Types.Stats.Builder> internal__static_MumbleProto_UserStats_Stats__FieldAccessorTable;
+    internal static pb::FieldAccess.FieldAccessorTable<global::Mumble.Messages.UserStats.Types.Stats, global::Mumble.Messages.UserStats.Types.Stats.Builder> internal__static_MumbleProto_UserStats_Stats__FieldAccessorTable;
     internal static pbd::MessageDescriptor internal__static_MumbleProto_RequestBlob__Descriptor;
-    internal static pb::FieldAccess.FieldAccessorTable<global::Mumble.NET.RequestBlob, global::Mumble.NET.RequestBlob.Builder> internal__static_MumbleProto_RequestBlob__FieldAccessorTable;
+    internal static pb::FieldAccess.FieldAccessorTable<global::Mumble.Messages.RequestBlob, global::Mumble.Messages.RequestBlob.Builder> internal__static_MumbleProto_RequestBlob__FieldAccessorTable;
     internal static pbd::MessageDescriptor internal__static_MumbleProto_ServerConfig__Descriptor;
-    internal static pb::FieldAccess.FieldAccessorTable<global::Mumble.NET.ServerConfig, global::Mumble.NET.ServerConfig.Builder> internal__static_MumbleProto_ServerConfig__FieldAccessorTable;
+    internal static pb::FieldAccess.FieldAccessorTable<global::Mumble.Messages.ServerConfig, global::Mumble.Messages.ServerConfig.Builder> internal__static_MumbleProto_ServerConfig__FieldAccessorTable;
     internal static pbd::MessageDescriptor internal__static_MumbleProto_SuggestConfig__Descriptor;
-    internal static pb::FieldAccess.FieldAccessorTable<global::Mumble.NET.SuggestConfig, global::Mumble.NET.SuggestConfig.Builder> internal__static_MumbleProto_SuggestConfig__FieldAccessorTable;
+    internal static pb::FieldAccess.FieldAccessorTable<global::Mumble.Messages.SuggestConfig, global::Mumble.Messages.SuggestConfig.Builder> internal__static_MumbleProto_SuggestConfig__FieldAccessorTable;
     #endregion
     #region Descriptor
     public static pbd::FileDescriptor Descriptor {
@@ -194,131 +194,131 @@ namespace Mumble.NET {
         descriptor = root;
         internal__static_MumbleProto_Version__Descriptor = Descriptor.MessageTypes[0];
         internal__static_MumbleProto_Version__FieldAccessorTable = 
-            new pb::FieldAccess.FieldAccessorTable<global::Mumble.NET.Version, global::Mumble.NET.Version.Builder>(internal__static_MumbleProto_Version__Descriptor,
+            new pb::FieldAccess.FieldAccessorTable<global::Mumble.Messages.Version, global::Mumble.Messages.Version.Builder>(internal__static_MumbleProto_Version__Descriptor,
                 new string[] { "Version_", "Release", "Os", "OsVersion", });
         internal__static_MumbleProto_UDPTunnel__Descriptor = Descriptor.MessageTypes[1];
         internal__static_MumbleProto_UDPTunnel__FieldAccessorTable = 
-            new pb::FieldAccess.FieldAccessorTable<global::Mumble.NET.UDPTunnel, global::Mumble.NET.UDPTunnel.Builder>(internal__static_MumbleProto_UDPTunnel__Descriptor,
+            new pb::FieldAccess.FieldAccessorTable<global::Mumble.Messages.UDPTunnel, global::Mumble.Messages.UDPTunnel.Builder>(internal__static_MumbleProto_UDPTunnel__Descriptor,
                 new string[] { "Packet", });
         internal__static_MumbleProto_Authenticate__Descriptor = Descriptor.MessageTypes[2];
         internal__static_MumbleProto_Authenticate__FieldAccessorTable = 
-            new pb::FieldAccess.FieldAccessorTable<global::Mumble.NET.Authenticate, global::Mumble.NET.Authenticate.Builder>(internal__static_MumbleProto_Authenticate__Descriptor,
+            new pb::FieldAccess.FieldAccessorTable<global::Mumble.Messages.Authenticate, global::Mumble.Messages.Authenticate.Builder>(internal__static_MumbleProto_Authenticate__Descriptor,
                 new string[] { "Username", "Password", "Tokens", "CeltVersions", "Opus", });
         internal__static_MumbleProto_Ping__Descriptor = Descriptor.MessageTypes[3];
         internal__static_MumbleProto_Ping__FieldAccessorTable = 
-            new pb::FieldAccess.FieldAccessorTable<global::Mumble.NET.Ping, global::Mumble.NET.Ping.Builder>(internal__static_MumbleProto_Ping__Descriptor,
+            new pb::FieldAccess.FieldAccessorTable<global::Mumble.Messages.Ping, global::Mumble.Messages.Ping.Builder>(internal__static_MumbleProto_Ping__Descriptor,
                 new string[] { "Timestamp", "Good", "Late", "Lost", "Resync", "UdpPackets", "TcpPackets", "UdpPingAvg", "UdpPingVar", "TcpPingAvg", "TcpPingVar", });
         internal__static_MumbleProto_Reject__Descriptor = Descriptor.MessageTypes[4];
         internal__static_MumbleProto_Reject__FieldAccessorTable = 
-            new pb::FieldAccess.FieldAccessorTable<global::Mumble.NET.Reject, global::Mumble.NET.Reject.Builder>(internal__static_MumbleProto_Reject__Descriptor,
+            new pb::FieldAccess.FieldAccessorTable<global::Mumble.Messages.Reject, global::Mumble.Messages.Reject.Builder>(internal__static_MumbleProto_Reject__Descriptor,
                 new string[] { "Type", "Reason", });
         internal__static_MumbleProto_ServerSync__Descriptor = Descriptor.MessageTypes[5];
         internal__static_MumbleProto_ServerSync__FieldAccessorTable = 
-            new pb::FieldAccess.FieldAccessorTable<global::Mumble.NET.ServerSync, global::Mumble.NET.ServerSync.Builder>(internal__static_MumbleProto_ServerSync__Descriptor,
+            new pb::FieldAccess.FieldAccessorTable<global::Mumble.Messages.ServerSync, global::Mumble.Messages.ServerSync.Builder>(internal__static_MumbleProto_ServerSync__Descriptor,
                 new string[] { "Session", "MaxBandwidth", "WelcomeText", "Permissions", });
         internal__static_MumbleProto_ChannelRemove__Descriptor = Descriptor.MessageTypes[6];
         internal__static_MumbleProto_ChannelRemove__FieldAccessorTable = 
-            new pb::FieldAccess.FieldAccessorTable<global::Mumble.NET.ChannelRemove, global::Mumble.NET.ChannelRemove.Builder>(internal__static_MumbleProto_ChannelRemove__Descriptor,
+            new pb::FieldAccess.FieldAccessorTable<global::Mumble.Messages.ChannelRemove, global::Mumble.Messages.ChannelRemove.Builder>(internal__static_MumbleProto_ChannelRemove__Descriptor,
                 new string[] { "ChannelId", });
         internal__static_MumbleProto_ChannelState__Descriptor = Descriptor.MessageTypes[7];
         internal__static_MumbleProto_ChannelState__FieldAccessorTable = 
-            new pb::FieldAccess.FieldAccessorTable<global::Mumble.NET.ChannelState, global::Mumble.NET.ChannelState.Builder>(internal__static_MumbleProto_ChannelState__Descriptor,
+            new pb::FieldAccess.FieldAccessorTable<global::Mumble.Messages.ChannelState, global::Mumble.Messages.ChannelState.Builder>(internal__static_MumbleProto_ChannelState__Descriptor,
                 new string[] { "ChannelId", "Parent", "Name", "Links", "Description", "LinksAdd", "LinksRemove", "Temporary", "Position", "DescriptionHash", });
         internal__static_MumbleProto_UserRemove__Descriptor = Descriptor.MessageTypes[8];
         internal__static_MumbleProto_UserRemove__FieldAccessorTable = 
-            new pb::FieldAccess.FieldAccessorTable<global::Mumble.NET.UserRemove, global::Mumble.NET.UserRemove.Builder>(internal__static_MumbleProto_UserRemove__Descriptor,
+            new pb::FieldAccess.FieldAccessorTable<global::Mumble.Messages.UserRemove, global::Mumble.Messages.UserRemove.Builder>(internal__static_MumbleProto_UserRemove__Descriptor,
                 new string[] { "Session", "Actor", "Reason", "Ban", });
         internal__static_MumbleProto_UserState__Descriptor = Descriptor.MessageTypes[9];
         internal__static_MumbleProto_UserState__FieldAccessorTable = 
-            new pb::FieldAccess.FieldAccessorTable<global::Mumble.NET.UserState, global::Mumble.NET.UserState.Builder>(internal__static_MumbleProto_UserState__Descriptor,
+            new pb::FieldAccess.FieldAccessorTable<global::Mumble.Messages.UserState, global::Mumble.Messages.UserState.Builder>(internal__static_MumbleProto_UserState__Descriptor,
                 new string[] { "Session", "Actor", "Name", "UserId", "ChannelId", "Mute", "Deaf", "Suppress", "SelfMute", "SelfDeaf", "Texture", "PluginContext", "PluginIdentity", "Comment", "Hash", "CommentHash", "TextureHash", "PrioritySpeaker", "Recording", });
         internal__static_MumbleProto_BanList__Descriptor = Descriptor.MessageTypes[10];
         internal__static_MumbleProto_BanList__FieldAccessorTable = 
-            new pb::FieldAccess.FieldAccessorTable<global::Mumble.NET.BanList, global::Mumble.NET.BanList.Builder>(internal__static_MumbleProto_BanList__Descriptor,
+            new pb::FieldAccess.FieldAccessorTable<global::Mumble.Messages.BanList, global::Mumble.Messages.BanList.Builder>(internal__static_MumbleProto_BanList__Descriptor,
                 new string[] { "Bans", "Query", });
         internal__static_MumbleProto_BanList_BanEntry__Descriptor = internal__static_MumbleProto_BanList__Descriptor.NestedTypes[0];
         internal__static_MumbleProto_BanList_BanEntry__FieldAccessorTable = 
-            new pb::FieldAccess.FieldAccessorTable<global::Mumble.NET.BanList.Types.BanEntry, global::Mumble.NET.BanList.Types.BanEntry.Builder>(internal__static_MumbleProto_BanList_BanEntry__Descriptor,
+            new pb::FieldAccess.FieldAccessorTable<global::Mumble.Messages.BanList.Types.BanEntry, global::Mumble.Messages.BanList.Types.BanEntry.Builder>(internal__static_MumbleProto_BanList_BanEntry__Descriptor,
                 new string[] { "Address", "Mask", "Name", "Hash", "Reason", "Start", "Duration", });
         internal__static_MumbleProto_TextMessage__Descriptor = Descriptor.MessageTypes[11];
         internal__static_MumbleProto_TextMessage__FieldAccessorTable = 
-            new pb::FieldAccess.FieldAccessorTable<global::Mumble.NET.TextMessage, global::Mumble.NET.TextMessage.Builder>(internal__static_MumbleProto_TextMessage__Descriptor,
+            new pb::FieldAccess.FieldAccessorTable<global::Mumble.Messages.TextMessage, global::Mumble.Messages.TextMessage.Builder>(internal__static_MumbleProto_TextMessage__Descriptor,
                 new string[] { "Actor", "Session", "ChannelId", "TreeId", "Message", });
         internal__static_MumbleProto_PermissionDenied__Descriptor = Descriptor.MessageTypes[12];
         internal__static_MumbleProto_PermissionDenied__FieldAccessorTable = 
-            new pb::FieldAccess.FieldAccessorTable<global::Mumble.NET.PermissionDenied, global::Mumble.NET.PermissionDenied.Builder>(internal__static_MumbleProto_PermissionDenied__Descriptor,
+            new pb::FieldAccess.FieldAccessorTable<global::Mumble.Messages.PermissionDenied, global::Mumble.Messages.PermissionDenied.Builder>(internal__static_MumbleProto_PermissionDenied__Descriptor,
                 new string[] { "Permission", "ChannelId", "Session", "Reason", "Type", "Name", });
         internal__static_MumbleProto_ACL__Descriptor = Descriptor.MessageTypes[13];
         internal__static_MumbleProto_ACL__FieldAccessorTable = 
-            new pb::FieldAccess.FieldAccessorTable<global::Mumble.NET.ACL, global::Mumble.NET.ACL.Builder>(internal__static_MumbleProto_ACL__Descriptor,
+            new pb::FieldAccess.FieldAccessorTable<global::Mumble.Messages.ACL, global::Mumble.Messages.ACL.Builder>(internal__static_MumbleProto_ACL__Descriptor,
                 new string[] { "ChannelId", "InheritAcls", "Groups", "Acls", "Query", });
         internal__static_MumbleProto_ACL_ChanGroup__Descriptor = internal__static_MumbleProto_ACL__Descriptor.NestedTypes[0];
         internal__static_MumbleProto_ACL_ChanGroup__FieldAccessorTable = 
-            new pb::FieldAccess.FieldAccessorTable<global::Mumble.NET.ACL.Types.ChanGroup, global::Mumble.NET.ACL.Types.ChanGroup.Builder>(internal__static_MumbleProto_ACL_ChanGroup__Descriptor,
+            new pb::FieldAccess.FieldAccessorTable<global::Mumble.Messages.ACL.Types.ChanGroup, global::Mumble.Messages.ACL.Types.ChanGroup.Builder>(internal__static_MumbleProto_ACL_ChanGroup__Descriptor,
                 new string[] { "Name", "Inherited", "Inherit", "Inheritable", "Add", "Remove", "InheritedMembers", });
         internal__static_MumbleProto_ACL_ChanACL__Descriptor = internal__static_MumbleProto_ACL__Descriptor.NestedTypes[1];
         internal__static_MumbleProto_ACL_ChanACL__FieldAccessorTable = 
-            new pb::FieldAccess.FieldAccessorTable<global::Mumble.NET.ACL.Types.ChanACL, global::Mumble.NET.ACL.Types.ChanACL.Builder>(internal__static_MumbleProto_ACL_ChanACL__Descriptor,
+            new pb::FieldAccess.FieldAccessorTable<global::Mumble.Messages.ACL.Types.ChanACL, global::Mumble.Messages.ACL.Types.ChanACL.Builder>(internal__static_MumbleProto_ACL_ChanACL__Descriptor,
                 new string[] { "ApplyHere", "ApplySubs", "Inherited", "UserId", "Group", "Grant", "Deny", });
         internal__static_MumbleProto_QueryUsers__Descriptor = Descriptor.MessageTypes[14];
         internal__static_MumbleProto_QueryUsers__FieldAccessorTable = 
-            new pb::FieldAccess.FieldAccessorTable<global::Mumble.NET.QueryUsers, global::Mumble.NET.QueryUsers.Builder>(internal__static_MumbleProto_QueryUsers__Descriptor,
+            new pb::FieldAccess.FieldAccessorTable<global::Mumble.Messages.QueryUsers, global::Mumble.Messages.QueryUsers.Builder>(internal__static_MumbleProto_QueryUsers__Descriptor,
                 new string[] { "Ids", "Names", });
         internal__static_MumbleProto_CryptSetup__Descriptor = Descriptor.MessageTypes[15];
         internal__static_MumbleProto_CryptSetup__FieldAccessorTable = 
-            new pb::FieldAccess.FieldAccessorTable<global::Mumble.NET.CryptSetup, global::Mumble.NET.CryptSetup.Builder>(internal__static_MumbleProto_CryptSetup__Descriptor,
+            new pb::FieldAccess.FieldAccessorTable<global::Mumble.Messages.CryptSetup, global::Mumble.Messages.CryptSetup.Builder>(internal__static_MumbleProto_CryptSetup__Descriptor,
                 new string[] { "Key", "ClientNonce", "ServerNonce", });
         internal__static_MumbleProto_ContextActionModify__Descriptor = Descriptor.MessageTypes[16];
         internal__static_MumbleProto_ContextActionModify__FieldAccessorTable = 
-            new pb::FieldAccess.FieldAccessorTable<global::Mumble.NET.ContextActionModify, global::Mumble.NET.ContextActionModify.Builder>(internal__static_MumbleProto_ContextActionModify__Descriptor,
+            new pb::FieldAccess.FieldAccessorTable<global::Mumble.Messages.ContextActionModify, global::Mumble.Messages.ContextActionModify.Builder>(internal__static_MumbleProto_ContextActionModify__Descriptor,
                 new string[] { "Action", "Text", "Context", "Operation", });
         internal__static_MumbleProto_ContextAction__Descriptor = Descriptor.MessageTypes[17];
         internal__static_MumbleProto_ContextAction__FieldAccessorTable = 
-            new pb::FieldAccess.FieldAccessorTable<global::Mumble.NET.ContextAction, global::Mumble.NET.ContextAction.Builder>(internal__static_MumbleProto_ContextAction__Descriptor,
+            new pb::FieldAccess.FieldAccessorTable<global::Mumble.Messages.ContextAction, global::Mumble.Messages.ContextAction.Builder>(internal__static_MumbleProto_ContextAction__Descriptor,
                 new string[] { "Session", "ChannelId", "Action", });
         internal__static_MumbleProto_UserList__Descriptor = Descriptor.MessageTypes[18];
         internal__static_MumbleProto_UserList__FieldAccessorTable = 
-            new pb::FieldAccess.FieldAccessorTable<global::Mumble.NET.UserList, global::Mumble.NET.UserList.Builder>(internal__static_MumbleProto_UserList__Descriptor,
+            new pb::FieldAccess.FieldAccessorTable<global::Mumble.Messages.UserList, global::Mumble.Messages.UserList.Builder>(internal__static_MumbleProto_UserList__Descriptor,
                 new string[] { "Users", });
         internal__static_MumbleProto_UserList_User__Descriptor = internal__static_MumbleProto_UserList__Descriptor.NestedTypes[0];
         internal__static_MumbleProto_UserList_User__FieldAccessorTable = 
-            new pb::FieldAccess.FieldAccessorTable<global::Mumble.NET.UserList.Types.User, global::Mumble.NET.UserList.Types.User.Builder>(internal__static_MumbleProto_UserList_User__Descriptor,
+            new pb::FieldAccess.FieldAccessorTable<global::Mumble.Messages.UserList.Types.User, global::Mumble.Messages.UserList.Types.User.Builder>(internal__static_MumbleProto_UserList_User__Descriptor,
                 new string[] { "UserId", "Name", "LastSeen", "LastChannel", });
         internal__static_MumbleProto_VoiceTarget__Descriptor = Descriptor.MessageTypes[19];
         internal__static_MumbleProto_VoiceTarget__FieldAccessorTable = 
-            new pb::FieldAccess.FieldAccessorTable<global::Mumble.NET.VoiceTarget, global::Mumble.NET.VoiceTarget.Builder>(internal__static_MumbleProto_VoiceTarget__Descriptor,
+            new pb::FieldAccess.FieldAccessorTable<global::Mumble.Messages.VoiceTarget, global::Mumble.Messages.VoiceTarget.Builder>(internal__static_MumbleProto_VoiceTarget__Descriptor,
                 new string[] { "Id", "Targets", });
         internal__static_MumbleProto_VoiceTarget_Target__Descriptor = internal__static_MumbleProto_VoiceTarget__Descriptor.NestedTypes[0];
         internal__static_MumbleProto_VoiceTarget_Target__FieldAccessorTable = 
-            new pb::FieldAccess.FieldAccessorTable<global::Mumble.NET.VoiceTarget.Types.Target, global::Mumble.NET.VoiceTarget.Types.Target.Builder>(internal__static_MumbleProto_VoiceTarget_Target__Descriptor,
+            new pb::FieldAccess.FieldAccessorTable<global::Mumble.Messages.VoiceTarget.Types.Target, global::Mumble.Messages.VoiceTarget.Types.Target.Builder>(internal__static_MumbleProto_VoiceTarget_Target__Descriptor,
                 new string[] { "Session", "ChannelId", "Group", "Links", "Children", });
         internal__static_MumbleProto_PermissionQuery__Descriptor = Descriptor.MessageTypes[20];
         internal__static_MumbleProto_PermissionQuery__FieldAccessorTable = 
-            new pb::FieldAccess.FieldAccessorTable<global::Mumble.NET.PermissionQuery, global::Mumble.NET.PermissionQuery.Builder>(internal__static_MumbleProto_PermissionQuery__Descriptor,
+            new pb::FieldAccess.FieldAccessorTable<global::Mumble.Messages.PermissionQuery, global::Mumble.Messages.PermissionQuery.Builder>(internal__static_MumbleProto_PermissionQuery__Descriptor,
                 new string[] { "ChannelId", "Permissions", "Flush", });
         internal__static_MumbleProto_CodecVersion__Descriptor = Descriptor.MessageTypes[21];
         internal__static_MumbleProto_CodecVersion__FieldAccessorTable = 
-            new pb::FieldAccess.FieldAccessorTable<global::Mumble.NET.CodecVersion, global::Mumble.NET.CodecVersion.Builder>(internal__static_MumbleProto_CodecVersion__Descriptor,
+            new pb::FieldAccess.FieldAccessorTable<global::Mumble.Messages.CodecVersion, global::Mumble.Messages.CodecVersion.Builder>(internal__static_MumbleProto_CodecVersion__Descriptor,
                 new string[] { "Alpha", "Beta", "PreferAlpha", "Opus", });
         internal__static_MumbleProto_UserStats__Descriptor = Descriptor.MessageTypes[22];
         internal__static_MumbleProto_UserStats__FieldAccessorTable = 
-            new pb::FieldAccess.FieldAccessorTable<global::Mumble.NET.UserStats, global::Mumble.NET.UserStats.Builder>(internal__static_MumbleProto_UserStats__Descriptor,
+            new pb::FieldAccess.FieldAccessorTable<global::Mumble.Messages.UserStats, global::Mumble.Messages.UserStats.Builder>(internal__static_MumbleProto_UserStats__Descriptor,
                 new string[] { "Session", "StatsOnly", "Certificates", "FromClient", "FromServer", "UdpPackets", "TcpPackets", "UdpPingAvg", "UdpPingVar", "TcpPingAvg", "TcpPingVar", "Version", "CeltVersions", "Address", "Bandwidth", "Onlinesecs", "Idlesecs", "StrongCertificate", "Opus", });
         internal__static_MumbleProto_UserStats_Stats__Descriptor = internal__static_MumbleProto_UserStats__Descriptor.NestedTypes[0];
         internal__static_MumbleProto_UserStats_Stats__FieldAccessorTable = 
-            new pb::FieldAccess.FieldAccessorTable<global::Mumble.NET.UserStats.Types.Stats, global::Mumble.NET.UserStats.Types.Stats.Builder>(internal__static_MumbleProto_UserStats_Stats__Descriptor,
+            new pb::FieldAccess.FieldAccessorTable<global::Mumble.Messages.UserStats.Types.Stats, global::Mumble.Messages.UserStats.Types.Stats.Builder>(internal__static_MumbleProto_UserStats_Stats__Descriptor,
                 new string[] { "Good", "Late", "Lost", "Resync", });
         internal__static_MumbleProto_RequestBlob__Descriptor = Descriptor.MessageTypes[23];
         internal__static_MumbleProto_RequestBlob__FieldAccessorTable = 
-            new pb::FieldAccess.FieldAccessorTable<global::Mumble.NET.RequestBlob, global::Mumble.NET.RequestBlob.Builder>(internal__static_MumbleProto_RequestBlob__Descriptor,
+            new pb::FieldAccess.FieldAccessorTable<global::Mumble.Messages.RequestBlob, global::Mumble.Messages.RequestBlob.Builder>(internal__static_MumbleProto_RequestBlob__Descriptor,
                 new string[] { "SessionTexture", "SessionComment", "ChannelDescription", });
         internal__static_MumbleProto_ServerConfig__Descriptor = Descriptor.MessageTypes[24];
         internal__static_MumbleProto_ServerConfig__FieldAccessorTable = 
-            new pb::FieldAccess.FieldAccessorTable<global::Mumble.NET.ServerConfig, global::Mumble.NET.ServerConfig.Builder>(internal__static_MumbleProto_ServerConfig__Descriptor,
+            new pb::FieldAccess.FieldAccessorTable<global::Mumble.Messages.ServerConfig, global::Mumble.Messages.ServerConfig.Builder>(internal__static_MumbleProto_ServerConfig__Descriptor,
                 new string[] { "MaxBandwidth", "WelcomeText", "AllowHtml", "MessageLength", "ImageMessageLength", });
         internal__static_MumbleProto_SuggestConfig__Descriptor = Descriptor.MessageTypes[25];
         internal__static_MumbleProto_SuggestConfig__FieldAccessorTable = 
-            new pb::FieldAccess.FieldAccessorTable<global::Mumble.NET.SuggestConfig, global::Mumble.NET.SuggestConfig.Builder>(internal__static_MumbleProto_SuggestConfig__Descriptor,
+            new pb::FieldAccess.FieldAccessorTable<global::Mumble.Messages.SuggestConfig, global::Mumble.Messages.SuggestConfig.Builder>(internal__static_MumbleProto_SuggestConfig__Descriptor,
                 new string[] { "Version", "Positional", "PushToTalk", });
         return null;
       };
@@ -351,11 +351,11 @@ namespace Mumble.NET {
     }
     
     public static pbd::MessageDescriptor Descriptor {
-      get { return global::Mumble.NET.Messages.internal__static_MumbleProto_Version__Descriptor; }
+      get { return global::Mumble.Messages.Messages.internal__static_MumbleProto_Version__Descriptor; }
     }
     
     protected override pb::FieldAccess.FieldAccessorTable<Version, Version.Builder> InternalFieldAccessors {
-      get { return global::Mumble.NET.Messages.internal__static_MumbleProto_Version__FieldAccessorTable; }
+      get { return global::Mumble.Messages.Messages.internal__static_MumbleProto_Version__FieldAccessorTable; }
     }
     
     public const int Version_FieldNumber = 1;
@@ -546,11 +546,11 @@ namespace Mumble.NET {
       }
       
       public override pbd::MessageDescriptor DescriptorForType {
-        get { return global::Mumble.NET.Version.Descriptor; }
+        get { return global::Mumble.Messages.Version.Descriptor; }
       }
       
       public override Version DefaultInstanceForType {
-        get { return global::Mumble.NET.Version.DefaultInstance; }
+        get { return global::Mumble.Messages.Version.DefaultInstance; }
       }
       
       public override Version BuildPartial() {
@@ -571,7 +571,7 @@ namespace Mumble.NET {
       }
       
       public override Builder MergeFrom(Version other) {
-        if (other == global::Mumble.NET.Version.DefaultInstance) return this;
+        if (other == global::Mumble.Messages.Version.DefaultInstance) return this;
         PrepareBuilder();
         if (other.HasVersion_) {
           Version_ = other.Version_;
@@ -740,7 +740,7 @@ namespace Mumble.NET {
       }
     }
     static Version() {
-      object.ReferenceEquals(global::Mumble.NET.Messages.Descriptor, null);
+      object.ReferenceEquals(global::Mumble.Messages.Messages.Descriptor, null);
     }
   }
   
@@ -765,11 +765,11 @@ namespace Mumble.NET {
     }
     
     public static pbd::MessageDescriptor Descriptor {
-      get { return global::Mumble.NET.Messages.internal__static_MumbleProto_UDPTunnel__Descriptor; }
+      get { return global::Mumble.Messages.Messages.internal__static_MumbleProto_UDPTunnel__Descriptor; }
     }
     
     protected override pb::FieldAccess.FieldAccessorTable<UDPTunnel, UDPTunnel.Builder> InternalFieldAccessors {
-      get { return global::Mumble.NET.Messages.internal__static_MumbleProto_UDPTunnel__FieldAccessorTable; }
+      get { return global::Mumble.Messages.Messages.internal__static_MumbleProto_UDPTunnel__FieldAccessorTable; }
     }
     
     public const int PacketFieldNumber = 1;
@@ -912,11 +912,11 @@ namespace Mumble.NET {
       }
       
       public override pbd::MessageDescriptor DescriptorForType {
-        get { return global::Mumble.NET.UDPTunnel.Descriptor; }
+        get { return global::Mumble.Messages.UDPTunnel.Descriptor; }
       }
       
       public override UDPTunnel DefaultInstanceForType {
-        get { return global::Mumble.NET.UDPTunnel.DefaultInstance; }
+        get { return global::Mumble.Messages.UDPTunnel.DefaultInstance; }
       }
       
       public override UDPTunnel BuildPartial() {
@@ -937,7 +937,7 @@ namespace Mumble.NET {
       }
       
       public override Builder MergeFrom(UDPTunnel other) {
-        if (other == global::Mumble.NET.UDPTunnel.DefaultInstance) return this;
+        if (other == global::Mumble.Messages.UDPTunnel.DefaultInstance) return this;
         PrepareBuilder();
         if (other.HasPacket) {
           Packet = other.Packet;
@@ -1021,7 +1021,7 @@ namespace Mumble.NET {
       }
     }
     static UDPTunnel() {
-      object.ReferenceEquals(global::Mumble.NET.Messages.Descriptor, null);
+      object.ReferenceEquals(global::Mumble.Messages.Messages.Descriptor, null);
     }
   }
   
@@ -1046,11 +1046,11 @@ namespace Mumble.NET {
     }
     
     public static pbd::MessageDescriptor Descriptor {
-      get { return global::Mumble.NET.Messages.internal__static_MumbleProto_Authenticate__Descriptor; }
+      get { return global::Mumble.Messages.Messages.internal__static_MumbleProto_Authenticate__Descriptor; }
     }
     
     protected override pb::FieldAccess.FieldAccessorTable<Authenticate, Authenticate.Builder> InternalFieldAccessors {
-      get { return global::Mumble.NET.Messages.internal__static_MumbleProto_Authenticate__FieldAccessorTable; }
+      get { return global::Mumble.Messages.Messages.internal__static_MumbleProto_Authenticate__FieldAccessorTable; }
     }
     
     public const int UsernameFieldNumber = 1;
@@ -1272,11 +1272,11 @@ namespace Mumble.NET {
       }
       
       public override pbd::MessageDescriptor DescriptorForType {
-        get { return global::Mumble.NET.Authenticate.Descriptor; }
+        get { return global::Mumble.Messages.Authenticate.Descriptor; }
       }
       
       public override Authenticate DefaultInstanceForType {
-        get { return global::Mumble.NET.Authenticate.DefaultInstance; }
+        get { return global::Mumble.Messages.Authenticate.DefaultInstance; }
       }
       
       public override Authenticate BuildPartial() {
@@ -1297,7 +1297,7 @@ namespace Mumble.NET {
       }
       
       public override Builder MergeFrom(Authenticate other) {
-        if (other == global::Mumble.NET.Authenticate.DefaultInstance) return this;
+        if (other == global::Mumble.Messages.Authenticate.DefaultInstance) return this;
         PrepareBuilder();
         if (other.HasUsername) {
           Username = other.Username;
@@ -1513,7 +1513,7 @@ namespace Mumble.NET {
       }
     }
     static Authenticate() {
-      object.ReferenceEquals(global::Mumble.NET.Messages.Descriptor, null);
+      object.ReferenceEquals(global::Mumble.Messages.Messages.Descriptor, null);
     }
   }
   
@@ -1538,11 +1538,11 @@ namespace Mumble.NET {
     }
     
     public static pbd::MessageDescriptor Descriptor {
-      get { return global::Mumble.NET.Messages.internal__static_MumbleProto_Ping__Descriptor; }
+      get { return global::Mumble.Messages.Messages.internal__static_MumbleProto_Ping__Descriptor; }
     }
     
     protected override pb::FieldAccess.FieldAccessorTable<Ping, Ping.Builder> InternalFieldAccessors {
-      get { return global::Mumble.NET.Messages.internal__static_MumbleProto_Ping__FieldAccessorTable; }
+      get { return global::Mumble.Messages.Messages.internal__static_MumbleProto_Ping__FieldAccessorTable; }
     }
     
     public const int TimestampFieldNumber = 1;
@@ -1851,11 +1851,11 @@ namespace Mumble.NET {
       }
       
       public override pbd::MessageDescriptor DescriptorForType {
-        get { return global::Mumble.NET.Ping.Descriptor; }
+        get { return global::Mumble.Messages.Ping.Descriptor; }
       }
       
       public override Ping DefaultInstanceForType {
-        get { return global::Mumble.NET.Ping.DefaultInstance; }
+        get { return global::Mumble.Messages.Ping.DefaultInstance; }
       }
       
       public override Ping BuildPartial() {
@@ -1876,7 +1876,7 @@ namespace Mumble.NET {
       }
       
       public override Builder MergeFrom(Ping other) {
-        if (other == global::Mumble.NET.Ping.DefaultInstance) return this;
+        if (other == global::Mumble.Messages.Ping.DefaultInstance) return this;
         PrepareBuilder();
         if (other.HasTimestamp) {
           Timestamp = other.Timestamp;
@@ -2243,7 +2243,7 @@ namespace Mumble.NET {
       }
     }
     static Ping() {
-      object.ReferenceEquals(global::Mumble.NET.Messages.Descriptor, null);
+      object.ReferenceEquals(global::Mumble.Messages.Messages.Descriptor, null);
     }
   }
   
@@ -2268,11 +2268,11 @@ namespace Mumble.NET {
     }
     
     public static pbd::MessageDescriptor Descriptor {
-      get { return global::Mumble.NET.Messages.internal__static_MumbleProto_Reject__Descriptor; }
+      get { return global::Mumble.Messages.Messages.internal__static_MumbleProto_Reject__Descriptor; }
     }
     
     protected override pb::FieldAccess.FieldAccessorTable<Reject, Reject.Builder> InternalFieldAccessors {
-      get { return global::Mumble.NET.Messages.internal__static_MumbleProto_Reject__FieldAccessorTable; }
+      get { return global::Mumble.Messages.Messages.internal__static_MumbleProto_Reject__FieldAccessorTable; }
     }
     
     #region Nested types
@@ -2299,11 +2299,11 @@ namespace Mumble.NET {
     
     public const int TypeFieldNumber = 1;
     private bool hasType;
-    private global::Mumble.NET.Reject.Types.RejectType type_ = global::Mumble.NET.Reject.Types.RejectType.None;
+    private global::Mumble.Messages.Reject.Types.RejectType type_ = global::Mumble.Messages.Reject.Types.RejectType.None;
     public bool HasType {
       get { return hasType; }
     }
-    public global::Mumble.NET.Reject.Types.RejectType Type {
+    public global::Mumble.Messages.Reject.Types.RejectType Type {
       get { return type_; }
     }
     
@@ -2452,11 +2452,11 @@ namespace Mumble.NET {
       }
       
       public override pbd::MessageDescriptor DescriptorForType {
-        get { return global::Mumble.NET.Reject.Descriptor; }
+        get { return global::Mumble.Messages.Reject.Descriptor; }
       }
       
       public override Reject DefaultInstanceForType {
-        get { return global::Mumble.NET.Reject.DefaultInstance; }
+        get { return global::Mumble.Messages.Reject.DefaultInstance; }
       }
       
       public override Reject BuildPartial() {
@@ -2477,7 +2477,7 @@ namespace Mumble.NET {
       }
       
       public override Builder MergeFrom(Reject other) {
-        if (other == global::Mumble.NET.Reject.DefaultInstance) return this;
+        if (other == global::Mumble.Messages.Reject.DefaultInstance) return this;
         PrepareBuilder();
         if (other.HasType) {
           Type = other.Type;
@@ -2557,11 +2557,11 @@ namespace Mumble.NET {
       public bool HasType {
        get { return result.hasType; }
       }
-      public global::Mumble.NET.Reject.Types.RejectType Type {
+      public global::Mumble.Messages.Reject.Types.RejectType Type {
         get { return result.Type; }
         set { SetType(value); }
       }
-      public Builder SetType(global::Mumble.NET.Reject.Types.RejectType value) {
+      public Builder SetType(global::Mumble.Messages.Reject.Types.RejectType value) {
         PrepareBuilder();
         result.hasType = true;
         result.type_ = value;
@@ -2570,7 +2570,7 @@ namespace Mumble.NET {
       public Builder ClearType() {
         PrepareBuilder();
         result.hasType = false;
-        result.type_ = global::Mumble.NET.Reject.Types.RejectType.None;
+        result.type_ = global::Mumble.Messages.Reject.Types.RejectType.None;
         return this;
       }
       
@@ -2596,7 +2596,7 @@ namespace Mumble.NET {
       }
     }
     static Reject() {
-      object.ReferenceEquals(global::Mumble.NET.Messages.Descriptor, null);
+      object.ReferenceEquals(global::Mumble.Messages.Messages.Descriptor, null);
     }
   }
   
@@ -2621,11 +2621,11 @@ namespace Mumble.NET {
     }
     
     public static pbd::MessageDescriptor Descriptor {
-      get { return global::Mumble.NET.Messages.internal__static_MumbleProto_ServerSync__Descriptor; }
+      get { return global::Mumble.Messages.Messages.internal__static_MumbleProto_ServerSync__Descriptor; }
     }
     
     protected override pb::FieldAccess.FieldAccessorTable<ServerSync, ServerSync.Builder> InternalFieldAccessors {
-      get { return global::Mumble.NET.Messages.internal__static_MumbleProto_ServerSync__FieldAccessorTable; }
+      get { return global::Mumble.Messages.Messages.internal__static_MumbleProto_ServerSync__FieldAccessorTable; }
     }
     
     public const int SessionFieldNumber = 1;
@@ -2818,11 +2818,11 @@ namespace Mumble.NET {
       }
       
       public override pbd::MessageDescriptor DescriptorForType {
-        get { return global::Mumble.NET.ServerSync.Descriptor; }
+        get { return global::Mumble.Messages.ServerSync.Descriptor; }
       }
       
       public override ServerSync DefaultInstanceForType {
-        get { return global::Mumble.NET.ServerSync.DefaultInstance; }
+        get { return global::Mumble.Messages.ServerSync.DefaultInstance; }
       }
       
       public override ServerSync BuildPartial() {
@@ -2843,7 +2843,7 @@ namespace Mumble.NET {
       }
       
       public override Builder MergeFrom(ServerSync other) {
-        if (other == global::Mumble.NET.ServerSync.DefaultInstance) return this;
+        if (other == global::Mumble.Messages.ServerSync.DefaultInstance) return this;
         PrepareBuilder();
         if (other.HasSession) {
           Session = other.Session;
@@ -3014,7 +3014,7 @@ namespace Mumble.NET {
       }
     }
     static ServerSync() {
-      object.ReferenceEquals(global::Mumble.NET.Messages.Descriptor, null);
+      object.ReferenceEquals(global::Mumble.Messages.Messages.Descriptor, null);
     }
   }
   
@@ -3039,11 +3039,11 @@ namespace Mumble.NET {
     }
     
     public static pbd::MessageDescriptor Descriptor {
-      get { return global::Mumble.NET.Messages.internal__static_MumbleProto_ChannelRemove__Descriptor; }
+      get { return global::Mumble.Messages.Messages.internal__static_MumbleProto_ChannelRemove__Descriptor; }
     }
     
     protected override pb::FieldAccess.FieldAccessorTable<ChannelRemove, ChannelRemove.Builder> InternalFieldAccessors {
-      get { return global::Mumble.NET.Messages.internal__static_MumbleProto_ChannelRemove__FieldAccessorTable; }
+      get { return global::Mumble.Messages.Messages.internal__static_MumbleProto_ChannelRemove__FieldAccessorTable; }
     }
     
     public const int ChannelIdFieldNumber = 1;
@@ -3187,11 +3187,11 @@ namespace Mumble.NET {
       }
       
       public override pbd::MessageDescriptor DescriptorForType {
-        get { return global::Mumble.NET.ChannelRemove.Descriptor; }
+        get { return global::Mumble.Messages.ChannelRemove.Descriptor; }
       }
       
       public override ChannelRemove DefaultInstanceForType {
-        get { return global::Mumble.NET.ChannelRemove.DefaultInstance; }
+        get { return global::Mumble.Messages.ChannelRemove.DefaultInstance; }
       }
       
       public override ChannelRemove BuildPartial() {
@@ -3212,7 +3212,7 @@ namespace Mumble.NET {
       }
       
       public override Builder MergeFrom(ChannelRemove other) {
-        if (other == global::Mumble.NET.ChannelRemove.DefaultInstance) return this;
+        if (other == global::Mumble.Messages.ChannelRemove.DefaultInstance) return this;
         PrepareBuilder();
         if (other.HasChannelId) {
           ChannelId = other.ChannelId;
@@ -3297,7 +3297,7 @@ namespace Mumble.NET {
       }
     }
     static ChannelRemove() {
-      object.ReferenceEquals(global::Mumble.NET.Messages.Descriptor, null);
+      object.ReferenceEquals(global::Mumble.Messages.Messages.Descriptor, null);
     }
   }
   
@@ -3322,11 +3322,11 @@ namespace Mumble.NET {
     }
     
     public static pbd::MessageDescriptor Descriptor {
-      get { return global::Mumble.NET.Messages.internal__static_MumbleProto_ChannelState__Descriptor; }
+      get { return global::Mumble.Messages.Messages.internal__static_MumbleProto_ChannelState__Descriptor; }
     }
     
     protected override pb::FieldAccess.FieldAccessorTable<ChannelState, ChannelState.Builder> InternalFieldAccessors {
-      get { return global::Mumble.NET.Messages.internal__static_MumbleProto_ChannelState__FieldAccessorTable; }
+      get { return global::Mumble.Messages.Messages.internal__static_MumbleProto_ChannelState__FieldAccessorTable; }
     }
     
     public const int ChannelIdFieldNumber = 1;
@@ -3644,11 +3644,11 @@ namespace Mumble.NET {
       }
       
       public override pbd::MessageDescriptor DescriptorForType {
-        get { return global::Mumble.NET.ChannelState.Descriptor; }
+        get { return global::Mumble.Messages.ChannelState.Descriptor; }
       }
       
       public override ChannelState DefaultInstanceForType {
-        get { return global::Mumble.NET.ChannelState.DefaultInstance; }
+        get { return global::Mumble.Messages.ChannelState.DefaultInstance; }
       }
       
       public override ChannelState BuildPartial() {
@@ -3669,7 +3669,7 @@ namespace Mumble.NET {
       }
       
       public override Builder MergeFrom(ChannelState other) {
-        if (other == global::Mumble.NET.ChannelState.DefaultInstance) return this;
+        if (other == global::Mumble.Messages.ChannelState.DefaultInstance) return this;
         PrepareBuilder();
         if (other.HasChannelId) {
           ChannelId = other.ChannelId;
@@ -4050,7 +4050,7 @@ namespace Mumble.NET {
       }
     }
     static ChannelState() {
-      object.ReferenceEquals(global::Mumble.NET.Messages.Descriptor, null);
+      object.ReferenceEquals(global::Mumble.Messages.Messages.Descriptor, null);
     }
   }
   
@@ -4075,11 +4075,11 @@ namespace Mumble.NET {
     }
     
     public static pbd::MessageDescriptor Descriptor {
-      get { return global::Mumble.NET.Messages.internal__static_MumbleProto_UserRemove__Descriptor; }
+      get { return global::Mumble.Messages.Messages.internal__static_MumbleProto_UserRemove__Descriptor; }
     }
     
     protected override pb::FieldAccess.FieldAccessorTable<UserRemove, UserRemove.Builder> InternalFieldAccessors {
-      get { return global::Mumble.NET.Messages.internal__static_MumbleProto_UserRemove__FieldAccessorTable; }
+      get { return global::Mumble.Messages.Messages.internal__static_MumbleProto_UserRemove__FieldAccessorTable; }
     }
     
     public const int SessionFieldNumber = 1;
@@ -4272,11 +4272,11 @@ namespace Mumble.NET {
       }
       
       public override pbd::MessageDescriptor DescriptorForType {
-        get { return global::Mumble.NET.UserRemove.Descriptor; }
+        get { return global::Mumble.Messages.UserRemove.Descriptor; }
       }
       
       public override UserRemove DefaultInstanceForType {
-        get { return global::Mumble.NET.UserRemove.DefaultInstance; }
+        get { return global::Mumble.Messages.UserRemove.DefaultInstance; }
       }
       
       public override UserRemove BuildPartial() {
@@ -4297,7 +4297,7 @@ namespace Mumble.NET {
       }
       
       public override Builder MergeFrom(UserRemove other) {
-        if (other == global::Mumble.NET.UserRemove.DefaultInstance) return this;
+        if (other == global::Mumble.Messages.UserRemove.DefaultInstance) return this;
         PrepareBuilder();
         if (other.HasSession) {
           Session = other.Session;
@@ -4466,7 +4466,7 @@ namespace Mumble.NET {
       }
     }
     static UserRemove() {
-      object.ReferenceEquals(global::Mumble.NET.Messages.Descriptor, null);
+      object.ReferenceEquals(global::Mumble.Messages.Messages.Descriptor, null);
     }
   }
   
@@ -4491,11 +4491,11 @@ namespace Mumble.NET {
     }
     
     public static pbd::MessageDescriptor Descriptor {
-      get { return global::Mumble.NET.Messages.internal__static_MumbleProto_UserState__Descriptor; }
+      get { return global::Mumble.Messages.Messages.internal__static_MumbleProto_UserState__Descriptor; }
     }
     
     protected override pb::FieldAccess.FieldAccessorTable<UserState, UserState.Builder> InternalFieldAccessors {
-      get { return global::Mumble.NET.Messages.internal__static_MumbleProto_UserState__FieldAccessorTable; }
+      get { return global::Mumble.Messages.Messages.internal__static_MumbleProto_UserState__FieldAccessorTable; }
     }
     
     public const int SessionFieldNumber = 1;
@@ -4929,11 +4929,11 @@ namespace Mumble.NET {
       }
       
       public override pbd::MessageDescriptor DescriptorForType {
-        get { return global::Mumble.NET.UserState.Descriptor; }
+        get { return global::Mumble.Messages.UserState.Descriptor; }
       }
       
       public override UserState DefaultInstanceForType {
-        get { return global::Mumble.NET.UserState.DefaultInstance; }
+        get { return global::Mumble.Messages.UserState.DefaultInstance; }
       }
       
       public override UserState BuildPartial() {
@@ -4954,7 +4954,7 @@ namespace Mumble.NET {
       }
       
       public override Builder MergeFrom(UserState other) {
-        if (other == global::Mumble.NET.UserState.DefaultInstance) return this;
+        if (other == global::Mumble.Messages.UserState.DefaultInstance) return this;
         PrepareBuilder();
         if (other.HasSession) {
           Session = other.Session;
@@ -5539,7 +5539,7 @@ namespace Mumble.NET {
       }
     }
     static UserState() {
-      object.ReferenceEquals(global::Mumble.NET.Messages.Descriptor, null);
+      object.ReferenceEquals(global::Mumble.Messages.Messages.Descriptor, null);
     }
   }
   
@@ -5564,11 +5564,11 @@ namespace Mumble.NET {
     }
     
     public static pbd::MessageDescriptor Descriptor {
-      get { return global::Mumble.NET.Messages.internal__static_MumbleProto_BanList__Descriptor; }
+      get { return global::Mumble.Messages.Messages.internal__static_MumbleProto_BanList__Descriptor; }
     }
     
     protected override pb::FieldAccess.FieldAccessorTable<BanList, BanList.Builder> InternalFieldAccessors {
-      get { return global::Mumble.NET.Messages.internal__static_MumbleProto_BanList__FieldAccessorTable; }
+      get { return global::Mumble.Messages.Messages.internal__static_MumbleProto_BanList__FieldAccessorTable; }
     }
     
     #region Nested types
@@ -5597,11 +5597,11 @@ namespace Mumble.NET {
         }
         
         public static pbd::MessageDescriptor Descriptor {
-          get { return global::Mumble.NET.Messages.internal__static_MumbleProto_BanList_BanEntry__Descriptor; }
+          get { return global::Mumble.Messages.Messages.internal__static_MumbleProto_BanList_BanEntry__Descriptor; }
         }
         
         protected override pb::FieldAccess.FieldAccessorTable<BanEntry, BanEntry.Builder> InternalFieldAccessors {
-          get { return global::Mumble.NET.Messages.internal__static_MumbleProto_BanList_BanEntry__FieldAccessorTable; }
+          get { return global::Mumble.Messages.Messages.internal__static_MumbleProto_BanList_BanEntry__FieldAccessorTable; }
         }
         
         public const int AddressFieldNumber = 1;
@@ -5843,11 +5843,11 @@ namespace Mumble.NET {
           }
           
           public override pbd::MessageDescriptor DescriptorForType {
-            get { return global::Mumble.NET.BanList.Types.BanEntry.Descriptor; }
+            get { return global::Mumble.Messages.BanList.Types.BanEntry.Descriptor; }
           }
           
           public override BanEntry DefaultInstanceForType {
-            get { return global::Mumble.NET.BanList.Types.BanEntry.DefaultInstance; }
+            get { return global::Mumble.Messages.BanList.Types.BanEntry.DefaultInstance; }
           }
           
           public override BanEntry BuildPartial() {
@@ -5868,7 +5868,7 @@ namespace Mumble.NET {
           }
           
           public override Builder MergeFrom(BanEntry other) {
-            if (other == global::Mumble.NET.BanList.Types.BanEntry.DefaultInstance) return this;
+            if (other == global::Mumble.Messages.BanList.Types.BanEntry.DefaultInstance) return this;
             PrepareBuilder();
             if (other.HasAddress) {
               Address = other.Address;
@@ -6122,7 +6122,7 @@ namespace Mumble.NET {
           }
         }
         static BanEntry() {
-          object.ReferenceEquals(global::Mumble.NET.Messages.Descriptor, null);
+          object.ReferenceEquals(global::Mumble.Messages.Messages.Descriptor, null);
         }
       }
       
@@ -6130,14 +6130,14 @@ namespace Mumble.NET {
     #endregion
     
     public const int BansFieldNumber = 1;
-    private pbc::PopsicleList<global::Mumble.NET.BanList.Types.BanEntry> bans_ = new pbc::PopsicleList<global::Mumble.NET.BanList.Types.BanEntry>();
-    public scg::IList<global::Mumble.NET.BanList.Types.BanEntry> BansList {
+    private pbc::PopsicleList<global::Mumble.Messages.BanList.Types.BanEntry> bans_ = new pbc::PopsicleList<global::Mumble.Messages.BanList.Types.BanEntry>();
+    public scg::IList<global::Mumble.Messages.BanList.Types.BanEntry> BansList {
       get { return bans_; }
     }
     public int BansCount {
       get { return bans_.Count; }
     }
-    public global::Mumble.NET.BanList.Types.BanEntry GetBans(int index) {
+    public global::Mumble.Messages.BanList.Types.BanEntry GetBans(int index) {
       return bans_[index];
     }
     
@@ -6153,7 +6153,7 @@ namespace Mumble.NET {
     
     public override bool IsInitialized {
       get {
-        foreach (global::Mumble.NET.BanList.Types.BanEntry element in BansList) {
+        foreach (global::Mumble.Messages.BanList.Types.BanEntry element in BansList) {
           if (!element.IsInitialized) return false;
         }
         return true;
@@ -6186,7 +6186,7 @@ namespace Mumble.NET {
       if (size != -1) return size;
       
       size = 0;
-      foreach (global::Mumble.NET.BanList.Types.BanEntry element in BansList) {
+      foreach (global::Mumble.Messages.BanList.Types.BanEntry element in BansList) {
         size += pb::CodedOutputStream.ComputeMessageSize(1, element);
       }
       if (hasQuery) {
@@ -6290,11 +6290,11 @@ namespace Mumble.NET {
       }
       
       public override pbd::MessageDescriptor DescriptorForType {
-        get { return global::Mumble.NET.BanList.Descriptor; }
+        get { return global::Mumble.Messages.BanList.Descriptor; }
       }
       
       public override BanList DefaultInstanceForType {
-        get { return global::Mumble.NET.BanList.DefaultInstance; }
+        get { return global::Mumble.Messages.BanList.DefaultInstance; }
       }
       
       public override BanList BuildPartial() {
@@ -6315,7 +6315,7 @@ namespace Mumble.NET {
       }
       
       public override Builder MergeFrom(BanList other) {
-        if (other == global::Mumble.NET.BanList.DefaultInstance) return this;
+        if (other == global::Mumble.Messages.BanList.DefaultInstance) return this;
         PrepareBuilder();
         if (other.bans_.Count != 0) {
           result.bans_.Add(other.bans_);
@@ -6367,7 +6367,7 @@ namespace Mumble.NET {
               break;
             }
             case 10: {
-              input.ReadMessageArray(tag, field_name, result.bans_, global::Mumble.NET.BanList.Types.BanEntry.DefaultInstance, extensionRegistry);
+              input.ReadMessageArray(tag, field_name, result.bans_, global::Mumble.Messages.BanList.Types.BanEntry.DefaultInstance, extensionRegistry);
               break;
             }
             case 16: {
@@ -6384,40 +6384,40 @@ namespace Mumble.NET {
       }
       
       
-      public pbc::IPopsicleList<global::Mumble.NET.BanList.Types.BanEntry> BansList {
+      public pbc::IPopsicleList<global::Mumble.Messages.BanList.Types.BanEntry> BansList {
         get { return PrepareBuilder().bans_; }
       }
       public int BansCount {
         get { return result.BansCount; }
       }
-      public global::Mumble.NET.BanList.Types.BanEntry GetBans(int index) {
+      public global::Mumble.Messages.BanList.Types.BanEntry GetBans(int index) {
         return result.GetBans(index);
       }
-      public Builder SetBans(int index, global::Mumble.NET.BanList.Types.BanEntry value) {
+      public Builder SetBans(int index, global::Mumble.Messages.BanList.Types.BanEntry value) {
         pb::ThrowHelper.ThrowIfNull(value, "value");
         PrepareBuilder();
         result.bans_[index] = value;
         return this;
       }
-      public Builder SetBans(int index, global::Mumble.NET.BanList.Types.BanEntry.Builder builderForValue) {
+      public Builder SetBans(int index, global::Mumble.Messages.BanList.Types.BanEntry.Builder builderForValue) {
         pb::ThrowHelper.ThrowIfNull(builderForValue, "builderForValue");
         PrepareBuilder();
         result.bans_[index] = builderForValue.Build();
         return this;
       }
-      public Builder AddBans(global::Mumble.NET.BanList.Types.BanEntry value) {
+      public Builder AddBans(global::Mumble.Messages.BanList.Types.BanEntry value) {
         pb::ThrowHelper.ThrowIfNull(value, "value");
         PrepareBuilder();
         result.bans_.Add(value);
         return this;
       }
-      public Builder AddBans(global::Mumble.NET.BanList.Types.BanEntry.Builder builderForValue) {
+      public Builder AddBans(global::Mumble.Messages.BanList.Types.BanEntry.Builder builderForValue) {
         pb::ThrowHelper.ThrowIfNull(builderForValue, "builderForValue");
         PrepareBuilder();
         result.bans_.Add(builderForValue.Build());
         return this;
       }
-      public Builder AddRangeBans(scg::IEnumerable<global::Mumble.NET.BanList.Types.BanEntry> values) {
+      public Builder AddRangeBans(scg::IEnumerable<global::Mumble.Messages.BanList.Types.BanEntry> values) {
         PrepareBuilder();
         result.bans_.Add(values);
         return this;
@@ -6449,7 +6449,7 @@ namespace Mumble.NET {
       }
     }
     static BanList() {
-      object.ReferenceEquals(global::Mumble.NET.Messages.Descriptor, null);
+      object.ReferenceEquals(global::Mumble.Messages.Messages.Descriptor, null);
     }
   }
   
@@ -6474,11 +6474,11 @@ namespace Mumble.NET {
     }
     
     public static pbd::MessageDescriptor Descriptor {
-      get { return global::Mumble.NET.Messages.internal__static_MumbleProto_TextMessage__Descriptor; }
+      get { return global::Mumble.Messages.Messages.internal__static_MumbleProto_TextMessage__Descriptor; }
     }
     
     protected override pb::FieldAccess.FieldAccessorTable<TextMessage, TextMessage.Builder> InternalFieldAccessors {
-      get { return global::Mumble.NET.Messages.internal__static_MumbleProto_TextMessage__FieldAccessorTable; }
+      get { return global::Mumble.Messages.Messages.internal__static_MumbleProto_TextMessage__FieldAccessorTable; }
     }
     
     public const int ActorFieldNumber = 1;
@@ -6716,11 +6716,11 @@ namespace Mumble.NET {
       }
       
       public override pbd::MessageDescriptor DescriptorForType {
-        get { return global::Mumble.NET.TextMessage.Descriptor; }
+        get { return global::Mumble.Messages.TextMessage.Descriptor; }
       }
       
       public override TextMessage DefaultInstanceForType {
-        get { return global::Mumble.NET.TextMessage.DefaultInstance; }
+        get { return global::Mumble.Messages.TextMessage.DefaultInstance; }
       }
       
       public override TextMessage BuildPartial() {
@@ -6741,7 +6741,7 @@ namespace Mumble.NET {
       }
       
       public override Builder MergeFrom(TextMessage other) {
-        if (other == global::Mumble.NET.TextMessage.DefaultInstance) return this;
+        if (other == global::Mumble.Messages.TextMessage.DefaultInstance) return this;
         PrepareBuilder();
         if (other.HasActor) {
           Actor = other.Actor;
@@ -6983,7 +6983,7 @@ namespace Mumble.NET {
       }
     }
     static TextMessage() {
-      object.ReferenceEquals(global::Mumble.NET.Messages.Descriptor, null);
+      object.ReferenceEquals(global::Mumble.Messages.Messages.Descriptor, null);
     }
   }
   
@@ -7008,11 +7008,11 @@ namespace Mumble.NET {
     }
     
     public static pbd::MessageDescriptor Descriptor {
-      get { return global::Mumble.NET.Messages.internal__static_MumbleProto_PermissionDenied__Descriptor; }
+      get { return global::Mumble.Messages.Messages.internal__static_MumbleProto_PermissionDenied__Descriptor; }
     }
     
     protected override pb::FieldAccess.FieldAccessorTable<PermissionDenied, PermissionDenied.Builder> InternalFieldAccessors {
-      get { return global::Mumble.NET.Messages.internal__static_MumbleProto_PermissionDenied__FieldAccessorTable; }
+      get { return global::Mumble.Messages.Messages.internal__static_MumbleProto_PermissionDenied__FieldAccessorTable; }
     }
     
     #region Nested types
@@ -7084,11 +7084,11 @@ namespace Mumble.NET {
     
     public const int TypeFieldNumber = 5;
     private bool hasType;
-    private global::Mumble.NET.PermissionDenied.Types.DenyType type_ = global::Mumble.NET.PermissionDenied.Types.DenyType.Text;
+    private global::Mumble.Messages.PermissionDenied.Types.DenyType type_ = global::Mumble.Messages.PermissionDenied.Types.DenyType.Text;
     public bool HasType {
       get { return hasType; }
     }
-    public global::Mumble.NET.PermissionDenied.Types.DenyType Type {
+    public global::Mumble.Messages.PermissionDenied.Types.DenyType Type {
       get { return type_; }
     }
     
@@ -7261,11 +7261,11 @@ namespace Mumble.NET {
       }
       
       public override pbd::MessageDescriptor DescriptorForType {
-        get { return global::Mumble.NET.PermissionDenied.Descriptor; }
+        get { return global::Mumble.Messages.PermissionDenied.Descriptor; }
       }
       
       public override PermissionDenied DefaultInstanceForType {
-        get { return global::Mumble.NET.PermissionDenied.DefaultInstance; }
+        get { return global::Mumble.Messages.PermissionDenied.DefaultInstance; }
       }
       
       public override PermissionDenied BuildPartial() {
@@ -7286,7 +7286,7 @@ namespace Mumble.NET {
       }
       
       public override Builder MergeFrom(PermissionDenied other) {
-        if (other == global::Mumble.NET.PermissionDenied.DefaultInstance) return this;
+        if (other == global::Mumble.Messages.PermissionDenied.DefaultInstance) return this;
         PrepareBuilder();
         if (other.HasPermission) {
           Permission = other.Permission;
@@ -7481,11 +7481,11 @@ namespace Mumble.NET {
       public bool HasType {
        get { return result.hasType; }
       }
-      public global::Mumble.NET.PermissionDenied.Types.DenyType Type {
+      public global::Mumble.Messages.PermissionDenied.Types.DenyType Type {
         get { return result.Type; }
         set { SetType(value); }
       }
-      public Builder SetType(global::Mumble.NET.PermissionDenied.Types.DenyType value) {
+      public Builder SetType(global::Mumble.Messages.PermissionDenied.Types.DenyType value) {
         PrepareBuilder();
         result.hasType = true;
         result.type_ = value;
@@ -7494,7 +7494,7 @@ namespace Mumble.NET {
       public Builder ClearType() {
         PrepareBuilder();
         result.hasType = false;
-        result.type_ = global::Mumble.NET.PermissionDenied.Types.DenyType.Text;
+        result.type_ = global::Mumble.Messages.PermissionDenied.Types.DenyType.Text;
         return this;
       }
       
@@ -7520,7 +7520,7 @@ namespace Mumble.NET {
       }
     }
     static PermissionDenied() {
-      object.ReferenceEquals(global::Mumble.NET.Messages.Descriptor, null);
+      object.ReferenceEquals(global::Mumble.Messages.Messages.Descriptor, null);
     }
   }
   
@@ -7545,11 +7545,11 @@ namespace Mumble.NET {
     }
     
     public static pbd::MessageDescriptor Descriptor {
-      get { return global::Mumble.NET.Messages.internal__static_MumbleProto_ACL__Descriptor; }
+      get { return global::Mumble.Messages.Messages.internal__static_MumbleProto_ACL__Descriptor; }
     }
     
     protected override pb::FieldAccess.FieldAccessorTable<ACL, ACL.Builder> InternalFieldAccessors {
-      get { return global::Mumble.NET.Messages.internal__static_MumbleProto_ACL__FieldAccessorTable; }
+      get { return global::Mumble.Messages.Messages.internal__static_MumbleProto_ACL__FieldAccessorTable; }
     }
     
     #region Nested types
@@ -7578,11 +7578,11 @@ namespace Mumble.NET {
         }
         
         public static pbd::MessageDescriptor Descriptor {
-          get { return global::Mumble.NET.Messages.internal__static_MumbleProto_ACL_ChanGroup__Descriptor; }
+          get { return global::Mumble.Messages.Messages.internal__static_MumbleProto_ACL_ChanGroup__Descriptor; }
         }
         
         protected override pb::FieldAccess.FieldAccessorTable<ChanGroup, ChanGroup.Builder> InternalFieldAccessors {
-          get { return global::Mumble.NET.Messages.internal__static_MumbleProto_ACL_ChanGroup__FieldAccessorTable; }
+          get { return global::Mumble.Messages.Messages.internal__static_MumbleProto_ACL_ChanGroup__FieldAccessorTable; }
         }
         
         public const int NameFieldNumber = 1;
@@ -7851,11 +7851,11 @@ namespace Mumble.NET {
           }
           
           public override pbd::MessageDescriptor DescriptorForType {
-            get { return global::Mumble.NET.ACL.Types.ChanGroup.Descriptor; }
+            get { return global::Mumble.Messages.ACL.Types.ChanGroup.Descriptor; }
           }
           
           public override ChanGroup DefaultInstanceForType {
-            get { return global::Mumble.NET.ACL.Types.ChanGroup.DefaultInstance; }
+            get { return global::Mumble.Messages.ACL.Types.ChanGroup.DefaultInstance; }
           }
           
           public override ChanGroup BuildPartial() {
@@ -7876,7 +7876,7 @@ namespace Mumble.NET {
           }
           
           public override Builder MergeFrom(ChanGroup other) {
-            if (other == global::Mumble.NET.ACL.Types.ChanGroup.DefaultInstance) return this;
+            if (other == global::Mumble.Messages.ACL.Types.ChanGroup.DefaultInstance) return this;
             PrepareBuilder();
             if (other.HasName) {
               Name = other.Name;
@@ -8170,7 +8170,7 @@ namespace Mumble.NET {
           }
         }
         static ChanGroup() {
-          object.ReferenceEquals(global::Mumble.NET.Messages.Descriptor, null);
+          object.ReferenceEquals(global::Mumble.Messages.Messages.Descriptor, null);
         }
       }
       
@@ -8195,11 +8195,11 @@ namespace Mumble.NET {
         }
         
         public static pbd::MessageDescriptor Descriptor {
-          get { return global::Mumble.NET.Messages.internal__static_MumbleProto_ACL_ChanACL__Descriptor; }
+          get { return global::Mumble.Messages.Messages.internal__static_MumbleProto_ACL_ChanACL__Descriptor; }
         }
         
         protected override pb::FieldAccess.FieldAccessorTable<ChanACL, ChanACL.Builder> InternalFieldAccessors {
-          get { return global::Mumble.NET.Messages.internal__static_MumbleProto_ACL_ChanACL__FieldAccessorTable; }
+          get { return global::Mumble.Messages.Messages.internal__static_MumbleProto_ACL_ChanACL__FieldAccessorTable; }
         }
         
         public const int ApplyHereFieldNumber = 1;
@@ -8440,11 +8440,11 @@ namespace Mumble.NET {
           }
           
           public override pbd::MessageDescriptor DescriptorForType {
-            get { return global::Mumble.NET.ACL.Types.ChanACL.Descriptor; }
+            get { return global::Mumble.Messages.ACL.Types.ChanACL.Descriptor; }
           }
           
           public override ChanACL DefaultInstanceForType {
-            get { return global::Mumble.NET.ACL.Types.ChanACL.DefaultInstance; }
+            get { return global::Mumble.Messages.ACL.Types.ChanACL.DefaultInstance; }
           }
           
           public override ChanACL BuildPartial() {
@@ -8465,7 +8465,7 @@ namespace Mumble.NET {
           }
           
           public override Builder MergeFrom(ChanACL other) {
-            if (other == global::Mumble.NET.ACL.Types.ChanACL.DefaultInstance) return this;
+            if (other == global::Mumble.Messages.ACL.Types.ChanACL.DefaultInstance) return this;
             PrepareBuilder();
             if (other.HasApplyHere) {
               ApplyHere = other.ApplyHere;
@@ -8717,7 +8717,7 @@ namespace Mumble.NET {
           }
         }
         static ChanACL() {
-          object.ReferenceEquals(global::Mumble.NET.Messages.Descriptor, null);
+          object.ReferenceEquals(global::Mumble.Messages.Messages.Descriptor, null);
         }
       }
       
@@ -8746,26 +8746,26 @@ namespace Mumble.NET {
     }
     
     public const int GroupsFieldNumber = 3;
-    private pbc::PopsicleList<global::Mumble.NET.ACL.Types.ChanGroup> groups_ = new pbc::PopsicleList<global::Mumble.NET.ACL.Types.ChanGroup>();
-    public scg::IList<global::Mumble.NET.ACL.Types.ChanGroup> GroupsList {
+    private pbc::PopsicleList<global::Mumble.Messages.ACL.Types.ChanGroup> groups_ = new pbc::PopsicleList<global::Mumble.Messages.ACL.Types.ChanGroup>();
+    public scg::IList<global::Mumble.Messages.ACL.Types.ChanGroup> GroupsList {
       get { return groups_; }
     }
     public int GroupsCount {
       get { return groups_.Count; }
     }
-    public global::Mumble.NET.ACL.Types.ChanGroup GetGroups(int index) {
+    public global::Mumble.Messages.ACL.Types.ChanGroup GetGroups(int index) {
       return groups_[index];
     }
     
     public const int AclsFieldNumber = 4;
-    private pbc::PopsicleList<global::Mumble.NET.ACL.Types.ChanACL> acls_ = new pbc::PopsicleList<global::Mumble.NET.ACL.Types.ChanACL>();
-    public scg::IList<global::Mumble.NET.ACL.Types.ChanACL> AclsList {
+    private pbc::PopsicleList<global::Mumble.Messages.ACL.Types.ChanACL> acls_ = new pbc::PopsicleList<global::Mumble.Messages.ACL.Types.ChanACL>();
+    public scg::IList<global::Mumble.Messages.ACL.Types.ChanACL> AclsList {
       get { return acls_; }
     }
     public int AclsCount {
       get { return acls_.Count; }
     }
-    public global::Mumble.NET.ACL.Types.ChanACL GetAcls(int index) {
+    public global::Mumble.Messages.ACL.Types.ChanACL GetAcls(int index) {
       return acls_[index];
     }
     
@@ -8782,7 +8782,7 @@ namespace Mumble.NET {
     public override bool IsInitialized {
       get {
         if (!hasChannelId) return false;
-        foreach (global::Mumble.NET.ACL.Types.ChanGroup element in GroupsList) {
+        foreach (global::Mumble.Messages.ACL.Types.ChanGroup element in GroupsList) {
           if (!element.IsInitialized) return false;
         }
         return true;
@@ -8830,10 +8830,10 @@ namespace Mumble.NET {
       if (hasInheritAcls) {
         size += pb::CodedOutputStream.ComputeBoolSize(2, InheritAcls);
       }
-      foreach (global::Mumble.NET.ACL.Types.ChanGroup element in GroupsList) {
+      foreach (global::Mumble.Messages.ACL.Types.ChanGroup element in GroupsList) {
         size += pb::CodedOutputStream.ComputeMessageSize(3, element);
       }
-      foreach (global::Mumble.NET.ACL.Types.ChanACL element in AclsList) {
+      foreach (global::Mumble.Messages.ACL.Types.ChanACL element in AclsList) {
         size += pb::CodedOutputStream.ComputeMessageSize(4, element);
       }
       if (hasQuery) {
@@ -8938,11 +8938,11 @@ namespace Mumble.NET {
       }
       
       public override pbd::MessageDescriptor DescriptorForType {
-        get { return global::Mumble.NET.ACL.Descriptor; }
+        get { return global::Mumble.Messages.ACL.Descriptor; }
       }
       
       public override ACL DefaultInstanceForType {
-        get { return global::Mumble.NET.ACL.DefaultInstance; }
+        get { return global::Mumble.Messages.ACL.DefaultInstance; }
       }
       
       public override ACL BuildPartial() {
@@ -8963,7 +8963,7 @@ namespace Mumble.NET {
       }
       
       public override Builder MergeFrom(ACL other) {
-        if (other == global::Mumble.NET.ACL.DefaultInstance) return this;
+        if (other == global::Mumble.Messages.ACL.DefaultInstance) return this;
         PrepareBuilder();
         if (other.HasChannelId) {
           ChannelId = other.ChannelId;
@@ -9032,11 +9032,11 @@ namespace Mumble.NET {
               break;
             }
             case 26: {
-              input.ReadMessageArray(tag, field_name, result.groups_, global::Mumble.NET.ACL.Types.ChanGroup.DefaultInstance, extensionRegistry);
+              input.ReadMessageArray(tag, field_name, result.groups_, global::Mumble.Messages.ACL.Types.ChanGroup.DefaultInstance, extensionRegistry);
               break;
             }
             case 34: {
-              input.ReadMessageArray(tag, field_name, result.acls_, global::Mumble.NET.ACL.Types.ChanACL.DefaultInstance, extensionRegistry);
+              input.ReadMessageArray(tag, field_name, result.acls_, global::Mumble.Messages.ACL.Types.ChanACL.DefaultInstance, extensionRegistry);
               break;
             }
             case 40: {
@@ -9095,40 +9095,40 @@ namespace Mumble.NET {
         return this;
       }
       
-      public pbc::IPopsicleList<global::Mumble.NET.ACL.Types.ChanGroup> GroupsList {
+      public pbc::IPopsicleList<global::Mumble.Messages.ACL.Types.ChanGroup> GroupsList {
         get { return PrepareBuilder().groups_; }
       }
       public int GroupsCount {
         get { return result.GroupsCount; }
       }
-      public global::Mumble.NET.ACL.Types.ChanGroup GetGroups(int index) {
+      public global::Mumble.Messages.ACL.Types.ChanGroup GetGroups(int index) {
         return result.GetGroups(index);
       }
-      public Builder SetGroups(int index, global::Mumble.NET.ACL.Types.ChanGroup value) {
+      public Builder SetGroups(int index, global::Mumble.Messages.ACL.Types.ChanGroup value) {
         pb::ThrowHelper.ThrowIfNull(value, "value");
         PrepareBuilder();
         result.groups_[index] = value;
         return this;
       }
-      public Builder SetGroups(int index, global::Mumble.NET.ACL.Types.ChanGroup.Builder builderForValue) {
+      public Builder SetGroups(int index, global::Mumble.Messages.ACL.Types.ChanGroup.Builder builderForValue) {
         pb::ThrowHelper.ThrowIfNull(builderForValue, "builderForValue");
         PrepareBuilder();
         result.groups_[index] = builderForValue.Build();
         return this;
       }
-      public Builder AddGroups(global::Mumble.NET.ACL.Types.ChanGroup value) {
+      public Builder AddGroups(global::Mumble.Messages.ACL.Types.ChanGroup value) {
         pb::ThrowHelper.ThrowIfNull(value, "value");
         PrepareBuilder();
         result.groups_.Add(value);
         return this;
       }
-      public Builder AddGroups(global::Mumble.NET.ACL.Types.ChanGroup.Builder builderForValue) {
+      public Builder AddGroups(global::Mumble.Messages.ACL.Types.ChanGroup.Builder builderForValue) {
         pb::ThrowHelper.ThrowIfNull(builderForValue, "builderForValue");
         PrepareBuilder();
         result.groups_.Add(builderForValue.Build());
         return this;
       }
-      public Builder AddRangeGroups(scg::IEnumerable<global::Mumble.NET.ACL.Types.ChanGroup> values) {
+      public Builder AddRangeGroups(scg::IEnumerable<global::Mumble.Messages.ACL.Types.ChanGroup> values) {
         PrepareBuilder();
         result.groups_.Add(values);
         return this;
@@ -9139,40 +9139,40 @@ namespace Mumble.NET {
         return this;
       }
       
-      public pbc::IPopsicleList<global::Mumble.NET.ACL.Types.ChanACL> AclsList {
+      public pbc::IPopsicleList<global::Mumble.Messages.ACL.Types.ChanACL> AclsList {
         get { return PrepareBuilder().acls_; }
       }
       public int AclsCount {
         get { return result.AclsCount; }
       }
-      public global::Mumble.NET.ACL.Types.ChanACL GetAcls(int index) {
+      public global::Mumble.Messages.ACL.Types.ChanACL GetAcls(int index) {
         return result.GetAcls(index);
       }
-      public Builder SetAcls(int index, global::Mumble.NET.ACL.Types.ChanACL value) {
+      public Builder SetAcls(int index, global::Mumble.Messages.ACL.Types.ChanACL value) {
         pb::ThrowHelper.ThrowIfNull(value, "value");
         PrepareBuilder();
         result.acls_[index] = value;
         return this;
       }
-      public Builder SetAcls(int index, global::Mumble.NET.ACL.Types.ChanACL.Builder builderForValue) {
+      public Builder SetAcls(int index, global::Mumble.Messages.ACL.Types.ChanACL.Builder builderForValue) {
         pb::ThrowHelper.ThrowIfNull(builderForValue, "builderForValue");
         PrepareBuilder();
         result.acls_[index] = builderForValue.Build();
         return this;
       }
-      public Builder AddAcls(global::Mumble.NET.ACL.Types.ChanACL value) {
+      public Builder AddAcls(global::Mumble.Messages.ACL.Types.ChanACL value) {
         pb::ThrowHelper.ThrowIfNull(value, "value");
         PrepareBuilder();
         result.acls_.Add(value);
         return this;
       }
-      public Builder AddAcls(global::Mumble.NET.ACL.Types.ChanACL.Builder builderForValue) {
+      public Builder AddAcls(global::Mumble.Messages.ACL.Types.ChanACL.Builder builderForValue) {
         pb::ThrowHelper.ThrowIfNull(builderForValue, "builderForValue");
         PrepareBuilder();
         result.acls_.Add(builderForValue.Build());
         return this;
       }
-      public Builder AddRangeAcls(scg::IEnumerable<global::Mumble.NET.ACL.Types.ChanACL> values) {
+      public Builder AddRangeAcls(scg::IEnumerable<global::Mumble.Messages.ACL.Types.ChanACL> values) {
         PrepareBuilder();
         result.acls_.Add(values);
         return this;
@@ -9204,7 +9204,7 @@ namespace Mumble.NET {
       }
     }
     static ACL() {
-      object.ReferenceEquals(global::Mumble.NET.Messages.Descriptor, null);
+      object.ReferenceEquals(global::Mumble.Messages.Messages.Descriptor, null);
     }
   }
   
@@ -9229,11 +9229,11 @@ namespace Mumble.NET {
     }
     
     public static pbd::MessageDescriptor Descriptor {
-      get { return global::Mumble.NET.Messages.internal__static_MumbleProto_QueryUsers__Descriptor; }
+      get { return global::Mumble.Messages.Messages.internal__static_MumbleProto_QueryUsers__Descriptor; }
     }
     
     protected override pb::FieldAccess.FieldAccessorTable<QueryUsers, QueryUsers.Builder> InternalFieldAccessors {
-      get { return global::Mumble.NET.Messages.internal__static_MumbleProto_QueryUsers__FieldAccessorTable; }
+      get { return global::Mumble.Messages.Messages.internal__static_MumbleProto_QueryUsers__FieldAccessorTable; }
     }
     
     public const int IdsFieldNumber = 1;
@@ -9409,11 +9409,11 @@ namespace Mumble.NET {
       }
       
       public override pbd::MessageDescriptor DescriptorForType {
-        get { return global::Mumble.NET.QueryUsers.Descriptor; }
+        get { return global::Mumble.Messages.QueryUsers.Descriptor; }
       }
       
       public override QueryUsers DefaultInstanceForType {
-        get { return global::Mumble.NET.QueryUsers.DefaultInstance; }
+        get { return global::Mumble.Messages.QueryUsers.DefaultInstance; }
       }
       
       public override QueryUsers BuildPartial() {
@@ -9434,7 +9434,7 @@ namespace Mumble.NET {
       }
       
       public override Builder MergeFrom(QueryUsers other) {
-        if (other == global::Mumble.NET.QueryUsers.DefaultInstance) return this;
+        if (other == global::Mumble.Messages.QueryUsers.DefaultInstance) return this;
         PrepareBuilder();
         if (other.ids_.Count != 0) {
           result.ids_.Add(other.ids_);
@@ -9572,7 +9572,7 @@ namespace Mumble.NET {
       }
     }
     static QueryUsers() {
-      object.ReferenceEquals(global::Mumble.NET.Messages.Descriptor, null);
+      object.ReferenceEquals(global::Mumble.Messages.Messages.Descriptor, null);
     }
   }
   
@@ -9597,11 +9597,11 @@ namespace Mumble.NET {
     }
     
     public static pbd::MessageDescriptor Descriptor {
-      get { return global::Mumble.NET.Messages.internal__static_MumbleProto_CryptSetup__Descriptor; }
+      get { return global::Mumble.Messages.Messages.internal__static_MumbleProto_CryptSetup__Descriptor; }
     }
     
     protected override pb::FieldAccess.FieldAccessorTable<CryptSetup, CryptSetup.Builder> InternalFieldAccessors {
-      get { return global::Mumble.NET.Messages.internal__static_MumbleProto_CryptSetup__FieldAccessorTable; }
+      get { return global::Mumble.Messages.Messages.internal__static_MumbleProto_CryptSetup__FieldAccessorTable; }
     }
     
     public const int KeyFieldNumber = 1;
@@ -9775,11 +9775,11 @@ namespace Mumble.NET {
       }
       
       public override pbd::MessageDescriptor DescriptorForType {
-        get { return global::Mumble.NET.CryptSetup.Descriptor; }
+        get { return global::Mumble.Messages.CryptSetup.Descriptor; }
       }
       
       public override CryptSetup DefaultInstanceForType {
-        get { return global::Mumble.NET.CryptSetup.DefaultInstance; }
+        get { return global::Mumble.Messages.CryptSetup.DefaultInstance; }
       }
       
       public override CryptSetup BuildPartial() {
@@ -9800,7 +9800,7 @@ namespace Mumble.NET {
       }
       
       public override Builder MergeFrom(CryptSetup other) {
-        if (other == global::Mumble.NET.CryptSetup.DefaultInstance) return this;
+        if (other == global::Mumble.Messages.CryptSetup.DefaultInstance) return this;
         PrepareBuilder();
         if (other.HasKey) {
           Key = other.Key;
@@ -9940,7 +9940,7 @@ namespace Mumble.NET {
       }
     }
     static CryptSetup() {
-      object.ReferenceEquals(global::Mumble.NET.Messages.Descriptor, null);
+      object.ReferenceEquals(global::Mumble.Messages.Messages.Descriptor, null);
     }
   }
   
@@ -9965,11 +9965,11 @@ namespace Mumble.NET {
     }
     
     public static pbd::MessageDescriptor Descriptor {
-      get { return global::Mumble.NET.Messages.internal__static_MumbleProto_ContextActionModify__Descriptor; }
+      get { return global::Mumble.Messages.Messages.internal__static_MumbleProto_ContextActionModify__Descriptor; }
     }
     
     protected override pb::FieldAccess.FieldAccessorTable<ContextActionModify, ContextActionModify.Builder> InternalFieldAccessors {
-      get { return global::Mumble.NET.Messages.internal__static_MumbleProto_ContextActionModify__FieldAccessorTable; }
+      get { return global::Mumble.Messages.Messages.internal__static_MumbleProto_ContextActionModify__FieldAccessorTable; }
     }
     
     #region Nested types
@@ -10028,11 +10028,11 @@ namespace Mumble.NET {
     
     public const int OperationFieldNumber = 4;
     private bool hasOperation;
-    private global::Mumble.NET.ContextActionModify.Types.Operation operation_ = global::Mumble.NET.ContextActionModify.Types.Operation.Add;
+    private global::Mumble.Messages.ContextActionModify.Types.Operation operation_ = global::Mumble.Messages.ContextActionModify.Types.Operation.Add;
     public bool HasOperation {
       get { return hasOperation; }
     }
-    public global::Mumble.NET.ContextActionModify.Types.Operation Operation {
+    public global::Mumble.Messages.ContextActionModify.Types.Operation Operation {
       get { return operation_; }
     }
     
@@ -10184,11 +10184,11 @@ namespace Mumble.NET {
       }
       
       public override pbd::MessageDescriptor DescriptorForType {
-        get { return global::Mumble.NET.ContextActionModify.Descriptor; }
+        get { return global::Mumble.Messages.ContextActionModify.Descriptor; }
       }
       
       public override ContextActionModify DefaultInstanceForType {
-        get { return global::Mumble.NET.ContextActionModify.DefaultInstance; }
+        get { return global::Mumble.Messages.ContextActionModify.DefaultInstance; }
       }
       
       public override ContextActionModify BuildPartial() {
@@ -10209,7 +10209,7 @@ namespace Mumble.NET {
       }
       
       public override Builder MergeFrom(ContextActionModify other) {
-        if (other == global::Mumble.NET.ContextActionModify.DefaultInstance) return this;
+        if (other == global::Mumble.Messages.ContextActionModify.DefaultInstance) return this;
         PrepareBuilder();
         if (other.HasAction) {
           Action = other.Action;
@@ -10367,11 +10367,11 @@ namespace Mumble.NET {
       public bool HasOperation {
        get { return result.hasOperation; }
       }
-      public global::Mumble.NET.ContextActionModify.Types.Operation Operation {
+      public global::Mumble.Messages.ContextActionModify.Types.Operation Operation {
         get { return result.Operation; }
         set { SetOperation(value); }
       }
-      public Builder SetOperation(global::Mumble.NET.ContextActionModify.Types.Operation value) {
+      public Builder SetOperation(global::Mumble.Messages.ContextActionModify.Types.Operation value) {
         PrepareBuilder();
         result.hasOperation = true;
         result.operation_ = value;
@@ -10380,12 +10380,12 @@ namespace Mumble.NET {
       public Builder ClearOperation() {
         PrepareBuilder();
         result.hasOperation = false;
-        result.operation_ = global::Mumble.NET.ContextActionModify.Types.Operation.Add;
+        result.operation_ = global::Mumble.Messages.ContextActionModify.Types.Operation.Add;
         return this;
       }
     }
     static ContextActionModify() {
-      object.ReferenceEquals(global::Mumble.NET.Messages.Descriptor, null);
+      object.ReferenceEquals(global::Mumble.Messages.Messages.Descriptor, null);
     }
   }
   
@@ -10410,11 +10410,11 @@ namespace Mumble.NET {
     }
     
     public static pbd::MessageDescriptor Descriptor {
-      get { return global::Mumble.NET.Messages.internal__static_MumbleProto_ContextAction__Descriptor; }
+      get { return global::Mumble.Messages.Messages.internal__static_MumbleProto_ContextAction__Descriptor; }
     }
     
     protected override pb::FieldAccess.FieldAccessorTable<ContextAction, ContextAction.Builder> InternalFieldAccessors {
-      get { return global::Mumble.NET.Messages.internal__static_MumbleProto_ContextAction__FieldAccessorTable; }
+      get { return global::Mumble.Messages.Messages.internal__static_MumbleProto_ContextAction__FieldAccessorTable; }
     }
     
     public const int SessionFieldNumber = 1;
@@ -10591,11 +10591,11 @@ namespace Mumble.NET {
       }
       
       public override pbd::MessageDescriptor DescriptorForType {
-        get { return global::Mumble.NET.ContextAction.Descriptor; }
+        get { return global::Mumble.Messages.ContextAction.Descriptor; }
       }
       
       public override ContextAction DefaultInstanceForType {
-        get { return global::Mumble.NET.ContextAction.DefaultInstance; }
+        get { return global::Mumble.Messages.ContextAction.DefaultInstance; }
       }
       
       public override ContextAction BuildPartial() {
@@ -10616,7 +10616,7 @@ namespace Mumble.NET {
       }
       
       public override Builder MergeFrom(ContextAction other) {
-        if (other == global::Mumble.NET.ContextAction.DefaultInstance) return this;
+        if (other == global::Mumble.Messages.ContextAction.DefaultInstance) return this;
         PrepareBuilder();
         if (other.HasSession) {
           Session = other.Session;
@@ -10758,7 +10758,7 @@ namespace Mumble.NET {
       }
     }
     static ContextAction() {
-      object.ReferenceEquals(global::Mumble.NET.Messages.Descriptor, null);
+      object.ReferenceEquals(global::Mumble.Messages.Messages.Descriptor, null);
     }
   }
   
@@ -10783,11 +10783,11 @@ namespace Mumble.NET {
     }
     
     public static pbd::MessageDescriptor Descriptor {
-      get { return global::Mumble.NET.Messages.internal__static_MumbleProto_UserList__Descriptor; }
+      get { return global::Mumble.Messages.Messages.internal__static_MumbleProto_UserList__Descriptor; }
     }
     
     protected override pb::FieldAccess.FieldAccessorTable<UserList, UserList.Builder> InternalFieldAccessors {
-      get { return global::Mumble.NET.Messages.internal__static_MumbleProto_UserList__FieldAccessorTable; }
+      get { return global::Mumble.Messages.Messages.internal__static_MumbleProto_UserList__FieldAccessorTable; }
     }
     
     #region Nested types
@@ -10816,11 +10816,11 @@ namespace Mumble.NET {
         }
         
         public static pbd::MessageDescriptor Descriptor {
-          get { return global::Mumble.NET.Messages.internal__static_MumbleProto_UserList_User__Descriptor; }
+          get { return global::Mumble.Messages.Messages.internal__static_MumbleProto_UserList_User__Descriptor; }
         }
         
         protected override pb::FieldAccess.FieldAccessorTable<User, User.Builder> InternalFieldAccessors {
-          get { return global::Mumble.NET.Messages.internal__static_MumbleProto_UserList_User__FieldAccessorTable; }
+          get { return global::Mumble.Messages.Messages.internal__static_MumbleProto_UserList_User__FieldAccessorTable; }
         }
         
         public const int UserIdFieldNumber = 1;
@@ -11013,11 +11013,11 @@ namespace Mumble.NET {
           }
           
           public override pbd::MessageDescriptor DescriptorForType {
-            get { return global::Mumble.NET.UserList.Types.User.Descriptor; }
+            get { return global::Mumble.Messages.UserList.Types.User.Descriptor; }
           }
           
           public override User DefaultInstanceForType {
-            get { return global::Mumble.NET.UserList.Types.User.DefaultInstance; }
+            get { return global::Mumble.Messages.UserList.Types.User.DefaultInstance; }
           }
           
           public override User BuildPartial() {
@@ -11038,7 +11038,7 @@ namespace Mumble.NET {
           }
           
           public override Builder MergeFrom(User other) {
-            if (other == global::Mumble.NET.UserList.Types.User.DefaultInstance) return this;
+            if (other == global::Mumble.Messages.UserList.Types.User.DefaultInstance) return this;
             PrepareBuilder();
             if (other.HasUserId) {
               UserId = other.UserId;
@@ -11208,7 +11208,7 @@ namespace Mumble.NET {
           }
         }
         static User() {
-          object.ReferenceEquals(global::Mumble.NET.Messages.Descriptor, null);
+          object.ReferenceEquals(global::Mumble.Messages.Messages.Descriptor, null);
         }
       }
       
@@ -11216,20 +11216,20 @@ namespace Mumble.NET {
     #endregion
     
     public const int UsersFieldNumber = 1;
-    private pbc::PopsicleList<global::Mumble.NET.UserList.Types.User> users_ = new pbc::PopsicleList<global::Mumble.NET.UserList.Types.User>();
-    public scg::IList<global::Mumble.NET.UserList.Types.User> UsersList {
+    private pbc::PopsicleList<global::Mumble.Messages.UserList.Types.User> users_ = new pbc::PopsicleList<global::Mumble.Messages.UserList.Types.User>();
+    public scg::IList<global::Mumble.Messages.UserList.Types.User> UsersList {
       get { return users_; }
     }
     public int UsersCount {
       get { return users_.Count; }
     }
-    public global::Mumble.NET.UserList.Types.User GetUsers(int index) {
+    public global::Mumble.Messages.UserList.Types.User GetUsers(int index) {
       return users_[index];
     }
     
     public override bool IsInitialized {
       get {
-        foreach (global::Mumble.NET.UserList.Types.User element in UsersList) {
+        foreach (global::Mumble.Messages.UserList.Types.User element in UsersList) {
           if (!element.IsInitialized) return false;
         }
         return true;
@@ -11259,7 +11259,7 @@ namespace Mumble.NET {
       if (size != -1) return size;
       
       size = 0;
-      foreach (global::Mumble.NET.UserList.Types.User element in UsersList) {
+      foreach (global::Mumble.Messages.UserList.Types.User element in UsersList) {
         size += pb::CodedOutputStream.ComputeMessageSize(1, element);
       }
       size += UnknownFields.SerializedSize;
@@ -11360,11 +11360,11 @@ namespace Mumble.NET {
       }
       
       public override pbd::MessageDescriptor DescriptorForType {
-        get { return global::Mumble.NET.UserList.Descriptor; }
+        get { return global::Mumble.Messages.UserList.Descriptor; }
       }
       
       public override UserList DefaultInstanceForType {
-        get { return global::Mumble.NET.UserList.DefaultInstance; }
+        get { return global::Mumble.Messages.UserList.DefaultInstance; }
       }
       
       public override UserList BuildPartial() {
@@ -11385,7 +11385,7 @@ namespace Mumble.NET {
       }
       
       public override Builder MergeFrom(UserList other) {
-        if (other == global::Mumble.NET.UserList.DefaultInstance) return this;
+        if (other == global::Mumble.Messages.UserList.DefaultInstance) return this;
         PrepareBuilder();
         if (other.users_.Count != 0) {
           result.users_.Add(other.users_);
@@ -11434,7 +11434,7 @@ namespace Mumble.NET {
               break;
             }
             case 10: {
-              input.ReadMessageArray(tag, field_name, result.users_, global::Mumble.NET.UserList.Types.User.DefaultInstance, extensionRegistry);
+              input.ReadMessageArray(tag, field_name, result.users_, global::Mumble.Messages.UserList.Types.User.DefaultInstance, extensionRegistry);
               break;
             }
           }
@@ -11447,40 +11447,40 @@ namespace Mumble.NET {
       }
       
       
-      public pbc::IPopsicleList<global::Mumble.NET.UserList.Types.User> UsersList {
+      public pbc::IPopsicleList<global::Mumble.Messages.UserList.Types.User> UsersList {
         get { return PrepareBuilder().users_; }
       }
       public int UsersCount {
         get { return result.UsersCount; }
       }
-      public global::Mumble.NET.UserList.Types.User GetUsers(int index) {
+      public global::Mumble.Messages.UserList.Types.User GetUsers(int index) {
         return result.GetUsers(index);
       }
-      public Builder SetUsers(int index, global::Mumble.NET.UserList.Types.User value) {
+      public Builder SetUsers(int index, global::Mumble.Messages.UserList.Types.User value) {
         pb::ThrowHelper.ThrowIfNull(value, "value");
         PrepareBuilder();
         result.users_[index] = value;
         return this;
       }
-      public Builder SetUsers(int index, global::Mumble.NET.UserList.Types.User.Builder builderForValue) {
+      public Builder SetUsers(int index, global::Mumble.Messages.UserList.Types.User.Builder builderForValue) {
         pb::ThrowHelper.ThrowIfNull(builderForValue, "builderForValue");
         PrepareBuilder();
         result.users_[index] = builderForValue.Build();
         return this;
       }
-      public Builder AddUsers(global::Mumble.NET.UserList.Types.User value) {
+      public Builder AddUsers(global::Mumble.Messages.UserList.Types.User value) {
         pb::ThrowHelper.ThrowIfNull(value, "value");
         PrepareBuilder();
         result.users_.Add(value);
         return this;
       }
-      public Builder AddUsers(global::Mumble.NET.UserList.Types.User.Builder builderForValue) {
+      public Builder AddUsers(global::Mumble.Messages.UserList.Types.User.Builder builderForValue) {
         pb::ThrowHelper.ThrowIfNull(builderForValue, "builderForValue");
         PrepareBuilder();
         result.users_.Add(builderForValue.Build());
         return this;
       }
-      public Builder AddRangeUsers(scg::IEnumerable<global::Mumble.NET.UserList.Types.User> values) {
+      public Builder AddRangeUsers(scg::IEnumerable<global::Mumble.Messages.UserList.Types.User> values) {
         PrepareBuilder();
         result.users_.Add(values);
         return this;
@@ -11492,7 +11492,7 @@ namespace Mumble.NET {
       }
     }
     static UserList() {
-      object.ReferenceEquals(global::Mumble.NET.Messages.Descriptor, null);
+      object.ReferenceEquals(global::Mumble.Messages.Messages.Descriptor, null);
     }
   }
   
@@ -11517,11 +11517,11 @@ namespace Mumble.NET {
     }
     
     public static pbd::MessageDescriptor Descriptor {
-      get { return global::Mumble.NET.Messages.internal__static_MumbleProto_VoiceTarget__Descriptor; }
+      get { return global::Mumble.Messages.Messages.internal__static_MumbleProto_VoiceTarget__Descriptor; }
     }
     
     protected override pb::FieldAccess.FieldAccessorTable<VoiceTarget, VoiceTarget.Builder> InternalFieldAccessors {
-      get { return global::Mumble.NET.Messages.internal__static_MumbleProto_VoiceTarget__FieldAccessorTable; }
+      get { return global::Mumble.Messages.Messages.internal__static_MumbleProto_VoiceTarget__FieldAccessorTable; }
     }
     
     #region Nested types
@@ -11550,11 +11550,11 @@ namespace Mumble.NET {
         }
         
         public static pbd::MessageDescriptor Descriptor {
-          get { return global::Mumble.NET.Messages.internal__static_MumbleProto_VoiceTarget_Target__Descriptor; }
+          get { return global::Mumble.Messages.Messages.internal__static_MumbleProto_VoiceTarget_Target__Descriptor; }
         }
         
         protected override pb::FieldAccess.FieldAccessorTable<Target, Target.Builder> InternalFieldAccessors {
-          get { return global::Mumble.NET.Messages.internal__static_MumbleProto_VoiceTarget_Target__FieldAccessorTable; }
+          get { return global::Mumble.Messages.Messages.internal__static_MumbleProto_VoiceTarget_Target__FieldAccessorTable; }
         }
         
         public const int SessionFieldNumber = 1;
@@ -11771,11 +11771,11 @@ namespace Mumble.NET {
           }
           
           public override pbd::MessageDescriptor DescriptorForType {
-            get { return global::Mumble.NET.VoiceTarget.Types.Target.Descriptor; }
+            get { return global::Mumble.Messages.VoiceTarget.Types.Target.Descriptor; }
           }
           
           public override Target DefaultInstanceForType {
-            get { return global::Mumble.NET.VoiceTarget.Types.Target.DefaultInstance; }
+            get { return global::Mumble.Messages.VoiceTarget.Types.Target.DefaultInstance; }
           }
           
           public override Target BuildPartial() {
@@ -11796,7 +11796,7 @@ namespace Mumble.NET {
           }
           
           public override Builder MergeFrom(Target other) {
-            if (other == global::Mumble.NET.VoiceTarget.Types.Target.DefaultInstance) return this;
+            if (other == global::Mumble.Messages.VoiceTarget.Types.Target.DefaultInstance) return this;
             PrepareBuilder();
             if (other.session_.Count != 0) {
               result.session_.Add(other.session_);
@@ -12006,7 +12006,7 @@ namespace Mumble.NET {
           }
         }
         static Target() {
-          object.ReferenceEquals(global::Mumble.NET.Messages.Descriptor, null);
+          object.ReferenceEquals(global::Mumble.Messages.Messages.Descriptor, null);
         }
       }
       
@@ -12025,14 +12025,14 @@ namespace Mumble.NET {
     }
     
     public const int TargetsFieldNumber = 2;
-    private pbc::PopsicleList<global::Mumble.NET.VoiceTarget.Types.Target> targets_ = new pbc::PopsicleList<global::Mumble.NET.VoiceTarget.Types.Target>();
-    public scg::IList<global::Mumble.NET.VoiceTarget.Types.Target> TargetsList {
+    private pbc::PopsicleList<global::Mumble.Messages.VoiceTarget.Types.Target> targets_ = new pbc::PopsicleList<global::Mumble.Messages.VoiceTarget.Types.Target>();
+    public scg::IList<global::Mumble.Messages.VoiceTarget.Types.Target> TargetsList {
       get { return targets_; }
     }
     public int TargetsCount {
       get { return targets_.Count; }
     }
-    public global::Mumble.NET.VoiceTarget.Types.Target GetTargets(int index) {
+    public global::Mumble.Messages.VoiceTarget.Types.Target GetTargets(int index) {
       return targets_[index];
     }
     
@@ -12071,7 +12071,7 @@ namespace Mumble.NET {
       if (hasId) {
         size += pb::CodedOutputStream.ComputeUInt32Size(1, Id);
       }
-      foreach (global::Mumble.NET.VoiceTarget.Types.Target element in TargetsList) {
+      foreach (global::Mumble.Messages.VoiceTarget.Types.Target element in TargetsList) {
         size += pb::CodedOutputStream.ComputeMessageSize(2, element);
       }
       size += UnknownFields.SerializedSize;
@@ -12172,11 +12172,11 @@ namespace Mumble.NET {
       }
       
       public override pbd::MessageDescriptor DescriptorForType {
-        get { return global::Mumble.NET.VoiceTarget.Descriptor; }
+        get { return global::Mumble.Messages.VoiceTarget.Descriptor; }
       }
       
       public override VoiceTarget DefaultInstanceForType {
-        get { return global::Mumble.NET.VoiceTarget.DefaultInstance; }
+        get { return global::Mumble.Messages.VoiceTarget.DefaultInstance; }
       }
       
       public override VoiceTarget BuildPartial() {
@@ -12197,7 +12197,7 @@ namespace Mumble.NET {
       }
       
       public override Builder MergeFrom(VoiceTarget other) {
-        if (other == global::Mumble.NET.VoiceTarget.DefaultInstance) return this;
+        if (other == global::Mumble.Messages.VoiceTarget.DefaultInstance) return this;
         PrepareBuilder();
         if (other.HasId) {
           Id = other.Id;
@@ -12253,7 +12253,7 @@ namespace Mumble.NET {
               break;
             }
             case 18: {
-              input.ReadMessageArray(tag, field_name, result.targets_, global::Mumble.NET.VoiceTarget.Types.Target.DefaultInstance, extensionRegistry);
+              input.ReadMessageArray(tag, field_name, result.targets_, global::Mumble.Messages.VoiceTarget.Types.Target.DefaultInstance, extensionRegistry);
               break;
             }
           }
@@ -12288,40 +12288,40 @@ namespace Mumble.NET {
         return this;
       }
       
-      public pbc::IPopsicleList<global::Mumble.NET.VoiceTarget.Types.Target> TargetsList {
+      public pbc::IPopsicleList<global::Mumble.Messages.VoiceTarget.Types.Target> TargetsList {
         get { return PrepareBuilder().targets_; }
       }
       public int TargetsCount {
         get { return result.TargetsCount; }
       }
-      public global::Mumble.NET.VoiceTarget.Types.Target GetTargets(int index) {
+      public global::Mumble.Messages.VoiceTarget.Types.Target GetTargets(int index) {
         return result.GetTargets(index);
       }
-      public Builder SetTargets(int index, global::Mumble.NET.VoiceTarget.Types.Target value) {
+      public Builder SetTargets(int index, global::Mumble.Messages.VoiceTarget.Types.Target value) {
         pb::ThrowHelper.ThrowIfNull(value, "value");
         PrepareBuilder();
         result.targets_[index] = value;
         return this;
       }
-      public Builder SetTargets(int index, global::Mumble.NET.VoiceTarget.Types.Target.Builder builderForValue) {
+      public Builder SetTargets(int index, global::Mumble.Messages.VoiceTarget.Types.Target.Builder builderForValue) {
         pb::ThrowHelper.ThrowIfNull(builderForValue, "builderForValue");
         PrepareBuilder();
         result.targets_[index] = builderForValue.Build();
         return this;
       }
-      public Builder AddTargets(global::Mumble.NET.VoiceTarget.Types.Target value) {
+      public Builder AddTargets(global::Mumble.Messages.VoiceTarget.Types.Target value) {
         pb::ThrowHelper.ThrowIfNull(value, "value");
         PrepareBuilder();
         result.targets_.Add(value);
         return this;
       }
-      public Builder AddTargets(global::Mumble.NET.VoiceTarget.Types.Target.Builder builderForValue) {
+      public Builder AddTargets(global::Mumble.Messages.VoiceTarget.Types.Target.Builder builderForValue) {
         pb::ThrowHelper.ThrowIfNull(builderForValue, "builderForValue");
         PrepareBuilder();
         result.targets_.Add(builderForValue.Build());
         return this;
       }
-      public Builder AddRangeTargets(scg::IEnumerable<global::Mumble.NET.VoiceTarget.Types.Target> values) {
+      public Builder AddRangeTargets(scg::IEnumerable<global::Mumble.Messages.VoiceTarget.Types.Target> values) {
         PrepareBuilder();
         result.targets_.Add(values);
         return this;
@@ -12333,7 +12333,7 @@ namespace Mumble.NET {
       }
     }
     static VoiceTarget() {
-      object.ReferenceEquals(global::Mumble.NET.Messages.Descriptor, null);
+      object.ReferenceEquals(global::Mumble.Messages.Messages.Descriptor, null);
     }
   }
   
@@ -12358,11 +12358,11 @@ namespace Mumble.NET {
     }
     
     public static pbd::MessageDescriptor Descriptor {
-      get { return global::Mumble.NET.Messages.internal__static_MumbleProto_PermissionQuery__Descriptor; }
+      get { return global::Mumble.Messages.Messages.internal__static_MumbleProto_PermissionQuery__Descriptor; }
     }
     
     protected override pb::FieldAccess.FieldAccessorTable<PermissionQuery, PermissionQuery.Builder> InternalFieldAccessors {
-      get { return global::Mumble.NET.Messages.internal__static_MumbleProto_PermissionQuery__FieldAccessorTable; }
+      get { return global::Mumble.Messages.Messages.internal__static_MumbleProto_PermissionQuery__FieldAccessorTable; }
     }
     
     public const int ChannelIdFieldNumber = 1;
@@ -12538,11 +12538,11 @@ namespace Mumble.NET {
       }
       
       public override pbd::MessageDescriptor DescriptorForType {
-        get { return global::Mumble.NET.PermissionQuery.Descriptor; }
+        get { return global::Mumble.Messages.PermissionQuery.Descriptor; }
       }
       
       public override PermissionQuery DefaultInstanceForType {
-        get { return global::Mumble.NET.PermissionQuery.DefaultInstance; }
+        get { return global::Mumble.Messages.PermissionQuery.DefaultInstance; }
       }
       
       public override PermissionQuery BuildPartial() {
@@ -12563,7 +12563,7 @@ namespace Mumble.NET {
       }
       
       public override Builder MergeFrom(PermissionQuery other) {
-        if (other == global::Mumble.NET.PermissionQuery.DefaultInstance) return this;
+        if (other == global::Mumble.Messages.PermissionQuery.DefaultInstance) return this;
         PrepareBuilder();
         if (other.HasChannelId) {
           ChannelId = other.ChannelId;
@@ -12704,7 +12704,7 @@ namespace Mumble.NET {
       }
     }
     static PermissionQuery() {
-      object.ReferenceEquals(global::Mumble.NET.Messages.Descriptor, null);
+      object.ReferenceEquals(global::Mumble.Messages.Messages.Descriptor, null);
     }
   }
   
@@ -12729,11 +12729,11 @@ namespace Mumble.NET {
     }
     
     public static pbd::MessageDescriptor Descriptor {
-      get { return global::Mumble.NET.Messages.internal__static_MumbleProto_CodecVersion__Descriptor; }
+      get { return global::Mumble.Messages.Messages.internal__static_MumbleProto_CodecVersion__Descriptor; }
     }
     
     protected override pb::FieldAccess.FieldAccessorTable<CodecVersion, CodecVersion.Builder> InternalFieldAccessors {
-      get { return global::Mumble.NET.Messages.internal__static_MumbleProto_CodecVersion__FieldAccessorTable; }
+      get { return global::Mumble.Messages.Messages.internal__static_MumbleProto_CodecVersion__FieldAccessorTable; }
     }
     
     public const int AlphaFieldNumber = 1;
@@ -12926,11 +12926,11 @@ namespace Mumble.NET {
       }
       
       public override pbd::MessageDescriptor DescriptorForType {
-        get { return global::Mumble.NET.CodecVersion.Descriptor; }
+        get { return global::Mumble.Messages.CodecVersion.Descriptor; }
       }
       
       public override CodecVersion DefaultInstanceForType {
-        get { return global::Mumble.NET.CodecVersion.DefaultInstance; }
+        get { return global::Mumble.Messages.CodecVersion.DefaultInstance; }
       }
       
       public override CodecVersion BuildPartial() {
@@ -12951,7 +12951,7 @@ namespace Mumble.NET {
       }
       
       public override Builder MergeFrom(CodecVersion other) {
-        if (other == global::Mumble.NET.CodecVersion.DefaultInstance) return this;
+        if (other == global::Mumble.Messages.CodecVersion.DefaultInstance) return this;
         PrepareBuilder();
         if (other.HasAlpha) {
           Alpha = other.Alpha;
@@ -13115,7 +13115,7 @@ namespace Mumble.NET {
       }
     }
     static CodecVersion() {
-      object.ReferenceEquals(global::Mumble.NET.Messages.Descriptor, null);
+      object.ReferenceEquals(global::Mumble.Messages.Messages.Descriptor, null);
     }
   }
   
@@ -13140,11 +13140,11 @@ namespace Mumble.NET {
     }
     
     public static pbd::MessageDescriptor Descriptor {
-      get { return global::Mumble.NET.Messages.internal__static_MumbleProto_UserStats__Descriptor; }
+      get { return global::Mumble.Messages.Messages.internal__static_MumbleProto_UserStats__Descriptor; }
     }
     
     protected override pb::FieldAccess.FieldAccessorTable<UserStats, UserStats.Builder> InternalFieldAccessors {
-      get { return global::Mumble.NET.Messages.internal__static_MumbleProto_UserStats__FieldAccessorTable; }
+      get { return global::Mumble.Messages.Messages.internal__static_MumbleProto_UserStats__FieldAccessorTable; }
     }
     
     #region Nested types
@@ -13173,11 +13173,11 @@ namespace Mumble.NET {
         }
         
         public static pbd::MessageDescriptor Descriptor {
-          get { return global::Mumble.NET.Messages.internal__static_MumbleProto_UserStats_Stats__Descriptor; }
+          get { return global::Mumble.Messages.Messages.internal__static_MumbleProto_UserStats_Stats__Descriptor; }
         }
         
         protected override pb::FieldAccess.FieldAccessorTable<Stats, Stats.Builder> InternalFieldAccessors {
-          get { return global::Mumble.NET.Messages.internal__static_MumbleProto_UserStats_Stats__FieldAccessorTable; }
+          get { return global::Mumble.Messages.Messages.internal__static_MumbleProto_UserStats_Stats__FieldAccessorTable; }
         }
         
         public const int GoodFieldNumber = 1;
@@ -13371,11 +13371,11 @@ namespace Mumble.NET {
           }
           
           public override pbd::MessageDescriptor DescriptorForType {
-            get { return global::Mumble.NET.UserStats.Types.Stats.Descriptor; }
+            get { return global::Mumble.Messages.UserStats.Types.Stats.Descriptor; }
           }
           
           public override Stats DefaultInstanceForType {
-            get { return global::Mumble.NET.UserStats.Types.Stats.DefaultInstance; }
+            get { return global::Mumble.Messages.UserStats.Types.Stats.DefaultInstance; }
           }
           
           public override Stats BuildPartial() {
@@ -13396,7 +13396,7 @@ namespace Mumble.NET {
           }
           
           public override Builder MergeFrom(Stats other) {
-            if (other == global::Mumble.NET.UserStats.Types.Stats.DefaultInstance) return this;
+            if (other == global::Mumble.Messages.UserStats.Types.Stats.DefaultInstance) return this;
             PrepareBuilder();
             if (other.HasGood) {
               Good = other.Good;
@@ -13568,7 +13568,7 @@ namespace Mumble.NET {
           }
         }
         static Stats() {
-          object.ReferenceEquals(global::Mumble.NET.Messages.Descriptor, null);
+          object.ReferenceEquals(global::Mumble.Messages.Messages.Descriptor, null);
         }
       }
       
@@ -13610,22 +13610,22 @@ namespace Mumble.NET {
     
     public const int FromClientFieldNumber = 4;
     private bool hasFromClient;
-    private global::Mumble.NET.UserStats.Types.Stats fromClient_;
+    private global::Mumble.Messages.UserStats.Types.Stats fromClient_;
     public bool HasFromClient {
       get { return hasFromClient; }
     }
-    public global::Mumble.NET.UserStats.Types.Stats FromClient {
-      get { return fromClient_ ?? global::Mumble.NET.UserStats.Types.Stats.DefaultInstance; }
+    public global::Mumble.Messages.UserStats.Types.Stats FromClient {
+      get { return fromClient_ ?? global::Mumble.Messages.UserStats.Types.Stats.DefaultInstance; }
     }
     
     public const int FromServerFieldNumber = 5;
     private bool hasFromServer;
-    private global::Mumble.NET.UserStats.Types.Stats fromServer_;
+    private global::Mumble.Messages.UserStats.Types.Stats fromServer_;
     public bool HasFromServer {
       get { return hasFromServer; }
     }
-    public global::Mumble.NET.UserStats.Types.Stats FromServer {
-      get { return fromServer_ ?? global::Mumble.NET.UserStats.Types.Stats.DefaultInstance; }
+    public global::Mumble.Messages.UserStats.Types.Stats FromServer {
+      get { return fromServer_ ?? global::Mumble.Messages.UserStats.Types.Stats.DefaultInstance; }
     }
     
     public const int UdpPacketsFieldNumber = 6;
@@ -13692,12 +13692,12 @@ namespace Mumble.NET {
     
     public const int VersionFieldNumber = 12;
     private bool hasVersion;
-    private global::Mumble.NET.Version version_;
+    private global::Mumble.Messages.Version version_;
     public bool HasVersion {
       get { return hasVersion; }
     }
-    public global::Mumble.NET.Version Version {
-      get { return version_ ?? global::Mumble.NET.Version.DefaultInstance; }
+    public global::Mumble.Messages.Version Version {
+      get { return version_ ?? global::Mumble.Messages.Version.DefaultInstance; }
     }
     
     public const int CeltVersionsFieldNumber = 13;
@@ -14024,11 +14024,11 @@ namespace Mumble.NET {
       }
       
       public override pbd::MessageDescriptor DescriptorForType {
-        get { return global::Mumble.NET.UserStats.Descriptor; }
+        get { return global::Mumble.Messages.UserStats.Descriptor; }
       }
       
       public override UserStats DefaultInstanceForType {
-        get { return global::Mumble.NET.UserStats.DefaultInstance; }
+        get { return global::Mumble.Messages.UserStats.DefaultInstance; }
       }
       
       public override UserStats BuildPartial() {
@@ -14049,7 +14049,7 @@ namespace Mumble.NET {
       }
       
       public override Builder MergeFrom(UserStats other) {
-        if (other == global::Mumble.NET.UserStats.DefaultInstance) return this;
+        if (other == global::Mumble.Messages.UserStats.DefaultInstance) return this;
         PrepareBuilder();
         if (other.HasSession) {
           Session = other.Session;
@@ -14164,7 +14164,7 @@ namespace Mumble.NET {
               break;
             }
             case 34: {
-              global::Mumble.NET.UserStats.Types.Stats.Builder subBuilder = global::Mumble.NET.UserStats.Types.Stats.CreateBuilder();
+              global::Mumble.Messages.UserStats.Types.Stats.Builder subBuilder = global::Mumble.Messages.UserStats.Types.Stats.CreateBuilder();
               if (result.hasFromClient) {
                 subBuilder.MergeFrom(FromClient);
               }
@@ -14173,7 +14173,7 @@ namespace Mumble.NET {
               break;
             }
             case 42: {
-              global::Mumble.NET.UserStats.Types.Stats.Builder subBuilder = global::Mumble.NET.UserStats.Types.Stats.CreateBuilder();
+              global::Mumble.Messages.UserStats.Types.Stats.Builder subBuilder = global::Mumble.Messages.UserStats.Types.Stats.CreateBuilder();
               if (result.hasFromServer) {
                 subBuilder.MergeFrom(FromServer);
               }
@@ -14206,7 +14206,7 @@ namespace Mumble.NET {
               break;
             }
             case 98: {
-              global::Mumble.NET.Version.Builder subBuilder = global::Mumble.NET.Version.CreateBuilder();
+              global::Mumble.Messages.Version.Builder subBuilder = global::Mumble.Messages.Version.CreateBuilder();
               if (result.hasVersion) {
                 subBuilder.MergeFrom(Version);
               }
@@ -14330,30 +14330,30 @@ namespace Mumble.NET {
       public bool HasFromClient {
        get { return result.hasFromClient; }
       }
-      public global::Mumble.NET.UserStats.Types.Stats FromClient {
+      public global::Mumble.Messages.UserStats.Types.Stats FromClient {
         get { return result.FromClient; }
         set { SetFromClient(value); }
       }
-      public Builder SetFromClient(global::Mumble.NET.UserStats.Types.Stats value) {
+      public Builder SetFromClient(global::Mumble.Messages.UserStats.Types.Stats value) {
         pb::ThrowHelper.ThrowIfNull(value, "value");
         PrepareBuilder();
         result.hasFromClient = true;
         result.fromClient_ = value;
         return this;
       }
-      public Builder SetFromClient(global::Mumble.NET.UserStats.Types.Stats.Builder builderForValue) {
+      public Builder SetFromClient(global::Mumble.Messages.UserStats.Types.Stats.Builder builderForValue) {
         pb::ThrowHelper.ThrowIfNull(builderForValue, "builderForValue");
         PrepareBuilder();
         result.hasFromClient = true;
         result.fromClient_ = builderForValue.Build();
         return this;
       }
-      public Builder MergeFromClient(global::Mumble.NET.UserStats.Types.Stats value) {
+      public Builder MergeFromClient(global::Mumble.Messages.UserStats.Types.Stats value) {
         pb::ThrowHelper.ThrowIfNull(value, "value");
         PrepareBuilder();
         if (result.hasFromClient &&
-            result.fromClient_ != global::Mumble.NET.UserStats.Types.Stats.DefaultInstance) {
-            result.fromClient_ = global::Mumble.NET.UserStats.Types.Stats.CreateBuilder(result.fromClient_).MergeFrom(value).BuildPartial();
+            result.fromClient_ != global::Mumble.Messages.UserStats.Types.Stats.DefaultInstance) {
+            result.fromClient_ = global::Mumble.Messages.UserStats.Types.Stats.CreateBuilder(result.fromClient_).MergeFrom(value).BuildPartial();
         } else {
           result.fromClient_ = value;
         }
@@ -14370,30 +14370,30 @@ namespace Mumble.NET {
       public bool HasFromServer {
        get { return result.hasFromServer; }
       }
-      public global::Mumble.NET.UserStats.Types.Stats FromServer {
+      public global::Mumble.Messages.UserStats.Types.Stats FromServer {
         get { return result.FromServer; }
         set { SetFromServer(value); }
       }
-      public Builder SetFromServer(global::Mumble.NET.UserStats.Types.Stats value) {
+      public Builder SetFromServer(global::Mumble.Messages.UserStats.Types.Stats value) {
         pb::ThrowHelper.ThrowIfNull(value, "value");
         PrepareBuilder();
         result.hasFromServer = true;
         result.fromServer_ = value;
         return this;
       }
-      public Builder SetFromServer(global::Mumble.NET.UserStats.Types.Stats.Builder builderForValue) {
+      public Builder SetFromServer(global::Mumble.Messages.UserStats.Types.Stats.Builder builderForValue) {
         pb::ThrowHelper.ThrowIfNull(builderForValue, "builderForValue");
         PrepareBuilder();
         result.hasFromServer = true;
         result.fromServer_ = builderForValue.Build();
         return this;
       }
-      public Builder MergeFromServer(global::Mumble.NET.UserStats.Types.Stats value) {
+      public Builder MergeFromServer(global::Mumble.Messages.UserStats.Types.Stats value) {
         pb::ThrowHelper.ThrowIfNull(value, "value");
         PrepareBuilder();
         if (result.hasFromServer &&
-            result.fromServer_ != global::Mumble.NET.UserStats.Types.Stats.DefaultInstance) {
-            result.fromServer_ = global::Mumble.NET.UserStats.Types.Stats.CreateBuilder(result.fromServer_).MergeFrom(value).BuildPartial();
+            result.fromServer_ != global::Mumble.Messages.UserStats.Types.Stats.DefaultInstance) {
+            result.fromServer_ = global::Mumble.Messages.UserStats.Types.Stats.CreateBuilder(result.fromServer_).MergeFrom(value).BuildPartial();
         } else {
           result.fromServer_ = value;
         }
@@ -14534,30 +14534,30 @@ namespace Mumble.NET {
       public bool HasVersion {
        get { return result.hasVersion; }
       }
-      public global::Mumble.NET.Version Version {
+      public global::Mumble.Messages.Version Version {
         get { return result.Version; }
         set { SetVersion(value); }
       }
-      public Builder SetVersion(global::Mumble.NET.Version value) {
+      public Builder SetVersion(global::Mumble.Messages.Version value) {
         pb::ThrowHelper.ThrowIfNull(value, "value");
         PrepareBuilder();
         result.hasVersion = true;
         result.version_ = value;
         return this;
       }
-      public Builder SetVersion(global::Mumble.NET.Version.Builder builderForValue) {
+      public Builder SetVersion(global::Mumble.Messages.Version.Builder builderForValue) {
         pb::ThrowHelper.ThrowIfNull(builderForValue, "builderForValue");
         PrepareBuilder();
         result.hasVersion = true;
         result.version_ = builderForValue.Build();
         return this;
       }
-      public Builder MergeVersion(global::Mumble.NET.Version value) {
+      public Builder MergeVersion(global::Mumble.Messages.Version value) {
         pb::ThrowHelper.ThrowIfNull(value, "value");
         PrepareBuilder();
         if (result.hasVersion &&
-            result.version_ != global::Mumble.NET.Version.DefaultInstance) {
-            result.version_ = global::Mumble.NET.Version.CreateBuilder(result.version_).MergeFrom(value).BuildPartial();
+            result.version_ != global::Mumble.Messages.Version.DefaultInstance) {
+            result.version_ = global::Mumble.Messages.Version.CreateBuilder(result.version_).MergeFrom(value).BuildPartial();
         } else {
           result.version_ = value;
         }
@@ -14729,7 +14729,7 @@ namespace Mumble.NET {
       }
     }
     static UserStats() {
-      object.ReferenceEquals(global::Mumble.NET.Messages.Descriptor, null);
+      object.ReferenceEquals(global::Mumble.Messages.Messages.Descriptor, null);
     }
   }
   
@@ -14754,11 +14754,11 @@ namespace Mumble.NET {
     }
     
     public static pbd::MessageDescriptor Descriptor {
-      get { return global::Mumble.NET.Messages.internal__static_MumbleProto_RequestBlob__Descriptor; }
+      get { return global::Mumble.Messages.Messages.internal__static_MumbleProto_RequestBlob__Descriptor; }
     }
     
     protected override pb::FieldAccess.FieldAccessorTable<RequestBlob, RequestBlob.Builder> InternalFieldAccessors {
-      get { return global::Mumble.NET.Messages.internal__static_MumbleProto_RequestBlob__FieldAccessorTable; }
+      get { return global::Mumble.Messages.Messages.internal__static_MumbleProto_RequestBlob__FieldAccessorTable; }
     }
     
     public const int SessionTextureFieldNumber = 1;
@@ -14962,11 +14962,11 @@ namespace Mumble.NET {
       }
       
       public override pbd::MessageDescriptor DescriptorForType {
-        get { return global::Mumble.NET.RequestBlob.Descriptor; }
+        get { return global::Mumble.Messages.RequestBlob.Descriptor; }
       }
       
       public override RequestBlob DefaultInstanceForType {
-        get { return global::Mumble.NET.RequestBlob.DefaultInstance; }
+        get { return global::Mumble.Messages.RequestBlob.DefaultInstance; }
       }
       
       public override RequestBlob BuildPartial() {
@@ -14987,7 +14987,7 @@ namespace Mumble.NET {
       }
       
       public override Builder MergeFrom(RequestBlob other) {
-        if (other == global::Mumble.NET.RequestBlob.DefaultInstance) return this;
+        if (other == global::Mumble.Messages.RequestBlob.DefaultInstance) return this;
         PrepareBuilder();
         if (other.sessionTexture_.Count != 0) {
           result.sessionTexture_.Add(other.sessionTexture_);
@@ -15172,7 +15172,7 @@ namespace Mumble.NET {
       }
     }
     static RequestBlob() {
-      object.ReferenceEquals(global::Mumble.NET.Messages.Descriptor, null);
+      object.ReferenceEquals(global::Mumble.Messages.Messages.Descriptor, null);
     }
   }
   
@@ -15197,11 +15197,11 @@ namespace Mumble.NET {
     }
     
     public static pbd::MessageDescriptor Descriptor {
-      get { return global::Mumble.NET.Messages.internal__static_MumbleProto_ServerConfig__Descriptor; }
+      get { return global::Mumble.Messages.Messages.internal__static_MumbleProto_ServerConfig__Descriptor; }
     }
     
     protected override pb::FieldAccess.FieldAccessorTable<ServerConfig, ServerConfig.Builder> InternalFieldAccessors {
-      get { return global::Mumble.NET.Messages.internal__static_MumbleProto_ServerConfig__FieldAccessorTable; }
+      get { return global::Mumble.Messages.Messages.internal__static_MumbleProto_ServerConfig__FieldAccessorTable; }
     }
     
     public const int MaxBandwidthFieldNumber = 1;
@@ -15410,11 +15410,11 @@ namespace Mumble.NET {
       }
       
       public override pbd::MessageDescriptor DescriptorForType {
-        get { return global::Mumble.NET.ServerConfig.Descriptor; }
+        get { return global::Mumble.Messages.ServerConfig.Descriptor; }
       }
       
       public override ServerConfig DefaultInstanceForType {
-        get { return global::Mumble.NET.ServerConfig.DefaultInstance; }
+        get { return global::Mumble.Messages.ServerConfig.DefaultInstance; }
       }
       
       public override ServerConfig BuildPartial() {
@@ -15435,7 +15435,7 @@ namespace Mumble.NET {
       }
       
       public override Builder MergeFrom(ServerConfig other) {
-        if (other == global::Mumble.NET.ServerConfig.DefaultInstance) return this;
+        if (other == global::Mumble.Messages.ServerConfig.DefaultInstance) return this;
         PrepareBuilder();
         if (other.HasMaxBandwidth) {
           MaxBandwidth = other.MaxBandwidth;
@@ -15633,7 +15633,7 @@ namespace Mumble.NET {
       }
     }
     static ServerConfig() {
-      object.ReferenceEquals(global::Mumble.NET.Messages.Descriptor, null);
+      object.ReferenceEquals(global::Mumble.Messages.Messages.Descriptor, null);
     }
   }
   
@@ -15658,11 +15658,11 @@ namespace Mumble.NET {
     }
     
     public static pbd::MessageDescriptor Descriptor {
-      get { return global::Mumble.NET.Messages.internal__static_MumbleProto_SuggestConfig__Descriptor; }
+      get { return global::Mumble.Messages.Messages.internal__static_MumbleProto_SuggestConfig__Descriptor; }
     }
     
     protected override pb::FieldAccess.FieldAccessorTable<SuggestConfig, SuggestConfig.Builder> InternalFieldAccessors {
-      get { return global::Mumble.NET.Messages.internal__static_MumbleProto_SuggestConfig__FieldAccessorTable; }
+      get { return global::Mumble.Messages.Messages.internal__static_MumbleProto_SuggestConfig__FieldAccessorTable; }
     }
     
     public const int VersionFieldNumber = 1;
@@ -15837,11 +15837,11 @@ namespace Mumble.NET {
       }
       
       public override pbd::MessageDescriptor DescriptorForType {
-        get { return global::Mumble.NET.SuggestConfig.Descriptor; }
+        get { return global::Mumble.Messages.SuggestConfig.Descriptor; }
       }
       
       public override SuggestConfig DefaultInstanceForType {
-        get { return global::Mumble.NET.SuggestConfig.DefaultInstance; }
+        get { return global::Mumble.Messages.SuggestConfig.DefaultInstance; }
       }
       
       public override SuggestConfig BuildPartial() {
@@ -15862,7 +15862,7 @@ namespace Mumble.NET {
       }
       
       public override Builder MergeFrom(SuggestConfig other) {
-        if (other == global::Mumble.NET.SuggestConfig.DefaultInstance) return this;
+        if (other == global::Mumble.Messages.SuggestConfig.DefaultInstance) return this;
         PrepareBuilder();
         if (other.HasVersion) {
           Version = other.Version;
@@ -16001,7 +16001,7 @@ namespace Mumble.NET {
       }
     }
     static SuggestConfig() {
-      object.ReferenceEquals(global::Mumble.NET.Messages.Descriptor, null);
+      object.ReferenceEquals(global::Mumble.Messages.Messages.Descriptor, null);
     }
   }
   

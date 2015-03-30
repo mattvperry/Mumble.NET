@@ -27,7 +27,7 @@
             <ProtoFile>Mumble.proto</ProtoFile>
             <Class>Messages</Class>
             <Extension>.Designer.cs</Extension>
-            <ProtogenArgs>--proto_path=.\ -namespace=Mumble.NET -umbrella_classname=$(Class) -generated_code_attributes=true -file_extension=$(Extension)</ProtogenArgs>
+            <ProtogenArgs>--proto_path=.\ -namespace=Mumble.Messages -umbrella_classname=$(Class) -generated_code_attributes=true -file_extension=$(Extension)</ProtogenArgs>
         </PropertyGroup>
 
         <ItemGroup>

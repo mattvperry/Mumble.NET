@@ -5,8 +5,8 @@
     <ProjectGuid>{53EC3A4D-7F05-4DEB-B015-209AE407CA41}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Mumble.NET</RootNamespace>
-    <AssemblyName>Mumble.NET</AssemblyName>
+    <RootNamespace>Mumble</RootNamespace>
+    <AssemblyName>Mumble</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>5f9b6261</NuGetPackageImportStamp>
@@ -34,7 +34,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Connection.cs" />
+    <Compile Include="Exceptions\UnexpectedMessageException.cs" />
+    <Compile Include="IConnection.cs" />
+    <Compile Include="Messages\IMessageFactory.cs" />
+    <Compile Include="Messages\MessageFactory.cs" />
     <Compile Include="Messages\Messages.Designer.cs" />
+    <Compile Include="Messages\MessageType.cs" />
+    <Compile Include="MumbleClient.cs" />
+    <Compile Include="ServerInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Messages\Mumble.proto" />
