@@ -16,12 +16,17 @@ namespace Mumble
     /// <summary>
     /// Class representing a mumble client. Main entry point to the library.
     /// </summary>
-    public sealed class MumbleClient : IDisposable
+    public sealed partial class MumbleClient : IDisposable
     {
         /// <summary>
         /// Constant for the default mumble port
         /// </summary>
         public const int DefaultPort = 64738;
+
+        /// <summary>
+        /// Client's Mumble version
+        /// </summary>
+        public static readonly System.Version ClientMumbleVersion = new System.Version(1, 2, 8);
 
         /// <summary>
         /// Username of Mumble client
@@ -96,7 +101,7 @@ namespace Mumble
 
             await this.BuildAndSend<Messages.Version.Builder>((builder) =>
             {
-                builder.Version_ = EncodeVersion(new System.Version(1, 2, 8));
+                builder.Version_ = EncodeVersion(ClientMumbleVersion);
                 builder.Release = string.Format(CultureInfo.InvariantCulture, "Mumble.NET {0}", Assembly.GetExecutingAssembly().GetName().Version);
                 builder.Os = Environment.OSVersion.Platform.ToString();
                 builder.OsVersion = Environment.OSVersion.VersionString;

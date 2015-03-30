@@ -40,15 +40,35 @@
     <Compile Include="Messages\IMessageFactory.cs" />
     <Compile Include="Messages\MessageFactory.cs" />
     <Compile Include="Messages\Messages.Designer.cs" />
-    <Compile Include="Messages\MessageType.cs" />
+    <Compile Include="Messages\MessageType.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MessageType.tt</DependentUpon>
+    </Compile>
     <Compile Include="MumbleClient.cs" />
+    <Compile Include="MumbleClient.Events.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MumbleClient.tt</DependentUpon>
+    </Compile>
     <Compile Include="ServerInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Messages\MessageType.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>MessageType.cs</LastGenOutput>
+    </None>
     <None Include="Messages\Mumble.proto" />
+    <None Include="MumbleClient.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>MumbleClient.Events.cs</LastGenOutput>
+    </None>
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="protobuf.targets" />
