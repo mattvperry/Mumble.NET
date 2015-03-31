@@ -12,7 +12,7 @@
     <description>C# library for interacting with Mumble VoIP servers.</description>
     <tags>Mumble .NET VoIP Library</tags>
     <dependencies>
-        <dependency id="SimpleInjector" version="2.7.3" />
+        <dependency id="Google.ProtocolBuffers" version="2.4.1.555" />
     </dependencies>
   </metadata>
   <files>

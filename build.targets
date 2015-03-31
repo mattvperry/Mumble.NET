@@ -6,17 +6,46 @@
 
     <Import Project="$(NugetPack)StyleCop.MSBuild.4.7.49.1\build\StyleCop.MSBuild.Targets"/>
 
-    <!--
     <UsingTask
         TaskName="GetVersion"
         TaskFactory="CodeTaskFactory"
         AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.v12.0.dll">
+        <ParameterGroup>
+            <Path Required="True" />
+            <Major Output="true" />
+            <Minor Output="true" />
+            <Patch Output="true" />
+        </ParameterGroup>
+        <Task>
+            <Using Namespace="System.Text.RegularExpressions" />
+            <Code Type="Fragment" Language="cs">
+                <![CDATA[
+                var rgx = new Regex(@"^version: (\d+)\.(\d+)\.(\d+)");
+                var lines = File.ReadAllLines(this.Path);
+                var versionMatch = lines.Select(l => rgx.Match(l)).Where(r => r.Success).First();
+                this.Major = versionMatch.Groups[1].ToString();
+                this.Minor = versionMatch.Groups[2].ToString();
+                this.Patch = versionMatch.Groups[3].ToString();
+                ]]>
+            </Code>
+        </Task>
     </UsingTask>
-    -->
 
     <Target Name="GetBuildVersion">
         <PropertyGroup>
-            <Version>0.0.1</Version>
+            <BuildNumber Condition=" '$(APPVEYOR_BUILD_NUMBER)' != '' ">$(APPVEYOR_BUILD_NUMBER)</BuildNumber>
+            <BuildNumber Condition=" '$(BuildNumber)' == '' ">0</BuildNumber>
+        </PropertyGroup>
+
+        <GetVersion Path="$(ProjectRoot)appveyor.yml">
+            <Output PropertyName="Major" TaskParameter="Major" />
+            <Output PropertyName="Minor" TaskParameter="Minor" />
+            <Output PropertyName="Patch" TaskParameter="Patch" />
+        </GetVersion>
+
+        <PropertyGroup>
+            <Version>$(Major).$(Minor).$(Patch).$(BuildNumber)</Version>
+            <AssemblyVersion>$(Major).$(Minor).0.0</AssemblyVersion>
         </PropertyGroup>
     </Target>
 
@@ -36,7 +65,7 @@
             AssemblyCompany="https://github.com/perrym5/Mumble.NET"
             AssemblyCopyright="Copyright © $(Year). All rights reserved."
             AssemblyConfiguration="$(Configuration)"
-            AssemblyVersion="$(Version)"
+            AssemblyVersion="$(AssemblyVersion)"
             AssemblyFileVersion="$(Version)"
             AssemblyInformationalVersion="$(Version)" 
             ComVisible="false"
