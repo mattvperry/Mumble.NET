@@ -1,4 +1,4 @@
-Mumble.NET
+Mumble.NET [![Build status](https://ci.appveyor.com/api/projects/status/theq3c2x1l64uu5p?svg=true)](https://ci.appveyor.com/project/matthew-perry/mumble-net)
 ==========
 Mumble.NET is an [open source library][1] that provides a class library that can communicate with a Mumble VoIP server.
 
