@@ -22,13 +22,6 @@ namespace Mumble
         Task ConnectAsync();
 
         /// <summary>
-        /// Read an incoming protobuf message of a specific type from the socket
-        /// </summary>
-        /// <typeparam name="T">Type of message to read</typeparam>
-        /// <returns>Protobuf message from the socket</returns>
-        Task<T> ReadMessage<T>();
-
-        /// <summary>
         /// Read an incoming protobuf message from the socket
         /// </summary>
         /// <returns>Protobuf message from the socket</returns>

@@ -93,18 +93,6 @@ namespace Mumble
         }
 
         /// <inheritdoc />
-        public async Task<T> ReadMessage<T>()
-        {
-            var message = await this.ReadMessage();
-            if (!(message is T))
-            {
-                throw new UnexpectedMessageException(typeof(T).Name, message.GetType().Name);
-            }
-
-            return (T)message;
-        }
-
-        /// <inheritdoc />
         public async Task<IMessage> ReadMessage()
         {
             var headerBytes = new byte[6];

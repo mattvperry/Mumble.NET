@@ -71,19 +71,25 @@ namespace Mumble
         /// <summary>
         /// Initializes a new instance of the <see cref="MumbleClient"/> class.
         /// </summary>
-        /// <param name="username">Username of Mumble client</param>
+        /// <param name="userName">Username of Mumble client</param>
         /// <param name="password">Password for authenticating with server</param>
         /// <param name="connection">Network connection to the server</param>
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Maintainability", "CA1506:AvoidExcessiveClassCoupling", 
             Justification = "There are a lot of protobuf message classes")]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Maintainability", "CA1502:AvoidExcessiveComplexity", 
             Justification = "Code generation and event handling make the event system a bit complex")]
-        internal MumbleClient(string username, string password, IConnection connection)
+        internal MumbleClient(string userName, string password, IConnection connection)
         {
-            this.userName = username;
+            this.userName = userName;
             this.password = password;
             this.connection = connection;
+            this.SetupEvents();
         }
+
+        /// <summary>
+        /// Gets a value indicating whether we are connected
+        /// </summary>
+        public bool Connected { get; private set; }
 
         /// <summary>
         /// Gets basic Mumble server information
@@ -98,13 +104,7 @@ namespace Mumble
         {
             await this.connection.ConnectAsync();
 
-            var version = await this.connection.ReadMessage<Messages.Version>();
-            this.ServerInfo.OS = version.Os;
-            this.ServerInfo.OSVersion = version.OsVersion;
-            this.ServerInfo.Release = version.Release;
-            this.ServerInfo.Version = DecodeVersion(version.Version_);
-
-            await this.BuildAndSend<Messages.Version.Builder>((builder) =>
+            var versionTask = this.SendMessage<Messages.Version.Builder>((builder) =>
             {
                 builder.Version_ = EncodeVersion(ClientMumbleVersion);
                 builder.Release = string.Format(CultureInfo.InvariantCulture, "Mumble.NET {0}", Assembly.GetExecutingAssembly().GetName().Version);
@@ -112,12 +112,22 @@ namespace Mumble
                 builder.OsVersion = Environment.OSVersion.VersionString;
             });
 
-            await this.BuildAndSend<Authenticate.Builder>((builder) =>
+            var authTask = this.SendMessage<Authenticate.Builder>((builder) =>
             {
                 builder.Username = this.userName;
                 builder.Password = this.password;
                 builder.Opus = true;
             });
+
+            var connectionTask = Task.Run(async () =>
+            {
+                while (!this.Connected)
+                {
+                    this.OnMessageReceived(await this.connection.ReadMessage());
+                }
+            });
+
+            await Task.WhenAll(versionTask, authTask, connectionTask);
         }
 
         /// <inheritdoc />
@@ -150,12 +160,44 @@ namespace Mumble
         }
 
         /// <summary>
+        /// Wire up the self subscribing events for updating basic state
+        /// </summary>
+        private void SetupEvents()
+        {
+            this.VersionReceived += this.HandleVersionReceived;
+            this.ServerSyncReceived += this.HandleServerSyncReceived;
+        }
+
+        /// <summary>
+        /// Handle a Server Sync message
+        /// </summary>
+        /// <param name="sender">Object which sent the event</param>
+        /// <param name="e">Event argument containing message</param>
+        private void HandleServerSyncReceived(object sender, MessageReceivedEventArgs<ServerSync> e)
+        {
+            this.Connected = true;
+        }
+
+        /// <summary>
+        /// Handle a Version message
+        /// </summary>
+        /// <param name="sender">Object which sent the event</param>
+        /// <param name="e">Event argument containing message</param>
+        private void HandleVersionReceived(object sender, MessageReceivedEventArgs<Messages.Version> e)
+        {
+            this.ServerInfo.OS = e.Message.Os;
+            this.ServerInfo.OSVersion = e.Message.OsVersion;
+            this.ServerInfo.Release = e.Message.Release;
+            this.ServerInfo.Version = DecodeVersion(e.Message.Version_);
+        }
+
+        /// <summary>
         /// Build a protobuf message and send it
         /// </summary>
         /// <typeparam name="T">Type of message to build</typeparam>
         /// <param name="build">Callback for the actual building</param>
         /// <returns>Empty task</returns>
-        private async Task BuildAndSend<T>(Action<T> build) where T : IBuilder, new()
+        private async Task SendMessage<T>(Action<T> build) where T : IBuilder, new()
         {
             var builder = new T();
             build(builder);
@@ -166,8 +208,6 @@ namespace Mumble
         /// Raises the appropriate event for a given message
         /// </summary>
         /// <param name="message">Message to raise event for</param>
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", 
-            Justification = "Remove this once we use it")]
         private void OnMessageReceived(IMessage message)
         {
             this.messageEventHandlers[message.GetType()](this, message);
