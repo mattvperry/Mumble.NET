@@ -33,7 +33,6 @@
     </Compile>
     <Compile Include="Connection.cs" />
     <Compile Include="EventExtensions.cs" />
-    <Compile Include="Exceptions\UnexpectedMessageException.cs" />
     <Compile Include="IConnection.cs" />
     <Compile Include="MessageReceivedEventArgs.cs" />
     <Compile Include="Messages\IMessageFactory.cs" />

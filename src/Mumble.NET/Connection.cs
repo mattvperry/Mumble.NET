@@ -12,7 +12,6 @@ namespace Mumble
     using System.Net.Sockets;
     using System.Threading;
     using System.Threading.Tasks;
-    using Exceptions;
     using Google.ProtocolBuffers;
     using Messages;
 
