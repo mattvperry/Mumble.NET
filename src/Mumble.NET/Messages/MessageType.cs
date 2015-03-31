@@ -3,11 +3,13 @@
 namespace Mumble.Messages
 {
     using System;
+    using System.CodeDom.Compiler;
     using System.Collections.Generic;
 
     /// <summary>
     /// Enumeration of all Mumble protobuf message types
     /// </summary>
+    [GeneratedCode("T4", "1.0")]
     internal enum MessageType
     {
         /// <summary>
@@ -147,6 +149,7 @@ namespace Mumble.Messages
         /// <summary>
         /// Mapping of message types to concrete types
         /// </summary>
+        [GeneratedCode("T4", "1.0")]
         internal static Dictionary<MessageType, Type> Types = new Dictionary<MessageType, Type>
         {
             { MessageType.Version, typeof(Version) },

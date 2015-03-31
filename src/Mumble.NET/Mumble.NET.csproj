@@ -13,12 +13,6 @@
   </PropertyGroup>
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildProjectDirectory), build.props))\build.props" />
   <ItemGroup>
-    <Reference Include="$(NugetPack)SimpleInjector.2.7.3\lib\net45\SimpleInjector.dll">
-      <Name>SimpleInjector</Name>
-    </Reference>
-    <Reference Include="$(NugetPack)SimpleInjector.2.7.3\lib\net45\SimpleInjector.Diagnostics.dll">
-      <Name>SimpleInjector.Diagnostics</Name>
-    </Reference>
     <Reference Include="$(NugetPack)Google.ProtocolBuffers.2.4.1.555\lib\net40\Google.ProtocolBuffers.dll">
       <Name>Google.ProtocolBuffers</Name>
     </Reference>
@@ -35,8 +29,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Connection.cs" />
+    <Compile Include="EventExtensions.cs" />
     <Compile Include="Exceptions\UnexpectedMessageException.cs" />
     <Compile Include="IConnection.cs" />
+    <Compile Include="MessageReceivedEventArgs.cs" />
     <Compile Include="Messages\IMessageFactory.cs" />
     <Compile Include="Messages\MessageFactory.cs" />
     <Compile Include="Messages\Messages.Designer.cs" />

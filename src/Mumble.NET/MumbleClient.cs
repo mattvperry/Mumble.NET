@@ -60,7 +60,8 @@ namespace Mumble
         /// <param name="userName">Username of Mumble client</param>
         /// <param name="password">Password for authenticating with server</param>
         /// <param name="port">Port on which the server is listening</param>
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Reliability", "CA2000:Dispose objects before losing scope", Justification = "Connection will be disposed")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Reliability", "CA2000:Dispose objects before losing scope", 
+            Justification = "Connection will be disposed")]
         public MumbleClient(string host, string userName, string password, int port)
             : this(userName, password, new Connection(host, port))
         {
@@ -73,6 +74,10 @@ namespace Mumble
         /// <param name="username">Username of Mumble client</param>
         /// <param name="password">Password for authenticating with server</param>
         /// <param name="connection">Network connection to the server</param>
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Maintainability", "CA1506:AvoidExcessiveClassCoupling", 
+            Justification = "There are a lot of protobuf message classes")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Maintainability", "CA1502:AvoidExcessiveComplexity", 
+            Justification = "Code generation and event handling make the event system a bit complex")]
         internal MumbleClient(string username, string password, IConnection connection)
         {
             this.userName = username;
@@ -155,6 +160,17 @@ namespace Mumble
             var builder = new T();
             build(builder);
             await this.connection.SendMessage(builder.WeakBuild());
+        }
+
+        /// <summary>
+        /// Raises the appropriate event for a given message
+        /// </summary>
+        /// <param name="message">Message to raise event for</param>
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", 
+            Justification = "Remove this once we use it")]
+        private void OnMessageReceived(IMessage message)
+        {
+            this.messageEventHandlers[message.GetType()](this, message);
         }
     }
 }

@@ -2,7 +2,208 @@
 
 namespace Mumble
 {
+    using System;
+    using System.CodeDom.Compiler;
+    using System.Collections.Generic;
+    using Google.ProtocolBuffers;
+
+    /// <summary>
+    /// Generated partial class which contains all the events which MumbleClient throws
+    /// when it receives events
+    /// </summary>
     public sealed partial class MumbleClient
     {
+        /// <summary>
+        /// Mapping from concrete message type to a closure which will raise the appropriate event
+        /// </summary>
+        [GeneratedCode("T4", "1.0")]
+        private Dictionary<Type, Action<MumbleClient, IMessage>> messageEventHandlers = new Dictionary<Type, Action<MumbleClient, IMessage>>
+        {
+            { typeof(Messages.Version), (sender, message) => sender.VersionReceived.RaiseEvent(sender, (Messages.Version)message) },
+            { typeof(Messages.UDPTunnel), (sender, message) => sender.UDPTunnelReceived.RaiseEvent(sender, (Messages.UDPTunnel)message) },
+            { typeof(Messages.Authenticate), (sender, message) => sender.AuthenticateReceived.RaiseEvent(sender, (Messages.Authenticate)message) },
+            { typeof(Messages.Ping), (sender, message) => sender.PingReceived.RaiseEvent(sender, (Messages.Ping)message) },
+            { typeof(Messages.Reject), (sender, message) => sender.RejectReceived.RaiseEvent(sender, (Messages.Reject)message) },
+            { typeof(Messages.ServerSync), (sender, message) => sender.ServerSyncReceived.RaiseEvent(sender, (Messages.ServerSync)message) },
+            { typeof(Messages.ChannelRemove), (sender, message) => sender.ChannelRemoveReceived.RaiseEvent(sender, (Messages.ChannelRemove)message) },
+            { typeof(Messages.ChannelState), (sender, message) => sender.ChannelStateReceived.RaiseEvent(sender, (Messages.ChannelState)message) },
+            { typeof(Messages.UserRemove), (sender, message) => sender.UserRemoveReceived.RaiseEvent(sender, (Messages.UserRemove)message) },
+            { typeof(Messages.UserState), (sender, message) => sender.UserStateReceived.RaiseEvent(sender, (Messages.UserState)message) },
+            { typeof(Messages.BanList), (sender, message) => sender.BanListReceived.RaiseEvent(sender, (Messages.BanList)message) },
+            { typeof(Messages.TextMessage), (sender, message) => sender.TextMessageReceived.RaiseEvent(sender, (Messages.TextMessage)message) },
+            { typeof(Messages.PermissionDenied), (sender, message) => sender.PermissionDeniedReceived.RaiseEvent(sender, (Messages.PermissionDenied)message) },
+            { typeof(Messages.ACL), (sender, message) => sender.ACLReceived.RaiseEvent(sender, (Messages.ACL)message) },
+            { typeof(Messages.QueryUsers), (sender, message) => sender.QueryUsersReceived.RaiseEvent(sender, (Messages.QueryUsers)message) },
+            { typeof(Messages.CryptSetup), (sender, message) => sender.CryptSetupReceived.RaiseEvent(sender, (Messages.CryptSetup)message) },
+            { typeof(Messages.ContextActionModify), (sender, message) => sender.ContextActionModifyReceived.RaiseEvent(sender, (Messages.ContextActionModify)message) },
+            { typeof(Messages.ContextAction), (sender, message) => sender.ContextActionReceived.RaiseEvent(sender, (Messages.ContextAction)message) },
+            { typeof(Messages.UserList), (sender, message) => sender.UserListReceived.RaiseEvent(sender, (Messages.UserList)message) },
+            { typeof(Messages.VoiceTarget), (sender, message) => sender.VoiceTargetReceived.RaiseEvent(sender, (Messages.VoiceTarget)message) },
+            { typeof(Messages.PermissionQuery), (sender, message) => sender.PermissionQueryReceived.RaiseEvent(sender, (Messages.PermissionQuery)message) },
+            { typeof(Messages.CodecVersion), (sender, message) => sender.CodecVersionReceived.RaiseEvent(sender, (Messages.CodecVersion)message) },
+            { typeof(Messages.UserStats), (sender, message) => sender.UserStatsReceived.RaiseEvent(sender, (Messages.UserStats)message) },
+            { typeof(Messages.RequestBlob), (sender, message) => sender.RequestBlobReceived.RaiseEvent(sender, (Messages.RequestBlob)message) },
+            { typeof(Messages.ServerConfig), (sender, message) => sender.ServerConfigReceived.RaiseEvent(sender, (Messages.ServerConfig)message) },
+            { typeof(Messages.SuggestConfig), (sender, message) => sender.SuggestConfigReceived.RaiseEvent(sender, (Messages.SuggestConfig)message) },
+        };
+
+        #region Event Handlers
+        /// <summary>
+        /// Fires when the client receives a <see cref="Messages.Version" /> message.
+        /// </summary>
+        [GeneratedCode("T4", "1.0")]
+        public event EventHandler<MessageReceivedEventArgs<Messages.Version>> VersionReceived;
+
+        /// <summary>
+        /// Fires when the client receives a <see cref="Messages.UDPTunnel" /> message.
+        /// </summary>
+        [GeneratedCode("T4", "1.0")]
+        public event EventHandler<MessageReceivedEventArgs<Messages.UDPTunnel>> UDPTunnelReceived;
+
+        /// <summary>
+        /// Fires when the client receives a <see cref="Messages.Authenticate" /> message.
+        /// </summary>
+        [GeneratedCode("T4", "1.0")]
+        public event EventHandler<MessageReceivedEventArgs<Messages.Authenticate>> AuthenticateReceived;
+
+        /// <summary>
+        /// Fires when the client receives a <see cref="Messages.Ping" /> message.
+        /// </summary>
+        [GeneratedCode("T4", "1.0")]
+        public event EventHandler<MessageReceivedEventArgs<Messages.Ping>> PingReceived;
+
+        /// <summary>
+        /// Fires when the client receives a <see cref="Messages.Reject" /> message.
+        /// </summary>
+        [GeneratedCode("T4", "1.0")]
+        public event EventHandler<MessageReceivedEventArgs<Messages.Reject>> RejectReceived;
+
+        /// <summary>
+        /// Fires when the client receives a <see cref="Messages.ServerSync" /> message.
+        /// </summary>
+        [GeneratedCode("T4", "1.0")]
+        public event EventHandler<MessageReceivedEventArgs<Messages.ServerSync>> ServerSyncReceived;
+
+        /// <summary>
+        /// Fires when the client receives a <see cref="Messages.ChannelRemove" /> message.
+        /// </summary>
+        [GeneratedCode("T4", "1.0")]
+        public event EventHandler<MessageReceivedEventArgs<Messages.ChannelRemove>> ChannelRemoveReceived;
+
+        /// <summary>
+        /// Fires when the client receives a <see cref="Messages.ChannelState" /> message.
+        /// </summary>
+        [GeneratedCode("T4", "1.0")]
+        public event EventHandler<MessageReceivedEventArgs<Messages.ChannelState>> ChannelStateReceived;
+
+        /// <summary>
+        /// Fires when the client receives a <see cref="Messages.UserRemove" /> message.
+        /// </summary>
+        [GeneratedCode("T4", "1.0")]
+        public event EventHandler<MessageReceivedEventArgs<Messages.UserRemove>> UserRemoveReceived;
+
+        /// <summary>
+        /// Fires when the client receives a <see cref="Messages.UserState" /> message.
+        /// </summary>
+        [GeneratedCode("T4", "1.0")]
+        public event EventHandler<MessageReceivedEventArgs<Messages.UserState>> UserStateReceived;
+
+        /// <summary>
+        /// Fires when the client receives a <see cref="Messages.BanList" /> message.
+        /// </summary>
+        [GeneratedCode("T4", "1.0")]
+        public event EventHandler<MessageReceivedEventArgs<Messages.BanList>> BanListReceived;
+
+        /// <summary>
+        /// Fires when the client receives a <see cref="Messages.TextMessage" /> message.
+        /// </summary>
+        [GeneratedCode("T4", "1.0")]
+        public event EventHandler<MessageReceivedEventArgs<Messages.TextMessage>> TextMessageReceived;
+
+        /// <summary>
+        /// Fires when the client receives a <see cref="Messages.PermissionDenied" /> message.
+        /// </summary>
+        [GeneratedCode("T4", "1.0")]
+        public event EventHandler<MessageReceivedEventArgs<Messages.PermissionDenied>> PermissionDeniedReceived;
+
+        /// <summary>
+        /// Fires when the client receives a <see cref="Messages.ACL" /> message.
+        /// </summary>
+        [GeneratedCode("T4", "1.0")]
+        public event EventHandler<MessageReceivedEventArgs<Messages.ACL>> ACLReceived;
+
+        /// <summary>
+        /// Fires when the client receives a <see cref="Messages.QueryUsers" /> message.
+        /// </summary>
+        [GeneratedCode("T4", "1.0")]
+        public event EventHandler<MessageReceivedEventArgs<Messages.QueryUsers>> QueryUsersReceived;
+
+        /// <summary>
+        /// Fires when the client receives a <see cref="Messages.CryptSetup" /> message.
+        /// </summary>
+        [GeneratedCode("T4", "1.0")]
+        public event EventHandler<MessageReceivedEventArgs<Messages.CryptSetup>> CryptSetupReceived;
+
+        /// <summary>
+        /// Fires when the client receives a <see cref="Messages.ContextActionModify" /> message.
+        /// </summary>
+        [GeneratedCode("T4", "1.0")]
+        public event EventHandler<MessageReceivedEventArgs<Messages.ContextActionModify>> ContextActionModifyReceived;
+
+        /// <summary>
+        /// Fires when the client receives a <see cref="Messages.ContextAction" /> message.
+        /// </summary>
+        [GeneratedCode("T4", "1.0")]
+        public event EventHandler<MessageReceivedEventArgs<Messages.ContextAction>> ContextActionReceived;
+
+        /// <summary>
+        /// Fires when the client receives a <see cref="Messages.UserList" /> message.
+        /// </summary>
+        [GeneratedCode("T4", "1.0")]
+        public event EventHandler<MessageReceivedEventArgs<Messages.UserList>> UserListReceived;
+
+        /// <summary>
+        /// Fires when the client receives a <see cref="Messages.VoiceTarget" /> message.
+        /// </summary>
+        [GeneratedCode("T4", "1.0")]
+        public event EventHandler<MessageReceivedEventArgs<Messages.VoiceTarget>> VoiceTargetReceived;
+
+        /// <summary>
+        /// Fires when the client receives a <see cref="Messages.PermissionQuery" /> message.
+        /// </summary>
+        [GeneratedCode("T4", "1.0")]
+        public event EventHandler<MessageReceivedEventArgs<Messages.PermissionQuery>> PermissionQueryReceived;
+
+        /// <summary>
+        /// Fires when the client receives a <see cref="Messages.CodecVersion" /> message.
+        /// </summary>
+        [GeneratedCode("T4", "1.0")]
+        public event EventHandler<MessageReceivedEventArgs<Messages.CodecVersion>> CodecVersionReceived;
+
+        /// <summary>
+        /// Fires when the client receives a <see cref="Messages.UserStats" /> message.
+        /// </summary>
+        [GeneratedCode("T4", "1.0")]
+        public event EventHandler<MessageReceivedEventArgs<Messages.UserStats>> UserStatsReceived;
+
+        /// <summary>
+        /// Fires when the client receives a <see cref="Messages.RequestBlob" /> message.
+        /// </summary>
+        [GeneratedCode("T4", "1.0")]
+        public event EventHandler<MessageReceivedEventArgs<Messages.RequestBlob>> RequestBlobReceived;
+
+        /// <summary>
+        /// Fires when the client receives a <see cref="Messages.ServerConfig" /> message.
+        /// </summary>
+        [GeneratedCode("T4", "1.0")]
+        public event EventHandler<MessageReceivedEventArgs<Messages.ServerConfig>> ServerConfigReceived;
+
+        /// <summary>
+        /// Fires when the client receives a <see cref="Messages.SuggestConfig" /> message.
+        /// </summary>
+        [GeneratedCode("T4", "1.0")]
+        public event EventHandler<MessageReceivedEventArgs<Messages.SuggestConfig>> SuggestConfigReceived;
+
+        #endregion
     }
 }
