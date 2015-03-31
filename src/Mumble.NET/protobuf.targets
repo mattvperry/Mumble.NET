@@ -1,55 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
-    <UsingTask
-        TaskName="CompareDates"
-        TaskFactory="CodeTaskFactory"
-        AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.v4.0.dll" >
-        <ParameterGroup>
-            <FirstDate ParameterType="System.DateTime" Required="true" />
-            <SecondDate ParameterType="System.DateTime" Required="true" />
-            <Result ParameterType="System.Int32" Output="true" />
-        </ParameterGroup>
-        <Task>
-            <Using Namespace="System"/>
-            <Code Type="Fragment" Language="cs">
-                <![CDATA[
-                Log.LogMessage("First Date: " + FirstDate, MessageImportance.High);
-                Log.LogMessage("Second Date: " + SecondDate, MessageImportance.High);
-                Result = DateTime.Compare(FirstDate, SecondDate);
-                ]]>
-            </Code>
-        </Task>
-    </UsingTask>
+    <PropertyGroup>
+        <ProtogenPath>$(NugetPack)Google.ProtocolBuffers.2.4.1.555\tools\protogen.exe</ProtogenPath>
+        <ProtoFile>Mumble.proto</ProtoFile>
+        <Class>Messages</Class>
+        <Extension>.Designer.cs</Extension>
+        <ProtogenArgs>--proto_path=.\ -namespace=Mumble.Messages -umbrella_classname=$(Class) -generated_code_attributes=true -file_extension=$(Extension)</ProtogenArgs>
+    </PropertyGroup>
 
-    <Target Name="Protogen">
+    <ItemGroup>
+        <InputFile Include="Messages\$(ProtoFile)" />
+        <OutputFile Include="Messages\$(Class)$(Extension)" />
+    </ItemGroup>
+
+    <Target Name="Protogen" Inputs="@(InputFile)" Outputs="@(OutputFile)">
         <PropertyGroup>
             <ProtogenPath>$(NugetPack)Google.ProtocolBuffers.2.4.1.555\tools\protogen.exe</ProtogenPath>
-            <ProtoFile>Mumble.proto</ProtoFile>
-            <Class>Messages</Class>
-            <Extension>.Designer.cs</Extension>
             <ProtogenArgs>--proto_path=.\ -namespace=Mumble.Messages -umbrella_classname=$(Class) -generated_code_attributes=true -file_extension=$(Extension)</ProtogenArgs>
         </PropertyGroup>
 
-        <ItemGroup>
-            <InputFile Include="Messages\$(ProtoFile)" />
-            <OutputFile Include="Messages\$(Class)$(Extension)" />
-        </ItemGroup>
-
-        <PropertyGroup>
-            <InputTime>%(InputFile.ModifiedTime)</InputTime>
-            <OutputTime>%(OutputFile.ModifiedTime)</OutputTime>
-        </PropertyGroup>
-
-        <CompareDates
-            FirstDate="$(InputTime)"
-            SecondDate="$(OutputTime)"
-            Condition="Exists('%(OutputFile.Identity)')">
-            <Output TaskParameter="Result" PropertyName="DateCompareResult" />
-        </CompareDates>
-
-        <Exec Condition=" '$(DateCompareResult)' == '' or $(DateCompareResult) &gt; 0 "
-            Command="$(ProtogenPath) .\$(ProtoFile) $(ProtogenArgs)"
-            WorkingDirectory="Messages"/>
+        <Exec Command="$(ProtogenPath) .\$(ProtoFile) $(ProtogenArgs)" WorkingDirectory="Messages"/>
     </Target>
 
     <PropertyGroup>
