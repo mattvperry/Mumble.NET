@@ -1,15 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
-	<PropertyGroup>
-		<MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
-	</PropertyGroup>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="12.0">
+    <PropertyGroup>
+        <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    </PropertyGroup>
 
-	<Import Project="$(NugetPack)StyleCop.MSBuild.4.7.49.1\build\StyleCop.MSBuild.Targets"/>
+    <Import Project="$(NugetPack)StyleCop.MSBuild.4.7.49.1\build\StyleCop.MSBuild.Targets"/>
+
+    <!--
+    <UsingTask
+        TaskName="GetVersion"
+        TaskFactory="CodeTaskFactory"
+        AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.v12.0.dll">
+    </UsingTask>
+    -->
 
     <Target Name="GetBuildVersion">
-        <ReadLinesFromFile File="$(ProjectRoot)version.txt">
-            <Output TaskParameter="Lines" PropertyName="Version" />
-        </ReadLinesFromFile>
+        <PropertyGroup>
+            <Version>0.0.1</Version>
+        </PropertyGroup>
     </Target>
 
     <Target Name="Version" DependsOnTargets="GetBuildVersion">
@@ -19,19 +27,23 @@
 
         <Message Text="Version: $(Version)"/>
 
-        <Attrib Files="$(ProjectRoot)GlobalAssemblyInfo.cs" ReadOnly="False" />
+        <Attrib Files="$(SolutionDir)GlobalAssemblyInfo.cs" ReadOnly="False" />
 
         <AssemblyInfo CodeLanguage="CS"
-            OutputFile="$(ProjectRoot)GlobalAssemblyInfo.cs"
+            OutputFile="$(SolutionDir)GlobalAssemblyInfo.cs"
             GenerateClass="true"
+            AssemblyProduct="Mumble.NET"
+            AssemblyCompany="https://github.com/perrym5/Mumble.NET"
             AssemblyCopyright="Copyright © $(Year). All rights reserved."
             AssemblyConfiguration="$(Configuration)"
             AssemblyVersion="$(Version)"
             AssemblyFileVersion="$(Version)"
-            AssemblyInformationalVersion="$(Version)" />
+            AssemblyInformationalVersion="$(Version)" 
+            ComVisible="false"
+            CLSCompliant="false" />
     </Target>
 
-	<PropertyGroup>
-		<DocumentationFile Condition=" '$(NonShipping)' != 'true' and '$(NoDocumentationFile)' != 'true' ">$(OutputPath)$(AssemblyName).xml</DocumentationFile>
-	</PropertyGroup>
+    <PropertyGroup>
+        <DocumentationFile Condition=" '$(NonShipping)' != 'true' and '$(NoDocumentationFile)' != 'true' ">$(OutputPath)$(AssemblyName).xml</DocumentationFile>
+    </PropertyGroup>
 </Project>

@@ -1,0 +1,21 @@
+version: 0.0.1.{build}
+before_build:
+- nuget restore src/Mumble.NET.sln
+build:
+  project: build.proj
+  parallel: true
+  verbosity: minimal
+artifacts:
+- path: bin\**\*.dll
+  name: DLLs
+- path: bin\**\*.nupkg
+  name: NuPkgs
+- path: bin\**\*.xml
+  name: XMLDocs
+deploy:
+- provider: NuGet
+  api_key:
+    secure: tU0WhWuuDGDi4hzpg5SgXgWhO55DHjw3xiCo+HJKazotzUd5tAFZu7gwzsZqZye1
+  on:
+    branch: master
+    appveyor_repo_tag: true
