@@ -13,13 +13,13 @@ namespace Mumble
     /// Class containing event data about a received Mumble Message
     /// </summary>
     /// <typeparam name="T">Type of message</typeparam>
-    public class MessageReceivedEventArgs<T> : EventArgs where T : IMessage
+    internal class MessageReceivedEventArgs<T> : EventArgs where T : IMessage
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="MessageReceivedEventArgs{T}"/> class.
         /// </summary>
         /// <param name="message">Received message</param>
-        internal MessageReceivedEventArgs(T message)
+        public MessageReceivedEventArgs(T message)
         {
             this.Message = message;
         }

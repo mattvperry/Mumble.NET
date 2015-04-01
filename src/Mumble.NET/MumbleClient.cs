@@ -29,16 +29,6 @@ namespace Mumble
         public static readonly System.Version ClientMumbleVersion = new System.Version(1, 2, 8);
 
         /// <summary>
-        /// Username of Mumble client
-        /// </summary>
-        private readonly string userName;
-
-        /// <summary>
-        /// Password for authenticating with server
-        /// </summary>
-        private readonly string password;
-
-        /// <summary>
         /// Network connection to the server
         /// </summary>
         private readonly IConnection connection;
@@ -47,9 +37,8 @@ namespace Mumble
         /// Initializes a new instance of the <see cref="MumbleClient"/> class.
         /// </summary>
         /// <param name="host">Hostname of Mumble server</param>
-        /// <param name="userName">Username of Mumble client</param>
-        public MumbleClient(string host, string userName)
-            : this(host, userName, string.Empty, DefaultPort)
+        public MumbleClient(string host)
+            : this(host, DefaultPort)
         {
         }
 
@@ -57,13 +46,11 @@ namespace Mumble
         /// Initializes a new instance of the <see cref="MumbleClient"/> class.
         /// </summary>
         /// <param name="host">Hostname of Mumble server</param>
-        /// <param name="userName">Username of Mumble client</param>
-        /// <param name="password">Password for authenticating with server</param>
         /// <param name="port">Port on which the server is listening</param>
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Reliability", "CA2000:Dispose objects before losing scope", 
             Justification = "Connection will be disposed")]
-        public MumbleClient(string host, string userName, string password, int port)
-            : this(userName, password, new Connection(host, port))
+        public MumbleClient(string host, int port)
+            : this(new Connection(host, port))
         {
             this.ServerInfo = new ServerInfo { HostName = host, Port = port };
         }
@@ -71,17 +58,13 @@ namespace Mumble
         /// <summary>
         /// Initializes a new instance of the <see cref="MumbleClient"/> class.
         /// </summary>
-        /// <param name="userName">Username of Mumble client</param>
-        /// <param name="password">Password for authenticating with server</param>
         /// <param name="connection">Network connection to the server</param>
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Maintainability", "CA1506:AvoidExcessiveClassCoupling", 
             Justification = "There are a lot of protobuf message classes")]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Maintainability", "CA1502:AvoidExcessiveComplexity", 
             Justification = "Code generation and event handling make the event system a bit complex")]
-        internal MumbleClient(string userName, string password, IConnection connection)
+        internal MumbleClient(IConnection connection)
         {
-            this.userName = userName;
-            this.password = password;
             this.connection = connection;
             this.SetupEvents();
         }
@@ -99,12 +82,14 @@ namespace Mumble
         /// <summary>
         /// Establish a connection with the Mumble server
         /// </summary>
+        /// <param name="userName">Username of Mumble client</param>
+        /// <param name="password">Password for authenticating with server</param>
         /// <returns>Empty task</returns>
-        public async Task ConnectAsync()
+        public async Task ConnectAsync(string userName, string password)
         {
             await this.connection.ConnectAsync();
 
-            var versionTask = this.SendMessage<Messages.Version.Builder>((builder) =>
+            await this.SendMessage<Messages.Version.Builder>((builder) =>
             {
                 builder.Version_ = EncodeVersion(ClientMumbleVersion);
                 builder.Release = string.Format(CultureInfo.InvariantCulture, "Mumble.NET {0}", Assembly.GetExecutingAssembly().GetName().Version);
@@ -112,22 +97,20 @@ namespace Mumble
                 builder.OsVersion = Environment.OSVersion.VersionString;
             });
 
-            var authTask = this.SendMessage<Authenticate.Builder>((builder) =>
+            await this.SendMessage<Authenticate.Builder>((builder) =>
             {
-                builder.Username = this.userName;
-                builder.Password = this.password;
+                builder.Username = userName;
+                builder.Password = password;
                 builder.Opus = true;
             });
 
-            var connectionTask = Task.Run(async () =>
+            await Task.Run(async () =>
             {
                 while (!this.Connected)
                 {
                     this.OnMessageReceived(await this.connection.ReadMessage());
                 }
             });
-
-            await Task.WhenAll(versionTask, authTask, connectionTask);
         }
 
         /// <inheritdoc />
@@ -165,6 +148,7 @@ namespace Mumble
         private void SetupEvents()
         {
             this.VersionReceived += this.HandleVersionReceived;
+            this.CodecVersionReceived += HandleCodecVersionReceived;
             this.ServerSyncReceived += this.HandleServerSyncReceived;
         }
 
@@ -176,6 +160,16 @@ namespace Mumble
         private void HandleServerSyncReceived(object sender, MessageReceivedEventArgs<ServerSync> e)
         {
             this.Connected = true;
+        }
+
+        /// <summary>
+        /// Handle the codec negotiation
+        /// </summary>
+        /// <param name="sender">Object which sent the event</param>
+        /// <param name="e">Event argument containing message</param>
+        private void HandleCodecVersionReceived(object sender, MessageReceivedEventArgs<CodecVersion> e)
+        {
+            throw new NotImplementedException();
         }
 
         /// <summary>

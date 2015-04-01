@@ -45,7 +45,7 @@ namespace Mumble
         /// Fires when the client receives a <see cref="Messages.<#= message #>" /> message.
         /// </summary>
         [GeneratedCode("T4", "1.0")]
-        public event EventHandler<MessageReceivedEventArgs<Messages.<#= message #>>> <#= message #>Received;
+        internal event EventHandler<MessageReceivedEventArgs<Messages.<#= message #>>> <#= message #>Received;
 
 <# } #>
         #endregion
