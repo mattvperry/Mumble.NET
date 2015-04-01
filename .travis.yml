@@ -1,0 +1,4 @@
+language: csharp
+solution: src/Mumble.NET.sln
+script:
+  - xbuild /p:Configuration=Release build.proj
