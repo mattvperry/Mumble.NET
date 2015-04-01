@@ -1,4 +1,4 @@
-Mumble.NET [![Build status][buildimg]][buildlnk] [![GitHub license][mitimg]][mitimg]
+Mumble.NET [![Build status][buildimg]][buildlnk] [![GitHub license][mitimg]][mitimg] [![Build Status][travimg]][travlnk]
 ==========
 Mumble.NET is an [open source library][selflink] that provides a class library that can communicate with a Mumble VoIP server.
 
@@ -44,3 +44,5 @@ If you are making a pull request, please do a command line build first. StyleCop
  [buildlnk]: https://ci.appveyor.com/project/mattvperry/mumble-net
  [mitimg]: https://img.shields.io/badge/license-MIT-blue.svg?style=flat
  [mitlnk]: https://raw.githubusercontent.com/mattvperry/Mumble.NET/master/LICENSE
+ [travimg]: https://travis-ci.org/mattvperry/Mumble.NET.svg?branch=master
+ [travlnk]: https://travis-ci.org/mattvperry/Mumble.NET
