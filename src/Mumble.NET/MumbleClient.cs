@@ -148,7 +148,7 @@ namespace Mumble
         private void SetupEvents()
         {
             this.VersionReceived += this.HandleVersionReceived;
-            this.CodecVersionReceived += HandleCodecVersionReceived;
+            this.CodecVersionReceived += this.HandleCodecVersionReceived;
             this.ServerSyncReceived += this.HandleServerSyncReceived;
         }
 
