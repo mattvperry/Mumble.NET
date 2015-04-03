@@ -61,6 +61,7 @@
     </Compile>
     <Compile Include="ServerInfo.cs" />
     <Compile Include="Models\User.cs" />
+    <Compile Include="VersionExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Messages\MessageType.tt">
