@@ -7,6 +7,7 @@
 namespace Mumble
 {
     using System;
+    using System.Threading;
     using System.Threading.Tasks;
     using Google.ProtocolBuffers;
 
@@ -24,21 +25,24 @@ namespace Mumble
         /// <summary>
         /// Read an incoming protobuf message from the socket
         /// </summary>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests</param>
         /// <returns>Protobuf message from the socket</returns>
-        Task<IMessage> ReadMessage();
+        Task<IMessage> ReadMessageAsync(CancellationToken cancellationToken);
 
         /// <summary>
         /// Send a UDP packet message to the server. Used for audio data
         /// </summary>
         /// <param name="packet">Packet to send</param>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests</param>
         /// <returns>Empty task</returns>
-        Task SendUDPPacket(byte[] packet);
+        Task SendUDPPacketAsync(byte[] packet, CancellationToken cancellationToken);
 
         /// <summary>
         /// Send a protobuf message to the server
         /// </summary>
         /// <param name="message">Message to send</param>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests</param>
         /// <returns>Empty task</returns>
-        Task SendMessage(IMessage message);
+        Task SendMessageAsync(IMessage message, CancellationToken cancellationToken);
     }
 }

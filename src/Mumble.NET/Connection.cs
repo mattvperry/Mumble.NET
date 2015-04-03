@@ -92,16 +92,16 @@ namespace Mumble
         }
 
         /// <inheritdoc />
-        public async Task<IMessage> ReadMessage()
+        public async Task<IMessage> ReadMessageAsync(CancellationToken cancellationToken)
         {
             var headerBytes = new byte[6];
-            await this.sslStream.ReadAsync(headerBytes, 0, headerBytes.Length);
+            await this.sslStream.ReadAsync(headerBytes, 0, headerBytes.Length, cancellationToken);
 
             var type = IPAddress.NetworkToHostOrder(BitConverter.ToInt16(headerBytes, 0));
             var size = IPAddress.NetworkToHostOrder(BitConverter.ToInt32(headerBytes, 2));
 
             var messageBytes = new byte[size];
-            await this.sslStream.ReadAsync(messageBytes, 0, size);
+            await this.sslStream.ReadAsync(messageBytes, 0, size, cancellationToken);
 
             if (type == (int)MessageType.UDPTunnel)
             {
@@ -117,15 +117,15 @@ namespace Mumble
         }
 
         /// <inheritdoc />
-        public async Task SendUDPPacket(byte[] packet)
+        public async Task SendUDPPacketAsync(byte[] packet, CancellationToken cancellationToken)
         {
-            await this.WriteMessage(MessageType.UDPTunnel, packet);
+            await this.WriteMessageAsync(MessageType.UDPTunnel, packet, cancellationToken);
         }
 
         /// <inheritdoc />
-        public async Task SendMessage(IMessage message)
+        public async Task SendMessageAsync(IMessage message, CancellationToken cancellationToken)
         {
-            await this.WriteMessage(this.messageFactory.GetMessageType(message), message.ToByteArray());
+            await this.WriteMessageAsync(this.messageFactory.GetMessageType(message), message.ToByteArray(), cancellationToken);
         }
 
         /// <inheritdoc />
@@ -140,16 +140,17 @@ namespace Mumble
         /// </summary>
         /// <param name="type">Type of message</param>
         /// <param name="messageBytes">Byte array of serialized message</param>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests</param>
         /// <returns>Empty task</returns>
-        private async Task WriteMessage(MessageType type, byte[] messageBytes)
+        private async Task WriteMessageAsync(MessageType type, byte[] messageBytes, CancellationToken cancellationToken)
         {
             var typeBytes = BitConverter.GetBytes(IPAddress.HostToNetworkOrder((short)type));
             var sizeBytes = BitConverter.GetBytes(IPAddress.HostToNetworkOrder(messageBytes.Length));
 
             await this.writeSemaphore.WaitAsync();
-            await this.sslStream.WriteAsync(typeBytes, 0, typeBytes.Length);
-            await this.sslStream.WriteAsync(sizeBytes, 0, sizeBytes.Length); 
-            await this.sslStream.WriteAsync(messageBytes, 0, messageBytes.Length);
+            await this.sslStream.WriteAsync(typeBytes, 0, typeBytes.Length, cancellationToken);
+            await this.sslStream.WriteAsync(sizeBytes, 0, sizeBytes.Length, cancellationToken); 
+            await this.sslStream.WriteAsync(messageBytes, 0, messageBytes.Length, cancellationToken);
             this.writeSemaphore.Release();
         }
     }
