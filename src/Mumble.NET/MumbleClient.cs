@@ -7,11 +7,15 @@
 namespace Mumble
 {
     using System;
+    using System.Collections.Concurrent;
+    using System.Collections.ObjectModel;
     using System.Globalization;
+    using System.Linq;
     using System.Reflection;
     using System.Threading.Tasks;
     using Google.ProtocolBuffers;
     using Messages;
+    using Models;
 
     /// <summary>
     /// Class representing a mumble client. Main entry point to the library.
@@ -66,6 +70,8 @@ namespace Mumble
         internal MumbleClient(IConnection connection)
         {
             this.connection = connection;
+            this.Channels = new ChannelCollection();
+            this.Users = new UserCollection();
             this.SetupEvents();
         }
 
@@ -78,6 +84,16 @@ namespace Mumble
         /// Gets basic Mumble server information
         /// </summary>
         public ServerInfo ServerInfo { get; private set; }
+
+        /// <summary>
+        /// Gets the channel list
+        /// </summary>
+        public ChannelCollection Channels { get; private set; }
+
+        /// <summary>
+        /// Gets the user list
+        /// </summary>
+        public UserCollection Users { get; private set; }
 
         /// <summary>
         /// Establish a connection with the Mumble server
@@ -149,6 +165,10 @@ namespace Mumble
         {
             this.VersionReceived += this.HandleVersionReceived;
             this.CodecVersionReceived += this.HandleCodecVersionReceived;
+            this.ChannelStateReceived += (sender, args) => this.Channels.UpdateState(args.Message);
+            this.ChannelRemoveReceived += (sender, args) => this.Channels.Remove(args.Message.ChannelId);
+            this.UserStateReceived += (sender, args) => this.Users.UpdateState(args.Message);
+            this.UserRemoveReceived += (sender, args) => this.Users.Remove(args.Message.Session);
             this.ServerSyncReceived += this.HandleServerSyncReceived;
         }
 
@@ -169,7 +189,6 @@ namespace Mumble
         /// <param name="e">Event argument containing message</param>
         private void HandleCodecVersionReceived(object sender, MessageReceivedEventArgs<CodecVersion> e)
         {
-            throw new NotImplementedException();
         }
 
         /// <summary>

@@ -19,6 +19,9 @@
     <Reference Include="$(NugetPack)Google.ProtocolBuffers.2.4.1.555\lib\net40\Google.ProtocolBuffers.Serialization.dll">
       <Name>Google.ProtocolBuffers.Serialization</Name>
     </Reference>
+    <Reference Include="$(NugetPack)Validation.2.0.6.15003\lib\portable-net40+sl50+win+wpa81+wp80+Xamarin.iOS10+MonoAndroid10+MonoTouch10\Validation.dll">
+        <Name>Validation</Name>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -31,6 +34,7 @@
     <Compile Include="$(ProjectRoot)src\GlobalAssemblyInfo.cs">
       <Link>Properties\GlobalAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="Models\Channel.cs" />
     <Compile Include="Connection.cs" />
     <Compile Include="EventExtensions.cs" />
     <Compile Include="IConnection.cs" />
@@ -43,6 +47,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MessageType.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ChannelCollection.cs" />
+    <Compile Include="Models\MumbleModel.cs" />
+    <Compile Include="Models\MumbleModelCollection.cs" />
+    <Compile Include="Models\UserCollection.cs" />
     <Compile Include="MumbleClient.cs" />
     <Compile Include="MumbleClient.Events.cs">
       <AutoGen>True</AutoGen>
@@ -50,6 +58,7 @@
       <DependentUpon>MumbleClient.tt</DependentUpon>
     </Compile>
     <Compile Include="ServerInfo.cs" />
+    <Compile Include="Models\User.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Messages\MessageType.tt">

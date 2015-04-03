@@ -25,7 +25,7 @@ namespace Mumble
             this EventHandler<MessageReceivedEventArgs<T>> handler,
             object sender,
             T argument)
-            where T : IMessage
+            where T : IMessage<T>
         {
             var e = new MessageReceivedEventArgs<T>(argument);
             var tempHandler = handler;
