@@ -134,7 +134,7 @@ namespace Mumble
 
             await this.SendMessage<Messages.Version.Builder>((builder) =>
             {
-                builder.Version_ = EncodeVersion(ClientMumbleVersion);
+                builder.Version_ = ClientMumbleVersion.EncodeVersion();
                 builder.Release = string.Format(CultureInfo.InvariantCulture, "Mumble.NET {0}", Assembly.GetExecutingAssembly().GetName().Version);
                 builder.Os = Environment.OSVersion.Platform.ToString();
                 builder.OsVersion = Environment.OSVersion.VersionString;
@@ -166,29 +166,6 @@ namespace Mumble
         public void Dispose()
         {
             this.Disconnect();
-        }
-
-        /// <summary>
-        /// Encode a version into mumble wire protocol version
-        /// </summary>
-        /// <param name="version">Version to encode</param>
-        /// <returns>Unsigned integer representing the version</returns>
-        private static uint EncodeVersion(System.Version version)
-        {
-            return (uint)((version.Major << 16) | (version.Minor << 8) | (version.Build & 0xFF));
-        }
-
-        /// <summary>
-        /// Decode a version number
-        /// </summary>
-        /// <param name="version">Encoding version</param>
-        /// <returns>Decoded version object</returns>
-        private static System.Version DecodeVersion(uint version)
-        {
-            return new System.Version(
-                (int)(version >> 16) & 0xFF,
-                (int)(version >> 8) & 0xFF,
-                (int)version & 0xFF);
         }
 
         /// <summary>
@@ -289,7 +266,7 @@ namespace Mumble
             this.ServerInfo.OS = e.Message.Os;
             this.ServerInfo.OSVersion = e.Message.OsVersion;
             this.ServerInfo.Release = e.Message.Release;
-            this.ServerInfo.Version = DecodeVersion(e.Message.Version_);
+            this.ServerInfo.Version = e.Message.Version_.DecodeVersion();
         }
     }
 }
