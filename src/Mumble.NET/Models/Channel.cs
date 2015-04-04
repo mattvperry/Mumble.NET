@@ -9,6 +9,7 @@ namespace Mumble.Models
     using System.Collections.Generic;
     using System.Linq;
     using Messages;
+    using Validation;
 
     /// <summary>
     /// Immutable class representing a Mumble channel
@@ -102,6 +103,50 @@ namespace Mumble.Models
             {
                 return this.State.Position;
             }
+        }
+
+        /// <summary>
+        /// Gets the list of children of this channel
+        /// </summary>
+        public IEnumerable<Channel> Children
+        {
+            get
+            {
+                return this.Client.Channels.Values.Where(c => c.Parent.Id == this.Id);
+            }
+        }
+
+        /// <summary>
+        /// Gets a list of all channels linked to this one
+        /// </summary>
+        public IEnumerable<Channel> LinkedChannels
+        {
+            get
+            {
+                return this.State.LinksList.Select(linkId => this.Client.Channels[linkId]);
+            }
+        }
+
+        /// <inheritdoc />
+        internal override Channel Update(ChannelState state)
+        {
+            Requires.NotNull(state, "state");
+
+            var baseLinks = state.LinksList.Any() ? state.LinksList : this.State.LinksList;
+
+            // Default merge behavior for lists is to concatenate the new list with the current one.
+            // We need the current list to be overriden with the incoming message's lists
+            var builder = this.State.ToBuilder();
+            builder.ClearLinks();
+            builder.AddRangeLinks(baseLinks.Union(state.LinksAddList).Except(state.LinksRemoveList));
+
+            var remainingState = state.ToBuilder();
+            remainingState.ClearLinks();
+            remainingState.ClearLinksAdd();
+            remainingState.ClearLinksRemove();
+
+            this.State = builder.MergeFrom(remainingState.Build()).Build();
+            return this;
         }
     }
 }
