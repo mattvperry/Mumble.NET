@@ -22,11 +22,6 @@ namespace Mumble.Models
         where TState : IMessage<TState> 
     {
         /// <summary>
-        /// Current State of the object
-        /// </summary>
-        private readonly TState state;
-
-        /// <summary>
         /// Client to which this object belongs
         /// </summary>
         private readonly MumbleClient client;
@@ -38,7 +33,7 @@ namespace Mumble.Models
         /// <param name="client">Client to which this object belongs</param>
         protected MumbleModel(TState state, MumbleClient client)
         {
-            this.state = state;
+            this.State = state;
             this.client = client;
         }
 
@@ -48,15 +43,9 @@ namespace Mumble.Models
         public abstract uint Id { get; }
 
         /// <summary>
-        /// Gets the current State of the object
+        /// Gets or sets the current State of the object
         /// </summary>
-        protected TState State
-        {
-            get
-            {
-                return this.state;
-            }
-        }
+        protected TState State { get; set; }
 
         /// <summary>
         /// Gets the Client to which this object belongs
@@ -91,10 +80,11 @@ namespace Mumble.Models
         /// Update the State of a Mumble object
         /// </summary>
         /// <param name="stateUpdate">State message containing updated information</param>
-        /// <returns>New Mumble object with updated State</returns>
-        public TModel Update(TState stateUpdate)
+        /// <returns>This Mumble object with updated state</returns>
+        internal virtual TModel Update(TState stateUpdate)
         {
-            return Create((TState)this.State.WeakToBuilder().WeakMergeFrom(stateUpdate).WeakBuild(), this.Client); 
+            this.State = (TState)this.State.WeakToBuilder().WeakMergeFrom(stateUpdate).WeakBuild();
+            return (TModel)this;
         }
     }
 }
