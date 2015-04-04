@@ -22,19 +22,24 @@ namespace Mumble.Models
         where TState : IMessage<TState> 
     {
         /// <summary>
-        /// State object representing the current state of the object
+        /// Current State of the object
         /// </summary>
-        private TState state;
+        private readonly TState state;
+
+        /// <summary>
+        /// Client to which this object belongs
+        /// </summary>
+        private readonly MumbleClient client;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="MumbleModel{TModel,TState}"/> class.
         /// </summary>
-        /// <param name="state">Initial state</param>
-        /// <param name="containingCollection">Collection which houses this object</param>
-        protected MumbleModel(TState state, IReadOnlyDictionary<uint, TModel> containingCollection)
+        /// <param name="state">Initial State</param>
+        /// <param name="client">Client to which this object belongs</param>
+        protected MumbleModel(TState state, MumbleClient client)
         {
             this.state = state;
-            this.ContainingCollection = containingCollection;
+            this.client = client;
         }
 
         /// <summary>
@@ -43,15 +48,10 @@ namespace Mumble.Models
         public abstract uint Id { get; }
 
         /// <summary>
-        /// Gets the collection which houses this object
+        /// Gets the current State of the object
         /// </summary>
-        protected IReadOnlyDictionary<uint, TModel> ContainingCollection { get; private set; }
-
-        /// <summary>
-        /// Gets the current state of the object
-        /// </summary>
-        protected TState State 
-        { 
+        protected TState State
+        {
             get
             {
                 return this.state;
@@ -59,31 +59,42 @@ namespace Mumble.Models
         }
 
         /// <summary>
+        /// Gets the Client to which this object belongs
+        /// </summary>
+        protected MumbleClient Client
+        { 
+            get
+            {
+                return this.client;
+            }
+        }
+
+        /// <summary>
         /// Initializes a new concrete instance of the TModel class.
         /// </summary>
-        /// <param name="state">Initial state</param>
-        /// <param name="containingCollection">Collection which houses this object</param>
+        /// <param name="state">Initial State</param>
+        /// <param name="client">Client to which this object belongs</param>
         /// <returns>New instance</returns>
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1000:DoNotDeclareStaticMembersOnGenericTypes",
             Justification = "Required for generic construction of type TModel")]
-        public static TModel Create(TState state, IReadOnlyDictionary<uint, TModel> containingCollection)
+        public static TModel Create(TState state, MumbleClient client)
         {
             return (TModel)Activator.CreateInstance(
                 typeof(TModel), 
                 BindingFlags.NonPublic | BindingFlags.Instance, 
                 null, 
-                new object[] { state, containingCollection }, 
+                new object[] { state, client }, 
                 CultureInfo.InvariantCulture);
         }
 
         /// <summary>
-        /// Update the state of a Mumble object
+        /// Update the State of a Mumble object
         /// </summary>
         /// <param name="stateUpdate">State message containing updated information</param>
-        /// <returns>New Mumble object with updated state</returns>
+        /// <returns>New Mumble object with updated State</returns>
         public TModel Update(TState stateUpdate)
         {
-            return Create((TState)this.state.WeakToBuilder().WeakMergeFrom(stateUpdate).WeakBuild(), this.ContainingCollection); 
+            return Create((TState)this.State.WeakToBuilder().WeakMergeFrom(stateUpdate).WeakBuild(), this.Client); 
         }
     }
 }

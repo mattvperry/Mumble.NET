@@ -95,8 +95,8 @@ namespace Mumble
         internal MumbleClient(IConnectionFactory connectionFactory)
         {
             this.connectionFactory = connectionFactory;
-            this.Channels = new ChannelCollection();
-            this.Users = new UserCollection();
+            this.Channels = new ChannelCollection(this);
+            this.Users = new UserCollection(this);
             this.SetupEvents();
         }
 
@@ -132,19 +132,19 @@ namespace Mumble
             this.connection = this.connectionFactory.CreateConnection(this.ServerInfo.HostName, this.ServerInfo.Port);
             await this.connection.ConnectAsync();
 
-            await this.SendMessage<Messages.Version.Builder>((builder) =>
+            await this.SendMessage(new Messages.Version.Builder
             {
-                builder.Version_ = ClientMumbleVersion.EncodeVersion();
-                builder.Release = string.Format(CultureInfo.InvariantCulture, "Mumble.NET {0}", Assembly.GetExecutingAssembly().GetName().Version);
-                builder.Os = Environment.OSVersion.Platform.ToString();
-                builder.OsVersion = Environment.OSVersion.VersionString;
+                Version_ = ClientMumbleVersion.EncodeVersion(),
+                Release = string.Format(CultureInfo.InvariantCulture, "Mumble.NET {0}", Assembly.GetExecutingAssembly().GetName().Version),
+                Os = Environment.OSVersion.Platform.ToString(),
+                OsVersion = Environment.OSVersion.VersionString,
             });
 
-            await this.SendMessage<Authenticate.Builder>((builder) =>
+            await this.SendMessage(new Authenticate.Builder
             {
-                builder.Username = userName;
-                builder.Password = password;
-                builder.Opus = true;
+                Username = userName,
+                Password = password,
+                Opus = true,
             });
 
             await this.StartLoopingTask(() => !this.Connected, this.ReadMessage);
@@ -172,12 +172,10 @@ namespace Mumble
         /// Build a protobuf message and send it
         /// </summary>
         /// <typeparam name="T">Type of message to build</typeparam>
-        /// <param name="build">Callback for the actual building</param>
+        /// <param name="builder">Builder to craft message</param>
         /// <returns>Empty task</returns>
-        private async Task SendMessage<T>(Action<T> build) where T : IBuilder, new()
+        private async Task SendMessage<T>(T builder) where T : IBuilder, new()
         {
-            var builder = new T();
-            build(builder);
             await this.connection.SendMessageAsync(builder.WeakBuild(), this.cancellationTokenSource.Token);
         }
 
@@ -197,9 +195,9 @@ namespace Mumble
         /// <returns>Empty task</returns>
         private async Task SendPing()
         {
-            await this.SendMessage<Ping.Builder>(builder =>
+            await this.SendMessage(new Ping.Builder
             {
-                builder.Timestamp = (uint)DateTime.UtcNow.Ticks;
+                Timestamp = (uint)DateTime.UtcNow.Ticks,
             });
             await Task.Delay(TimeSpan.FromSeconds(20), this.cancellationTokenSource.Token);
         }
@@ -230,10 +228,6 @@ namespace Mumble
         {
             this.VersionReceived += this.HandleVersionReceived;
             this.CodecVersionReceived += this.HandleCodecVersionReceived;
-            this.ChannelStateReceived += (sender, args) => this.Channels.UpdateState(args.Message);
-            this.ChannelRemoveReceived += (sender, args) => this.Channels.Remove(args.Message.ChannelId);
-            this.UserStateReceived += (sender, args) => this.Users.UpdateState(args.Message);
-            this.UserRemoveReceived += (sender, args) => this.Users.Remove(args.Message.Session);
             this.ServerSyncReceived += this.HandleServerSyncReceived;
         }
 

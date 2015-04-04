@@ -11,7 +11,17 @@ namespace Mumble.Models
     /// <summary>
     /// Class representing the collection of users signed onto a Mumble server
     /// </summary>
-    public class UserCollection : MumbleModelCollection<User, UserState>
+    public sealed class UserCollection : MumbleModelCollection<User, UserState>
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="UserCollection"/> class.
+        /// </summary>
+        /// <param name="client">Client to which this user collection belongs</param>
+        internal UserCollection(MumbleClient client)
+            : base(client)
+        {
+            this.Client.UserStateReceived += (sender, args) => this.UpdateState(args.Message);
+            this.Client.UserRemoveReceived += (sender, args) => this.Remove(args.Message.Session);
+        }
     }
 }

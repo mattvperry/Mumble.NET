@@ -6,6 +6,7 @@
 
 namespace Mumble.Models
 {
+    using System.Linq;
     using System.Collections.Generic;
     using Messages;
 
@@ -17,12 +18,12 @@ namespace Mumble.Models
         /// <summary>
         /// Initializes a new instance of the <see cref="Channel"/> class.
         /// </summary>
-        /// <param name="state">Initial state of the user</param>
-        /// <param name="containingCollection">Container class which houses this channel</param>
+        /// <param name="state">Initial State of the user</param>
+        /// <param name="client">Client to which this channel belongs</param>
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode",
             Justification = "Only called with reflection")]
-        internal Channel(ChannelState state, IReadOnlyDictionary<uint, Channel> containingCollection)
-            : base(state, containingCollection)
+        internal Channel(ChannelState state, MumbleClient client)
+            : base(state, client)
         {
         }
 
@@ -44,7 +45,18 @@ namespace Mumble.Models
         { 
             get
             {
-                return this.ContainingCollection[this.State.Parent];
+                return this.Client.Channels[this.State.Parent];
+            }
+        }
+
+        /// <summary>
+        /// Gets the list of users in this channel
+        /// </summary>
+        public IEnumerable<User> Users
+        {
+            get
+            {
+                return this.Client.Users.Values.Where(u => u.CurrentChannel.Id == this.Id);
             }
         }
 

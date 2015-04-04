@@ -22,9 +22,23 @@ namespace Mumble.Models
         where TState : IMessage<TState> 
     {
         /// <summary>
+        /// Client to which this collection belongs
+        /// </summary>
+        private readonly MumbleClient client;
+
+        /// <summary>
         /// Internal thread-safe store of Mumble objects
         /// </summary>
         private ConcurrentDictionary<uint, TModel> containedDictionary = new ConcurrentDictionary<uint, TModel>();
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MumbleModelCollection{TModel,TState}"/> class.
+        /// </summary>
+        /// <param name="client">Client to which this collection belongs</param>
+        protected MumbleModelCollection(MumbleClient client)
+        {
+            this.client = client;
+        }
 
         /// <inheritdoc />
         public IEnumerable<uint> Keys
@@ -50,6 +64,17 @@ namespace Mumble.Models
             get 
             {
                 return this.containedDictionary.Count;
+            }
+        }
+
+        /// <summary>
+        /// Gets the client to which this collection belongs
+        /// </summary>
+        protected MumbleClient Client
+        {
+            get
+            {
+                return this.client;
             }
         }
 
@@ -92,7 +117,7 @@ namespace Mumble.Models
         /// <param name="state">State message</param>
         internal void UpdateState(TState state)
         {
-            var newModel = MumbleModel<TModel, TState>.Create(state, this);
+            var newModel = MumbleModel<TModel, TState>.Create(state, this.Client);
             this.containedDictionary.AddOrUpdate(newModel.Id, newModel, (_, model) => model.Update(state));
         }
 

@@ -11,7 +11,17 @@ namespace Mumble.Models
     /// <summary>
     /// Class representing the collection of channels in a Mumble server
     /// </summary>
-    public class ChannelCollection : MumbleModelCollection<Channel, ChannelState>
+    public sealed class ChannelCollection : MumbleModelCollection<Channel, ChannelState>
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ChannelCollection"/> class.
+        /// </summary>
+        /// <param name="client">Client to which this channel collection belongs</param>
+        internal ChannelCollection(MumbleClient client)
+            : base(client)
+        {
+            this.Client.ChannelStateReceived += (sender, args) => this.UpdateState(args.Message);
+            this.Client.ChannelRemoveReceived += (sender, args) => this.Remove(args.Message.ChannelId);
+        }
     }
 }
