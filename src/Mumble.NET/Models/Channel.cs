@@ -6,8 +6,8 @@
 
 namespace Mumble.Models
 {
-    using System.Linq;
     using System.Collections.Generic;
+    using System.Linq;
     using Messages;
 
     /// <summary>
