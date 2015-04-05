@@ -10,6 +10,8 @@ namespace Mumble.Models
     using System.Collections;
     using System.Collections.Concurrent;
     using System.Collections.Generic;
+    using System.Globalization;
+    using System.Linq;
     using Google.ProtocolBuffers;
 
     /// <summary>
@@ -84,6 +86,25 @@ namespace Mumble.Models
             get 
             {
                 return this.containedDictionary[key];
+            }
+        }
+
+        /// <summary>
+        /// Indexer which finds a model by name
+        /// </summary>
+        /// <param name="name">Name to search</param>
+        /// <returns>Model with the given name</returns>
+        public TModel this[string name]
+        {
+            get
+            {
+                var model = this.containedDictionary.Values.SingleOrDefault(m => m.Name == name);
+                if (model == null)
+                {
+                    throw new KeyNotFoundException();
+                }
+
+                return model;
             }
         }
 

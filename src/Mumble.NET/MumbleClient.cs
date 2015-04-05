@@ -63,6 +63,11 @@ namespace Mumble
         private CancellationTokenSource cancellationTokenSource;
 
         /// <summary>
+        /// Session id associated with the client user
+        /// </summary>
+        private uint session;
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="MumbleClient"/> class.
         /// </summary>
         /// <param name="host">Hostname of Mumble server</param>
@@ -79,21 +84,23 @@ namespace Mumble
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Reliability", "CA2000:Dispose objects before losing scope", 
             Justification = "Connection will be disposed")]
         public MumbleClient(string host, int port)
-            : this(new ConnectionFactory())
+            : this(host, port, new ConnectionFactory())
         {
-            this.ServerInfo = new ServerInfo { HostName = host, Port = port };
         }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="MumbleClient"/> class.
         /// </summary>
+        /// <param name="host">Hostname of Mumble server</param>
+        /// <param name="port">Port on which the server is listening</param>
         /// <param name="connectionFactory">Factory to create server connection objects</param>
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Maintainability", "CA1506:AvoidExcessiveClassCoupling", 
             Justification = "There are a lot of protobuf message classes")]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Maintainability", "CA1502:AvoidExcessiveComplexity", 
             Justification = "Code generation and event handling make the event system a bit complex")]
-        internal MumbleClient(IConnectionFactory connectionFactory)
+        internal MumbleClient(string host, int port, IConnectionFactory connectionFactory)
         {
+            this.ServerInfo = new ServerInfo { HostName = host, Port = port };
             this.connectionFactory = connectionFactory;
             this.Channels = new ChannelCollection(this);
             this.Users = new UserCollection(this);
@@ -119,6 +126,17 @@ namespace Mumble
         /// Gets the user list
         /// </summary>
         public UserCollection Users { get; private set; }
+
+        /// <summary>
+        /// Gets the user associated with this client
+        /// </summary>
+        public User ClientUser 
+        { 
+            get
+            {
+                return this.Users[this.session];
+            }
+        }
 
         /// <summary>
         /// Establish a connection with the Mumble server
@@ -174,7 +192,7 @@ namespace Mumble
         /// <typeparam name="T">Type of message to build</typeparam>
         /// <param name="builder">Builder to craft message</param>
         /// <returns>Empty task</returns>
-        private async Task SendMessage<T>(T builder) where T : IBuilder, new()
+        internal async Task SendMessage<T>(T builder) where T : IBuilder, new()
         {
             await this.connection.SendMessageAsync(builder.WeakBuild(), this.cancellationTokenSource.Token);
         }
@@ -238,6 +256,7 @@ namespace Mumble
         /// <param name="e">Event argument containing message</param>
         private void HandleServerSyncReceived(object sender, MessageReceivedEventArgs<ServerSync> e)
         {
+            this.session = e.Message.Session;
             this.Connected = true;
         }
 

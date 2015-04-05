@@ -43,6 +43,11 @@ namespace Mumble.Models
         public abstract uint Id { get; }
 
         /// <summary>
+        /// Gets the name of the object
+        /// </summary>
+        public abstract string Name { get; }
+
+        /// <summary>
         /// Gets or sets the current State of the object
         /// </summary>
         protected TState State { get; set; }

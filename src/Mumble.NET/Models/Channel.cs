@@ -46,6 +46,11 @@ namespace Mumble.Models
         { 
             get
             {
+                if (!this.State.HasParent)
+                {
+                    return null;
+                }
+
                 return this.Client.Channels[this.State.Parent];
             }
         }
@@ -64,7 +69,7 @@ namespace Mumble.Models
         /// <summary>
         /// Gets the name of the channel
         /// </summary>
-        public string Name
+        public override string Name
         { 
             get
             {
@@ -106,13 +111,15 @@ namespace Mumble.Models
         }
 
         /// <summary>
-        /// Gets the list of children of this channel
+        /// Gets the list of the sub channels of this channel
         /// </summary>
-        public IEnumerable<Channel> Children
+        public IEnumerable<Channel> SubChannels
         {
             get
             {
-                return this.Client.Channels.Values.Where(c => c.Parent.Id == this.Id);
+                return this.Client.Channels.Values
+                    .Where(c => c.Parent != null)
+                    .Where(c => c.Parent.Id == this.Id);
             }
         }
 

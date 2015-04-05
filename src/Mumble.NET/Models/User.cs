@@ -7,6 +7,8 @@
 namespace Mumble.Models
 {
     using System.Collections.Generic;
+    using System.Globalization;
+    using System.Threading.Tasks;
     using Messages;
 
     /// <summary>
@@ -40,7 +42,7 @@ namespace Mumble.Models
         /// <summary>
         /// Gets the name of the user
         /// </summary>
-        public string Name
+        public override string Name
         {
             get
             {
@@ -145,6 +147,41 @@ namespace Mumble.Models
             {
                 return this.State.Recording;
             }
+        }
+
+        /// <summary>
+        /// Make this user join a channel
+        /// </summary>
+        /// <param name="id">Id of channel to join</param>
+        /// <returns>Empty task</returns>
+        public async Task JoinChannelAsync(uint id)
+        {
+            await this.Client.SendMessage(new UserState.Builder
+            {
+                Session = this.Id,
+                Actor = this.Client.ClientUser.Id,
+                ChannelId = id,
+            });
+        }
+
+        /// <summary>
+        /// Make this user join a channel
+        /// </summary>
+        /// <param name="name">Name of channel to join</param>
+        /// <returns>Empty task</returns>
+        public async Task JoinChannelAsync(string name)
+        {
+            await this.JoinChannelAsync(this.Client.Channels[name]);
+        }
+
+        /// <summary>
+        /// Make this user join a channel
+        /// </summary>
+        /// <param name="channel">Channel to join</param>
+        /// <returns>Empty task</returns>
+        public async Task JoinChannelAsync(Channel channel)
+        {
+            await this.JoinChannelAsync(channel.Id);
         }
     }
 }

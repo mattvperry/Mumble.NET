@@ -23,5 +23,16 @@ namespace Mumble.Models
             this.Client.ChannelStateReceived += (sender, args) => this.UpdateState(args.Message);
             this.Client.ChannelRemoveReceived += (sender, args) => this.Remove(args.Message.ChannelId);
         }
+
+        /// <summary>
+        /// Gets the root channel of the server
+        /// </summary>
+        public Channel RootChannel
+        {
+            get
+            {
+                return this[0];
+            }
+        }
     }
 }
