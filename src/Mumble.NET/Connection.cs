@@ -10,6 +10,7 @@ namespace Mumble
     using System.Net;
     using System.Net.Security;
     using System.Net.Sockets;
+    using System.Runtime.CompilerServices;
     using System.Threading;
     using System.Threading.Tasks;
     using Google.ProtocolBuffers;
@@ -100,27 +101,21 @@ namespace Mumble
         public async Task<IMessage> ReadMessageAsync(CancellationToken cancellationToken, int timeout = Timeout.Infinite)
         {
             var headerBytes = new byte[6];
-            await this.WithTimeout(
-                async (token) =>
-                {
-                    await this.sslStream.ReadAsync(headerBytes, 0, headerBytes.Length, token).ConfigureAwait(false);
-                },
-                cancellationToken,
-                TimeSpan.FromSeconds(timeout),
-                "Read timeout");
+            using (var cts = cancellationToken.AddTimeout(timeout))
+            {
+                await this.sslStream.ReadAsync(headerBytes, 0, headerBytes.Length, cts.Token)
+                    .HandleTimeout(cts.Token).ConfigureAwait(false);
+            }
 
             var type = IPAddress.NetworkToHostOrder(BitConverter.ToInt16(headerBytes, 0));
             var size = IPAddress.NetworkToHostOrder(BitConverter.ToInt32(headerBytes, 2));
 
             var messageBytes = new byte[size];
-            await this.WithTimeout(
-                async (token) =>
-                {
-                    await this.sslStream.ReadAsync(messageBytes, 0, size, token).ConfigureAwait(false);
-                },
-                cancellationToken,
-                TimeSpan.FromSeconds(timeout),
-                "Read timeout");
+            using (var cts = cancellationToken.AddTimeout(timeout))
+            {
+                await this.sslStream.ReadAsync(messageBytes, 0, size, cts.Token)
+                    .HandleTimeout(cts.Token).ConfigureAwait(false);
+            }
 
             if (type == (int)MessageType.UDPTunnel)
             {
@@ -167,50 +162,17 @@ namespace Mumble
             var sizeBytes = BitConverter.GetBytes(IPAddress.HostToNetworkOrder(messageBytes.Length));
 
             await this.writeSemaphore.WaitAsync(cancellationToken).ConfigureAwait(false);
-
-            await this.WithTimeout(
-                async (token) =>
-                {
-                    await this.sslStream.WriteAsync(typeBytes, 0, typeBytes.Length, token).ConfigureAwait(false);
-                    await this.sslStream.WriteAsync(sizeBytes, 0, sizeBytes.Length, token).ConfigureAwait(false);
-                    await this.sslStream.WriteAsync(messageBytes, 0, messageBytes.Length, token).ConfigureAwait(false);
-                },
-                cancellationToken,
-                TimeSpan.FromSeconds(WriteTimeout),
-                "Write timeout");
+            using (var cts = cancellationToken.AddTimeout(WriteTimeout))
+            {
+                await this.sslStream.WriteAsync(typeBytes, 0, typeBytes.Length, cts.Token)
+                    .HandleTimeout(cts.Token).ConfigureAwait(false);
+                await this.sslStream.WriteAsync(sizeBytes, 0, sizeBytes.Length, cts.Token)
+                    .HandleTimeout(cts.Token).ConfigureAwait(false);
+                await this.sslStream.WriteAsync(messageBytes, 0, messageBytes.Length, cts.Token)
+                    .HandleTimeout(cts.Token).ConfigureAwait(false);
+            }
 
             this.writeSemaphore.Release();
-        }
-
-        /// <summary>
-        /// Add a timeout to a cancellation token, call an async method 
-        /// and throw a TimeoutException if the cancellation token
-        /// is cancelled because it reached the timeout.
-        /// </summary>
-        /// <param name="action">Async method to call</param>
-        /// <param name="cancellationToken">Base cancellation token to link with</param>
-        /// <param name="timeout">Time to wait for async method</param>
-        /// <param name="errorMessage">Error message for exception</param>
-        /// <returns>Empty task</returns>
-        private async Task WithTimeout(Func<CancellationToken, Task> action, CancellationToken cancellationToken, TimeSpan timeout, string errorMessage)
-        {
-            using (var cts = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken))
-            {
-                cts.CancelAfter(timeout);
-                try
-                {
-                    await action(cts.Token).ConfigureAwait(false);
-                }
-                catch (OperationCanceledException ex)
-                {
-                    if (ex.CancellationToken == cts.Token)
-                    {
-                        throw new TimeoutException(errorMessage, ex);
-                    }
-
-                    throw;
-                }
-            }
         }
     }
 }
