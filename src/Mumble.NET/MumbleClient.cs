@@ -148,7 +148,7 @@ namespace Mumble
         {
             this.cancellationTokenSource = new CancellationTokenSource();
             this.connection = this.connectionFactory.CreateConnection(this.ServerInfo.HostName, this.ServerInfo.Port);
-            await this.connection.ConnectAsync();
+            await this.connection.ConnectAsync().ConfigureAwait(false);
 
             await this.SendMessage(new Messages.Version.Builder
             {
@@ -156,16 +156,16 @@ namespace Mumble
                 Release = string.Format(CultureInfo.InvariantCulture, "Mumble.NET {0}", Assembly.GetExecutingAssembly().GetName().Version),
                 Os = Environment.OSVersion.Platform.ToString(),
                 OsVersion = Environment.OSVersion.VersionString,
-            });
+            }).ConfigureAwait(false);
 
             await this.SendMessage(new Authenticate.Builder
             {
                 Username = userName,
                 Password = password,
                 Opus = true,
-            });
+            }).ConfigureAwait(false);
 
-            await this.StartLoopingTask(() => !this.Connected, this.ReadMessage);
+            await this.StartLoopingTask(() => !this.Connected, this.ReadMessage).ConfigureAwait(false);
             this.readTask = this.StartLoopingTask(() => true, this.ReadMessage);
             this.pingTask = this.StartLoopingTask(() => true, this.SendPing);
         }
@@ -178,6 +178,8 @@ namespace Mumble
             this.Connected = false;
             this.cancellationTokenSource.Cancel();
             this.connection.Dispose();
+            this.Users.Clear();
+            this.Channels.Clear();
         }
 
         /// <inheritdoc />
@@ -194,7 +196,7 @@ namespace Mumble
         /// <returns>Empty task</returns>
         internal async Task SendMessage<T>(T builder) where T : IBuilder, new()
         {
-            await this.connection.SendMessageAsync(builder.WeakBuild(), this.cancellationTokenSource.Token);
+            await this.connection.SendMessageAsync(builder.WeakBuild(), this.cancellationTokenSource.Token).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -203,7 +205,7 @@ namespace Mumble
         /// <returns>Empty task</returns>
         private async Task ReadMessage()
         {
-            var message = await this.connection.ReadMessageAsync(this.cancellationTokenSource.Token);
+            var message = await this.connection.ReadMessageAsync(this.cancellationTokenSource.Token).ConfigureAwait(false);
             this.messageEventHandlers[message.GetType()](this, message);
         }
 
@@ -216,8 +218,8 @@ namespace Mumble
             await this.SendMessage(new Ping.Builder
             {
                 Timestamp = (uint)DateTime.UtcNow.Ticks,
-            });
-            await Task.Delay(TimeSpan.FromSeconds(20), this.cancellationTokenSource.Token);
+            }).ConfigureAwait(false);
+            await Task.Delay(TimeSpan.FromSeconds(20), this.cancellationTokenSource.Token).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -233,7 +235,7 @@ namespace Mumble
                 {
                     while (condition())
                     {
-                        await action();
+                        await action().ConfigureAwait(false);
                     }
                 }, 
                 this.cancellationTokenSource.Token);

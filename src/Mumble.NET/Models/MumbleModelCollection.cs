@@ -133,6 +133,14 @@ namespace Mumble.Models
         }
 
         /// <summary>
+        /// Removes all objects from the collection
+        /// </summary>
+        public void Clear()
+        {
+            this.containedDictionary.Clear();
+        }              
+
+        /// <summary>
         /// Update the internal collection based on a new state message
         /// </summary>
         /// <param name="state">State message</param>

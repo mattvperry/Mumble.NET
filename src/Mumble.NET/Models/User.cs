@@ -161,7 +161,7 @@ namespace Mumble.Models
                 Session = this.Id,
                 Actor = this.Client.ClientUser.Id,
                 ChannelId = id,
-            });
+            }).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -171,7 +171,7 @@ namespace Mumble.Models
         /// <returns>Empty task</returns>
         public async Task JoinChannelAsync(string name)
         {
-            await this.JoinChannelAsync(this.Client.Channels[name]);
+            await this.JoinChannelAsync(this.Client.Channels[name]).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -181,7 +181,7 @@ namespace Mumble.Models
         /// <returns>Empty task</returns>
         public async Task JoinChannelAsync(Channel channel)
         {
-            await this.JoinChannelAsync(channel.Id);
+            await this.JoinChannelAsync(channel.Id).ConfigureAwait(false);
         }
     }
 }

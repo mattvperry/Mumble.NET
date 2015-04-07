@@ -26,8 +26,9 @@ namespace Mumble
         /// Read an incoming protobuf message from the socket
         /// </summary>
         /// <param name="cancellationToken">The token to monitor for cancellation requests</param>
+        /// <param name="timeout">Time in seconds to wait for message</param>
         /// <returns>Protobuf message from the socket</returns>
-        Task<IMessage> ReadMessageAsync(CancellationToken cancellationToken);
+        Task<IMessage> ReadMessageAsync(CancellationToken cancellationToken, int timeout = Timeout.Infinite);
 
         /// <summary>
         /// Send a UDP packet message to the server. Used for audio data

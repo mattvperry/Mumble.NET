@@ -21,6 +21,11 @@ namespace Mumble
     internal class Connection : IConnection
     {
         /// <summary>
+        /// Write timeout in seconds
+        /// </summary>
+        private const ushort WriteTimeout = 30;
+
+        /// <summary>
         /// Hostname of the server
         /// </summary>
         private readonly string host;
@@ -86,22 +91,36 @@ namespace Mumble
             {
                 this.tcpClient = new TcpClient(this.host, this.port);
                 this.sslStream = new SslStream(this.tcpClient.GetStream(), false, (sender, cert, chain, errors) => true);
-                await this.sslStream.AuthenticateAsClientAsync(this.host);
+                await this.sslStream.AuthenticateAsClientAsync(this.host).ConfigureAwait(false);
                 this.Connected = true;
             }
         }
 
         /// <inheritdoc />
-        public async Task<IMessage> ReadMessageAsync(CancellationToken cancellationToken)
+        public async Task<IMessage> ReadMessageAsync(CancellationToken cancellationToken, int timeout = Timeout.Infinite)
         {
             var headerBytes = new byte[6];
-            await this.sslStream.ReadAsync(headerBytes, 0, headerBytes.Length, cancellationToken);
+            await this.WithTimeout(
+                async (token) =>
+                {
+                    await this.sslStream.ReadAsync(headerBytes, 0, headerBytes.Length, token).ConfigureAwait(false);
+                },
+                cancellationToken,
+                TimeSpan.FromSeconds(timeout),
+                "Read timeout");
 
             var type = IPAddress.NetworkToHostOrder(BitConverter.ToInt16(headerBytes, 0));
             var size = IPAddress.NetworkToHostOrder(BitConverter.ToInt32(headerBytes, 2));
 
             var messageBytes = new byte[size];
-            await this.sslStream.ReadAsync(messageBytes, 0, size, cancellationToken);
+            await this.WithTimeout(
+                async (token) =>
+                {
+                    await this.sslStream.ReadAsync(messageBytes, 0, size, token).ConfigureAwait(false);
+                },
+                cancellationToken,
+                TimeSpan.FromSeconds(timeout),
+                "Read timeout");
 
             if (type == (int)MessageType.UDPTunnel)
             {
@@ -119,13 +138,13 @@ namespace Mumble
         /// <inheritdoc />
         public async Task SendUDPPacketAsync(byte[] packet, CancellationToken cancellationToken)
         {
-            await this.WriteMessageAsync(MessageType.UDPTunnel, packet, cancellationToken);
+            await this.WriteMessageAsync(MessageType.UDPTunnel, packet, cancellationToken).ConfigureAwait(false);
         }
 
         /// <inheritdoc />
         public async Task SendMessageAsync(IMessage message, CancellationToken cancellationToken)
         {
-            await this.WriteMessageAsync(this.messageFactory.GetMessageType(message), message.ToByteArray(), cancellationToken);
+            await this.WriteMessageAsync(this.messageFactory.GetMessageType(message), message.ToByteArray(), cancellationToken).ConfigureAwait(false);
         }
 
         /// <inheritdoc />
@@ -147,11 +166,51 @@ namespace Mumble
             var typeBytes = BitConverter.GetBytes(IPAddress.HostToNetworkOrder((short)type));
             var sizeBytes = BitConverter.GetBytes(IPAddress.HostToNetworkOrder(messageBytes.Length));
 
-            await this.writeSemaphore.WaitAsync();
-            await this.sslStream.WriteAsync(typeBytes, 0, typeBytes.Length, cancellationToken);
-            await this.sslStream.WriteAsync(sizeBytes, 0, sizeBytes.Length, cancellationToken); 
-            await this.sslStream.WriteAsync(messageBytes, 0, messageBytes.Length, cancellationToken);
+            await this.writeSemaphore.WaitAsync(cancellationToken).ConfigureAwait(false);
+
+            await this.WithTimeout(
+                async (token) =>
+                {
+                    await this.sslStream.WriteAsync(typeBytes, 0, typeBytes.Length, token).ConfigureAwait(false);
+                    await this.sslStream.WriteAsync(sizeBytes, 0, sizeBytes.Length, token).ConfigureAwait(false);
+                    await this.sslStream.WriteAsync(messageBytes, 0, messageBytes.Length, token).ConfigureAwait(false);
+                },
+                cancellationToken,
+                TimeSpan.FromSeconds(WriteTimeout),
+                "Write timeout");
+
             this.writeSemaphore.Release();
+        }
+
+        /// <summary>
+        /// Add a timeout to a cancellation token, call an async method 
+        /// and throw a TimeoutException if the cancellation token
+        /// is cancelled because it reached the timeout.
+        /// </summary>
+        /// <param name="action">Async method to call</param>
+        /// <param name="cancellationToken">Base cancellation token to link with</param>
+        /// <param name="timeout">Time to wait for async method</param>
+        /// <param name="errorMessage">Error message for exception</param>
+        /// <returns>Empty task</returns>
+        private async Task WithTimeout(Func<CancellationToken, Task> action, CancellationToken cancellationToken, TimeSpan timeout, string errorMessage)
+        {
+            using (var cts = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken))
+            {
+                cts.CancelAfter(timeout);
+                try
+                {
+                    await action(cts.Token).ConfigureAwait(false);
+                }
+                catch (OperationCanceledException ex)
+                {
+                    if (ex.CancellationToken == cts.Token)
+                    {
+                        throw new TimeoutException(errorMessage, ex);
+                    }
+
+                    throw;
+                }
+            }
         }
     }
 }
