@@ -24,10 +24,10 @@ namespace Mumble
         public static void RaiseEvent<T>(
             this EventHandler<MessageReceivedEventArgs<T>> handler,
             object sender,
-            T argument)
-            where T : IMessage<T>
+            IMessage argument)
+            where T : IMessage
         {
-            var e = new MessageReceivedEventArgs<T>(argument);
+            var e = new MessageReceivedEventArgs<T>((T)argument);
             var tempHandler = handler;
             if (tempHandler != null)
             {

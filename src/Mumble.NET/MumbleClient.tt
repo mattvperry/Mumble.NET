@@ -35,7 +35,7 @@ namespace Mumble
         private Dictionary<Type, Action<MumbleClient, IMessage>> messageEventHandlers = new Dictionary<Type, Action<MumbleClient, IMessage>>
         {
 <# foreach (var message in messages) { #>
-            { typeof(Messages.<#= message #>), (sender, message) => sender.<#= message #>Received.RaiseEvent(sender, (Messages.<#= message #>)message) },
+            { typeof(Messages.<#= message #>), (sender, message) => sender.<#= message #>Received.RaiseEvent(sender, message) },
 <# } #>
         };
 
