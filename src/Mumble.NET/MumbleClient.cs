@@ -150,7 +150,7 @@ namespace Mumble
             this.connection = this.connectionFactory.CreateConnection(this.ServerInfo.HostName, this.ServerInfo.Port);
             await this.connection.ConnectAsync().ConfigureAwait(false);
 
-            await this.SendMessage(new Messages.Version.Builder
+            await this.SendMessageAsync(new Messages.Version.Builder
             {
                 Version_ = ClientMumbleVersion.EncodeVersion(),
                 Release = string.Format(CultureInfo.InvariantCulture, "Mumble.NET {0}", Assembly.GetExecutingAssembly().GetName().Version),
@@ -158,16 +158,16 @@ namespace Mumble
                 OsVersion = Environment.OSVersion.VersionString,
             }).ConfigureAwait(false);
 
-            await this.SendMessage(new Authenticate.Builder
+            await this.SendMessageAsync(new Authenticate.Builder
             {
                 Username = userName,
                 Password = password,
                 Opus = true,
             }).ConfigureAwait(false);
 
-            await this.StartLoopingTask(() => !this.Connected, this.ReadMessage).ConfigureAwait(false);
-            this.readTask = this.StartLoopingTask(() => true, this.ReadMessage);
-            this.pingTask = this.StartLoopingTask(() => true, this.SendPing);
+            await this.StartLoopingTaskAsync(() => !this.Connected, this.ReadMessageAsync).ConfigureAwait(false);
+            this.readTask = this.StartLoopingTaskAsync(() => true, this.ReadMessageAsync);
+            this.pingTask = this.StartLoopingTaskAsync(() => true, this.SendPingAsync);
         }
 
         /// <summary>
@@ -191,10 +191,9 @@ namespace Mumble
         /// <summary>
         /// Build a protobuf message and send it
         /// </summary>
-        /// <typeparam name="T">Type of message to build</typeparam>
         /// <param name="builder">Builder to craft message</param>
         /// <returns>Empty task</returns>
-        internal async Task SendMessage<T>(T builder) where T : IBuilder, new()
+        internal async Task SendMessageAsync(IBuilder builder)
         {
             await this.connection.SendMessageAsync(builder.WeakBuild(), this.cancellationTokenSource.Token).ConfigureAwait(false);
         }
@@ -203,7 +202,7 @@ namespace Mumble
         /// Read a single task from the server and handle it
         /// </summary>
         /// <returns>Empty task</returns>
-        private async Task ReadMessage()
+        private async Task ReadMessageAsync()
         {
             var message = await this.connection.ReadMessageAsync(this.cancellationTokenSource.Token).ConfigureAwait(false);
             this.messageEventHandlers[message.GetType()](this, message);
@@ -213,9 +212,9 @@ namespace Mumble
         /// Send a ping message with the current timestamp and sleep for 20 seconds
         /// </summary>
         /// <returns>Empty task</returns>
-        private async Task SendPing()
+        private async Task SendPingAsync()
         {
-            await this.SendMessage(new Ping.Builder
+            await this.SendMessageAsync(new Ping.Builder
             {
                 Timestamp = (uint)DateTime.UtcNow.Ticks,
             }).ConfigureAwait(false);
@@ -228,7 +227,7 @@ namespace Mumble
         /// <param name="condition">Condition to control loop</param>
         /// <param name="action">Action to execute</param>
         /// <returns>Task running loop</returns>
-        private Task StartLoopingTask(Func<bool> condition, Func<Task> action)
+        private Task StartLoopingTaskAsync(Func<bool> condition, Func<Task> action)
         {
             return Task.Run(
                 async () =>
