@@ -100,8 +100,8 @@ namespace Mumble
             Justification = "Code generation and event handling make the event system a bit complex")]
         internal MumbleClient(string host, int port, IConnectionFactory connectionFactory)
         {
-            this.ServerInfo = new ServerInfo { HostName = host, Port = port };
             this.connectionFactory = connectionFactory;
+            this.ServerInfo = new ServerInfo { HostName = host, Port = port };
             this.Channels = new ChannelCollection(this);
             this.Users = new UserCollection(this);
             this.SetupEvents();
@@ -151,6 +151,11 @@ namespace Mumble
         /// <returns>Empty task</returns>
         public async Task ConnectAsync(string userName, string password)
         {
+            if (this.Connected)
+            {
+                return;
+            }
+
             this.cancellationTokenSource = new CancellationTokenSource();
             this.connection = this.connectionFactory.CreateConnection(this.ServerInfo.HostName, this.ServerInfo.Port);
             await this.connection.ConnectAsync().ConfigureAwait(false);
@@ -180,6 +185,11 @@ namespace Mumble
         /// </summary>
         public void Disconnect()
         {
+            if (!this.Connected)
+            {
+                return;
+            }
+
             this.Connected = false;
             this.cancellationTokenSource.Cancel();
             this.connection.Dispose();
@@ -237,11 +247,11 @@ namespace Mumble
             using (var cts = this.cancellationTokenSource.Token.AddTimeout(5))
             {
                 var success = this.WaitForMessageAsync<T>(filter, cts.Token);
-                var failure = this.WaitForMessageAsync<PermissionDenied>(cts.Token);
+                var denied = this.WaitForMessageAsync<PermissionDenied>(cts.Token);
 
                 await this.SendMessageAsync(builder).ConfigureAwait(false);
 
-                var result = await Task.WhenAny(success, failure).ConfigureAwait(false);
+                var result = await Task.WhenAny(success, denied).ConfigureAwait(false);
                 cts.Cancel();
 
                 if (result.IsCanceled)
@@ -252,7 +262,7 @@ namespace Mumble
                 {
                     return await success;
                 }
-                else if (result == failure)
+                else if (result == denied)
                 {
                     throw new UnauthorizedAccessException();
                 }

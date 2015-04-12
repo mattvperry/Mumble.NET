@@ -3,7 +3,7 @@
     <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildProjectDirectory), build.props))\build.props" />
 
     <ItemGroup>
-        <ProjectReference Include="$(ProjectRoot)src\Mumble.NET\Mumble.NET.csproj" />
+        <ProjectReference Include="$(ProjectRoot)src\Mumble.NET.csproj" />
     </ItemGroup>
 
     <Target Name="Rebuild" DependsOnTargets="Clean;Build" />
