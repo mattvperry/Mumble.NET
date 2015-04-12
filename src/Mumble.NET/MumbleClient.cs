@@ -189,6 +189,28 @@ namespace Mumble
         }
 
         /// <summary>
+        /// Sends a text message to a user
+        /// </summary>
+        /// <param name="message">Message to send</param>
+        /// <param name="target">Target user</param>
+        /// <returns>Empty task</returns>
+        public async Task SendTextMessageAsync(string message, User target)
+        {
+            await this.SendTextMessageAsync(message, builder => builder.AddSession(target.Id)).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Sends a text message to a channel
+        /// </summary>
+        /// <param name="message">Message to send</param>
+        /// <param name="target">Target channel</param>
+        /// <returns>Empty task</returns>
+        public async Task SendTextMessageAsync(string message, Channel target)
+        {
+            await this.SendTextMessageAsync(message, builder => builder.AddChannelId(target.Id)).ConfigureAwait(false);
+        }
+
+        /// <summary>
         /// Build a protobuf message and send it
         /// </summary>
         /// <param name="builder">Builder to craft message</param>
@@ -196,6 +218,17 @@ namespace Mumble
         internal async Task SendMessageAsync(IBuilder builder)
         {
             await this.connection.SendMessageAsync(builder.WeakBuild(), this.cancellationTokenSource.Token).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Sends a text message to a target
+        /// </summary>
+        /// <param name="message">Message to send</param>
+        /// <param name="addTarget">Action which adds a target to the message</param>
+        /// <returns>Empty task</returns>
+        private async Task SendTextMessageAsync(string message, Func<TextMessage.Builder, TextMessage.Builder> addTarget)
+        {
+            await this.SendMessageAsync(addTarget(new TextMessage.Builder { Actor = this.ClientUser.Id, Message = message })).ConfigureAwait(false);
         }
 
         /// <summary>

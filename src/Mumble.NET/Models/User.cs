@@ -150,6 +150,16 @@ namespace Mumble.Models
         }
 
         /// <summary>
+        /// Sends a message to this user
+        /// </summary>
+        /// <param name="message">Message to send</param>
+        /// <returns>Empty task</returns>
+        public async Task SendTextMessageAsync(string message)
+        {
+            await this.Client.SendTextMessageAsync(message, this);
+        }
+
+        /// <summary>
         /// Make this user join a channel
         /// </summary>
         /// <param name="id">Id of channel to join</param>

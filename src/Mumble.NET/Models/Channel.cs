@@ -8,6 +8,7 @@ namespace Mumble.Models
 {
     using System.Collections.Generic;
     using System.Linq;
+    using System.Threading.Tasks;
     using Messages;
     using Validation;
 
@@ -132,6 +133,16 @@ namespace Mumble.Models
             {
                 return this.State.LinksList.Select(linkId => this.Client.Channels[linkId]);
             }
+        }
+
+        /// <summary>
+        /// Sends a message to this channel
+        /// </summary>
+        /// <param name="message">Message to send</param>
+        /// <returns>Empty task</returns>
+        public async Task SendTextMessageAsync(string message)
+        {
+            await this.Client.SendTextMessageAsync(message, this);
         }
 
         /// <inheritdoc />
