@@ -166,12 +166,14 @@ namespace Mumble.Models
         /// <returns>Empty task</returns>
         public async Task JoinChannelAsync(uint id)
         {
-            await this.Client.SendMessageAsync(new UserState.Builder
+            var builder = new UserState.Builder
             {
                 Session = this.Id,
                 Actor = this.Client.ClientUser.Id,
                 ChannelId = id,
-            }).ConfigureAwait(false);
+            };
+
+            await this.Client.SendMessageWithResponseAsync<UserState>(builder, builder.Build().Equals).ConfigureAwait(false);
         }
 
         /// <summary>

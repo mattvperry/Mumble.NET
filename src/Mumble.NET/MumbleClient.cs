@@ -108,6 +108,11 @@ namespace Mumble
         }
 
         /// <summary>
+        /// Event fired when any message is received
+        /// </summary>
+        internal event EventHandler<MessageReceivedEventArgs<IMessage>> MessageReceived;
+
+        /// <summary>
         /// Gets a value indicating whether we are connected
         /// </summary>
         public bool Connected { get; private set; }
@@ -221,6 +226,86 @@ namespace Mumble
         }
 
         /// <summary>
+        /// Send a message and wait for a response
+        /// </summary>
+        /// <typeparam name="T">Response type</typeparam>
+        /// <param name="builder">Builder to craft message</param>
+        /// <param name="filter">Filter for response</param>
+        /// <returns>The response or null</returns>
+        internal async Task<T> SendMessageWithResponseAsync<T>(IBuilder builder, Predicate<T> filter) where T : class, IMessage
+        {
+            using (var cts = this.cancellationTokenSource.Token.AddTimeout(5))
+            {
+                var success = this.WaitForMessageAsync<T>(filter, cts.Token);
+                var failure = this.WaitForMessageAsync<PermissionDenied>(cts.Token);
+
+                await this.SendMessageAsync(builder).ConfigureAwait(false);
+
+                var result = await Task.WhenAny(success, failure).ConfigureAwait(false);
+                cts.Cancel();
+
+                if (result.IsCanceled)
+                {
+                    throw new TimeoutException();
+                }
+                else if (result == success)
+                {
+                    return await success;
+                }
+                else if (result == failure)
+                {
+                    throw new UnauthorizedAccessException();
+                }
+                else
+                {
+                    throw new InvalidOperationException();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Waits for a message to be received
+        /// </summary>
+        /// <typeparam name="T">Type of message to wait for</typeparam>
+        /// <param name="token">Cancellation token</param>
+        /// <returns>The message or null</returns>
+        private Task<T> WaitForMessageAsync<T>(CancellationToken token) where T : class, IMessage
+        {
+            return this.WaitForMessageAsync<T>(m => true, token);
+        }
+
+        /// <summary>
+        /// Waits for a message to be received
+        /// </summary>
+        /// <typeparam name="T">Type of message to wait for</typeparam>
+        /// <param name="filter">Filter for the message</param>
+        /// <param name="token">Cancellation token</param>
+        /// <returns>The message or null</returns>
+        private Task<T> WaitForMessageAsync<T>(Predicate<T> filter, CancellationToken token) where T : class, IMessage
+        {
+            var tcs = new TaskCompletionSource<T>();
+
+            var handler = new EventHandler<MessageReceivedEventArgs<IMessage>>((sender, args) =>
+            {
+                if (args.Message is T && filter((T)args.Message))
+                {
+                    tcs.TrySetResult((T)args.Message);
+                }
+            });
+
+            this.MessageReceived += handler;
+            token.Register(
+                () => 
+                {
+                    this.MessageReceived -= handler;
+                    tcs.TrySetCanceled();
+                }, 
+                useSynchronizationContext: false);
+
+            return tcs.Task;
+        }
+
+        /// <summary>
         /// Sends a text message to a target
         /// </summary>
         /// <param name="message">Message to send</param>
@@ -239,6 +324,7 @@ namespace Mumble
         {
             var message = await this.connection.ReadMessageAsync(this.cancellationTokenSource.Token).ConfigureAwait(false);
             this.messageEventHandlers[message.GetType()](this, message);
+            this.MessageReceived.RaiseEvent(this, message);
         }
 
         /// <summary>
